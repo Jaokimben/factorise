@@ -1,8 +1,24 @@
-# Factorise.io - Plateforme d'Évaluation de Maturité IA
+# Factor AI - Plateforme Complète de Transformation IA
 
-## Vue d'ensemble du projet
+> **Version 4.0.0** - Complete Edition | Sandbox URL: https://3000-iq3bbj8ibym15nrja4r5h-18e660f9.sandbox.novita.ai
 
-**Factorise.io** est une plateforme web complète pour la transformation digitale et l'intelligence artificielle. Elle combine un site vitrine professionnel avec un système d'évaluation de maturité IA personnalisé.
+## 🎯 Vue d'ensemble du projet
+
+**Factor AI** (anciennement Factorise.io) est une plateforme web professionnelle complète pour la transformation digitale et l'intelligence artificielle. Elle combine un site vitrine multi-pages avec un système d'évaluation de maturité IA avancé.
+
+### ✨ Nouveautés V4 (2025-01-11)
+
+**5 nouvelles pages professionnelles** ajoutées :
+- `/services` - 7 services IA détaillés avec métriques ROI
+- `/about` - Vision, mission, équipe de 6 experts, technologies
+- `/contact` - Formulaire fonctionnel + API endpoint
+- `/faq` - 15+ questions avec recherche en temps réel
+- `/testimonials` - 6 témoignages + 3 études de cas détaillées
+
+**96 KB de données structurées** bilingues FR/EN ajoutées  
+**100+ nouvelles clés** de traduction  
+**Navigation unifiée** sur toutes les pages  
+**Bundle optimisé** : 105 KB (production-ready)
 
 ### Objectifs
 
@@ -17,13 +33,62 @@
 
 #### 0. Support Multi-langue (FR/EN)
 - **Changement de langue dynamique** : Toggle FR/EN dans la navigation
-- **Traductions complètes** : Toutes les pages, menus, formulaires
-- **Questions d'évaluation** : 20 questions traduites en français et anglais
+- **Traductions complètes** : 11 pages, ~250 clés de traduction
+- **Questions d'évaluation** : 40 questions professionnelles en FR/EN
 - **Persistance** : Préférence de langue sauvegardée dans localStorage
 - **Sans rechargement** : Traduction instantanée via JavaScript
 - **Seamless UX** : Pas de duplication de code, même structure HTML
 
-#### 1. Site Vitrine Public
+#### 1. Pages Professionnelles Factor AI (V4 - NOUVEAU)
+
+##### Page Services (`/services`)
+- **7 services détaillés** : AI Agents, Workflow Automation, Chatbots, Voice AI, KRS, Consulting
+- **Métriques ROI** pour chaque service
+- **Features, Benefits, Use Cases** complets
+- **Cartes interactives** avec animations hover
+- **CTA vers contact** intégré
+
+##### Page À Propos (`/about`)
+- **Vision & Mission** de Factor AI
+- **6 valeurs fondamentales** illustrées
+- **Équipe de 6 experts** avec photos et bios
+- **6 statistiques clés** : 200+ agents IA, 50+ clients, 1M$ économies moyennes
+- **Technologies maîtrisées** : 6 catégories (LLMs, Conversational AI, Voice AI, Cloud, Databases, Integration)
+- **Méthodologie en 5 phases** : Discovery, Validation, Development, Deployment, Optimization
+
+##### Page Contact (`/contact`)
+- **Formulaire complet** : nom, email, téléphone, entreprise, rôle, message
+- **API endpoint fonctionnel** : `POST /api/contact`
+- **Validation en temps réel**
+- **Messages succès/erreur**
+- **Coordonnées** : email, téléphone, adresse
+- **Design professionnel** avec 3 cartes d'info
+
+##### Page FAQ (`/faq`)
+- **15+ questions** en 6 catégories :
+  - Général (3 Q)
+  - Services (4 Q)
+  - Processus & Délais (3 Q)
+  - Tarification & ROI (3 Q)
+  - Questions Techniques (3 Q)
+  - Support & Formation (3 Q)
+- **Recherche en temps réel** avec filtrage intelligent
+- **Accordéons cliquables** pour afficher/masquer réponses
+- **24 KB de contenu** structuré bilingue
+
+##### Page Témoignages (`/testimonials`)
+- **6 témoignages clients** complets avec :
+  - Avatars, noms, rôles, entreprises
+  - Notes 5 étoiles
+  - Citations authentiques
+  - Métriques de résultats concrets
+- **3 études de cas détaillées** :
+  - **E-commerce** (FashionHub) : -70% temps réponse, +28% conversions
+  - **Finance** (FinanceConnect) : -900K€/an coûts, +35% satisfaction
+  - **SaaS** (DataFlow) : -90% temps recherche, +25% productivité
+- **Données structurées** : Défi, Solution, Résultats avec métriques
+
+#### 2. Site Vitrine Public (Homepage)
 - **Page d'accueil** avec sections :
   - Hero section avec CTA (Call-to-Action)
   - Services proposés (3 cartes)

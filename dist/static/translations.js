@@ -2,27 +2,60 @@
 const translations = {
   fr: {
     // Navigation
+    nav_home: "Accueil",
     nav_services: "Services",
     nav_about: "À propos",
     nav_contact: "Contact",
+    nav_faq: "FAQ",
+    nav_testimonials: "Témoignages",
+    nav_resources: "Ressources",
     nav_login: "Connexion",
     nav_logout: "Déconnexion",
     nav_dashboard: "Dashboard",
     
-    // Home page
-    hero_title: "Transformez votre entreprise avec l'IA",
-    hero_subtitle: "Expertise en transformation digitale et intelligence artificielle",
-    hero_cta_start: "Commencer l'évaluation",
-    hero_cta_learn: "En savoir plus",
+    // Home page - Hero
+    hero_title: "Votre Partenaire IA",
+    hero_subtitle: "Nous Construisons des Solutions IA qui Créent du Succès et de la Valeur",
+    hero_description: "Transformez vos opérations business avec des solutions IA qui améliorent le service client, accélèrent la croissance des ventes et rationalisent les processus.",
+    hero_cta_primary: "Réserver une consultation",
+    hero_cta_secondary: "Voir nos services",
+    hero_stat1_value: "200+",
+    hero_stat1_label: "Agents IA Construits",
+    hero_stat2_value: "1M$",
+    hero_stat2_label: "Économies Moyennes",
+    hero_stat3_value: "84%",
+    hero_stat3_label: "Amélioration Résolution",
+    hero_stat4_value: "50+",
+    hero_stat4_label: "Clients Satisfaits",
     
-    // Services
-    services_title: "Nos Services",
-    service1_title: "Stratégie IA",
-    service1_desc: "Définissez votre feuille de route IA avec nos experts certifiés",
-    service2_title: "Évaluation de Maturité",
-    service2_desc: "Analysez votre niveau de maturité IA et identifiez les opportunités",
-    service3_title: "Transformation Digitale",
-    service3_desc: "Accompagnement complet dans votre transformation digitale",
+    // Home page - Social Proof
+    social_proof_title: "Ils nous font confiance",
+    social_proof_subtitle: "Plus de 50 entreprises nous ont choisis",
+    social_proof_experience: "Besoin d'aide pour construire des agents IA ? Nous avons construit 200+ agents. Nous savons ce qui fonctionne.",
+    
+    // Home page - Process
+    process_title: "Notre Processus Éprouvé",
+    process_subtitle: "Une approche en 3 étapes pour des résultats garantis",
+    process_step1_title: "Consultation Gratuite",
+    process_step1_desc: "Nous comprenons vos besoins et objectifs business",
+    process_step1_duration: "30-60 min",
+    process_step2_title: "Diagramme de Flux & POC",
+    process_step2_desc: "Validation rapide avec un proof-of-concept",
+    process_step2_duration: "1-2 semaines",
+    process_step3_title: "Lancement Projet",
+    process_step3_desc: "Déploiement et intégration dans votre infrastructure",
+    process_step3_duration: "4-12 semaines",
+    
+    // Services Page
+    services_page_title: "Nos Services IA",
+    services_page_subtitle: "Des solutions IA sur mesure pour transformer votre entreprise",
+    services_cta_primary: "Commencer un projet",
+    services_cta_secondary: "Télécharger la brochure",
+    service_learn_more: "En savoir plus",
+    service_metrics: "Métriques",
+    service_features: "Fonctionnalités",
+    service_benefits: "Bénéfices",
+    service_use_cases: "Cas d'usage",
     
     // About
     about_title: "Plus de 20 ans d'expertise",
@@ -114,7 +147,61 @@ const translations = {
     // Priority
     priority_high: "Haute",
     priority_medium: "Moyenne",
-    priority_low: "Basse"
+    priority_low: "Basse",
+    
+    // Contact Page
+    contact_title: "Contactez-Nous",
+    contact_subtitle: "Réservez Votre Consultation Gratuite",
+    contact_desc: "Prêt à transformer votre entreprise avec l'IA ? Parlons de vos défis et opportunités.",
+    contact_name: "Nom complet",
+    contact_email: "Email professionnel",
+    contact_phone: "Téléphone",
+    contact_company: "Entreprise",
+    contact_role: "Votre rôle",
+    contact_message: "Parlez-nous de votre projet",
+    contact_preferred_date: "Date préférée",
+    contact_budget: "Budget estimé",
+    contact_submit: "Envoyer la demande",
+    contact_success: "Merci ! Nous vous recontacterons sous 24h",
+    contact_error: "Erreur lors de l'envoi. Réessayez.",
+    
+    // FAQ Page
+    faq_title: "Questions Fréquentes",
+    faq_subtitle: "Trouvez les réponses aux questions les plus courantes",
+    faq_search_placeholder: "Rechercher une question...",
+    faq_no_results: "Aucun résultat trouvé",
+    faq_cta_title: "Vous ne trouvez pas la réponse ?",
+    faq_cta_subtitle: "Notre équipe est là pour vous aider",
+    faq_cta_button: "Contactez-nous",
+    
+    // Testimonials Page
+    test_title: "Nos Réussites Clients",
+    test_subtitle: "Découvrez comment nous avons transformé des entreprises",
+    test_case_studies: "Études de Cas Détaillées",
+    test_challenge: "Défi",
+    test_solution: "Solution",
+    test_results: "Résultats",
+    test_testimonial: "Témoignage",
+    test_duration: "Durée",
+    test_technologies: "Technologies",
+    test_before: "Avant",
+    test_after: "Après",
+    test_download: "Télécharger l'étude de cas",
+    
+    // Footer Extended
+    footer_services: "Services",
+    footer_company: "Entreprise",
+    footer_resources: "Ressources",
+    footer_legal: "Légal",
+    footer_privacy: "Politique de confidentialité",
+    footer_terms: "Conditions d'utilisation",
+    footer_newsletter: "Newsletter",
+    footer_newsletter_desc: "Recevez nos insights IA",
+    footer_newsletter_placeholder: "Votre email",
+    footer_newsletter_button: "S'abonner",
+    footer_social_linkedin: "LinkedIn",
+    footer_social_twitter: "Twitter",
+    footer_social_github: "GitHub"
   },
   
   en: {
@@ -231,7 +318,121 @@ const translations = {
     // Priority
     priority_high: "High",
     priority_medium: "Medium",
-    priority_low: "Low"
+    priority_low: "Low",
+    
+    // Navigation Extended
+    nav_home: "Home",
+    nav_faq: "FAQ",
+    nav_testimonials: "Testimonials",
+    nav_resources: "Resources",
+    
+    // Home page Extended
+    hero_description: "Transform your business operations with AI-powered solutions that enhance customer service, accelerate sales growth, and streamline processes.",
+    hero_cta_primary: "Book a consultation",
+    hero_cta_secondary: "See our services",
+    hero_stat1_value: "200+",
+    hero_stat1_label: "AI Agents Built",
+    hero_stat2_value: "$1M",
+    hero_stat2_label: "Average Savings",
+    hero_stat3_value: "84%",
+    hero_stat3_label: "Resolution Improvement",
+    hero_stat4_value: "50+",
+    hero_stat4_label: "Happy Clients",
+    social_proof_title: "They trust us",
+    social_proof_subtitle: "50+ companies chose us",
+    social_proof_experience: "Need help building AI agents? We've built 200+ agents. We know what works.",
+    process_title: "Our Proven Process",
+    process_subtitle: "A 3-step approach for guaranteed results",
+    process_step1_title: "Free Consultation",
+    process_step1_desc: "We understand your business needs and goals",
+    process_step1_duration: "30-60 min",
+    process_step2_title: "Flow Diagram & POC",
+    process_step2_desc: "Rapid validation with proof-of-concept",
+    process_step2_duration: "1-2 weeks",
+    process_step3_title: "Project Kick-off",
+    process_step3_desc: "Deployment and integration into your infrastructure",
+    process_step3_duration: "4-12 weeks",
+    
+    // Services Page
+    services_page_title: "Our AI Services",
+    services_page_subtitle: "Custom AI solutions to transform your business",
+    services_cta_primary: "Start a project",
+    services_cta_secondary: "Download brochure",
+    service_learn_more: "Learn more",
+    service_metrics: "Metrics",
+    service_features: "Features",
+    service_benefits: "Benefits",
+    service_use_cases: "Use Cases",
+    
+    // About Page
+    about_page_title: "About Factor AI",
+    about_page_subtitle: "Your AI Transformation Partner",
+    about_vision_title: "Our Vision",
+    about_mission_title: "Our Mission",
+    about_values_title: "Our Values",
+    about_team_title: "Our Team",
+    about_team_subtitle: "Experts passionate about AI",
+    about_tech_title: "Technologies We Master",
+    about_tech_subtitle: "The best AI tools on the market",
+    about_methodology_title: "Our Methodology",
+    about_methodology_subtitle: "An approach tested on 50+ projects",
+    about_certifications_title: "Certifications & Partnerships",
+    about_cta_primary: "Book a consultation",
+    about_cta_secondary: "See our client cases",
+    
+    // Contact Page
+    contact_title: "Contact Us",
+    contact_subtitle: "Book Your Free Consultation",
+    contact_desc: "Ready to transform your business with AI? Let's talk about your challenges and opportunities.",
+    contact_name: "Full name",
+    contact_email: "Professional email",
+    contact_phone: "Phone",
+    contact_company: "Company",
+    contact_role: "Your role",
+    contact_message: "Tell us about your project",
+    contact_preferred_date: "Preferred date",
+    contact_budget: "Estimated budget",
+    contact_submit: "Send request",
+    contact_success: "Thank you! We'll contact you within 24h",
+    contact_error: "Error sending. Please try again.",
+    
+    // FAQ Page
+    faq_title: "Frequently Asked Questions",
+    faq_subtitle: "Find answers to the most common questions",
+    faq_search_placeholder: "Search for a question...",
+    faq_no_results: "No results found",
+    faq_cta_title: "Can't find the answer?",
+    faq_cta_subtitle: "Our team is here to help",
+    faq_cta_button: "Contact us",
+    
+    // Testimonials Page
+    test_title: "Our Client Success Stories",
+    test_subtitle: "Discover how we've transformed businesses",
+    test_case_studies: "Detailed Case Studies",
+    test_challenge: "Challenge",
+    test_solution: "Solution",
+    test_results: "Results",
+    test_testimonial: "Testimonial",
+    test_duration: "Duration",
+    test_technologies: "Technologies",
+    test_before: "Before",
+    test_after: "After",
+    test_download: "Download case study",
+    
+    // Footer Extended
+    footer_services: "Services",
+    footer_company: "Company",
+    footer_resources: "Resources",
+    footer_legal: "Legal",
+    footer_privacy: "Privacy Policy",
+    footer_terms: "Terms of Service",
+    footer_newsletter: "Newsletter",
+    footer_newsletter_desc: "Receive our AI insights",
+    footer_newsletter_placeholder: "Your email",
+    footer_newsletter_button: "Subscribe",
+    footer_social_linkedin: "LinkedIn",
+    footer_social_twitter: "Twitter",
+    footer_social_github: "GitHub"
   }
 };
 
@@ -249,6 +450,15 @@ function t(key, lang = 'fr', vars = {}) {
 
 // Get current language from localStorage or default to French
 function getCurrentLang() {
+  return localStorage.getItem('lang') || 'fr';
+}
+
+// Set language
+function setLanguage(lang) {
+  localStorage.setItem('lang', lang);
+  window.location.reload();
+}
+tLang() {
   return localStorage.getItem('lang') || 'fr';
 }
 

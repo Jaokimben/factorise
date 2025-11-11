@@ -188,15 +188,16 @@ app.get('/', (c) => {
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
-                        <span class="text-2xl font-bold text-indigo-600">Factorise.io</span>
+                        <span class="text-2xl font-bold text-indigo-600"><i class="fas fa-brain mr-2"></i>Factor AI</span>
                     </div>
                     <div class="flex items-center space-x-6">
-                        <a href="#services" class="text-gray-700 hover:text-indigo-600">Services</a>
-                        <a href="#about" class="text-gray-700 hover:text-indigo-600">À propos</a>
-                        <a href="#contact" class="text-gray-700 hover:text-indigo-600">Contact</a>
-                        <a href="/login" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
-                            Connexion
-                        </a>
+                        <a href="/services" class="text-gray-700 hover:text-indigo-600">Services</a>
+                        <a href="/about" class="text-gray-700 hover:text-indigo-600">À propos</a>
+                        <a href="/testimonials" class="text-gray-700 hover:text-indigo-600">Témoignages</a>
+                        <a href="/faq" class="text-gray-700 hover:text-indigo-600">FAQ</a>
+                        <a href="/resources" class="text-gray-700 hover:text-indigo-600">Ressources</a>
+                        <a href="/contact" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Contact</a>
+                        <a href="/login" class="text-gray-700 hover:text-indigo-600">Connexion</a>
                     </div>
                 </div>
             </div>
@@ -1107,6 +1108,529 @@ app.get('/resources', (c) => {
                 resources.templates.map(renderResourceCard).join('');
             document.getElementById('casestudiesContainer').innerHTML = 
                 resources.casestudies.map(renderResourceCard).join('');
+        </script>
+    </body>
+    </html>
+  `)
+})
+
+// ==================== NOUVELLES ROUTES V4 ====================
+
+// API: Soumettre formulaire de contact
+app.post('/api/contact', async (c) => {
+  try {
+    const { name, email, phone, company, role, message, preferredDate, budget } = await c.req.json()
+    
+    // En production: envoyer email, sauvegarder en DB, intégrer CRM
+    // Pour l'instant, simuler succès
+    console.log('Contact form submission:', { name, email, company })
+    
+    return c.json({ 
+      success: true, 
+      message: 'Votre demande a été envoyée avec succès. Nous vous recontacterons sous 24h.' 
+    })
+  } catch (error) {
+    return c.json({ error: 'Erreur lors de l\'envoi du formulaire' }, 500)
+  }
+})
+
+// Page Services
+app.get('/services', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Services - Factor AI</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/services-data.js"></script>
+        <script src="/static/nav-component.js"></script>
+        <script src="/static/i18n-page.js"></script>
+    </head>
+    <body class="bg-gray-50">
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const lang = getCurrentLang();
+            const data = getServicesData(lang);
+            
+            document.body.innerHTML = renderNavigation('services') + \`
+              <div class="max-w-7xl mx-auto px-4 py-12">
+                <div class="text-center mb-12">
+                  <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
+                  <p class="text-xl text-gray-600">\${data.hero.subtitle}</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  \${data.services.map(service => \`
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all">
+                      <div class="flex items-center mb-4">
+                        <i class="fas \${service.icon} text-4xl text-indigo-600 mr-4"></i>
+                        <h2 class="text-xl font-bold">\${service.title}</h2>
+                      </div>
+                      <p class="text-gray-600 mb-4">\${service.description}</p>
+                      
+                      <div class="mb-4">
+                        <h3 class="font-semibold mb-2">Fonctionnalités :</h3>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                          \${service.features.slice(0,3).map(f => \`<li><i class="fas fa-check text-green-600 mr-2"></i>\${f}</li>\`).join('')}
+                        </ul>
+                      </div>
+                      
+                      <div class="bg-indigo-50 rounded-lg p-3 mt-4">
+                        <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                          \${Object.entries(service.metrics).map(([key, val]) => \`
+                            <div>
+                              <div class="font-bold text-indigo-600">\${val}</div>
+                              <div class="text-xs text-gray-600">\${key}</div>
+                            </div>
+                          \`).join('')}
+                        </div>
+                      </div>
+                    </div>
+                  \`).join('')}
+                </div>
+
+                <div class="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-12 text-center">
+                  <h2 class="text-3xl font-bold mb-4">\${data.cta.title}</h2>
+                  <p class="text-xl mb-6">\${data.cta.subtitle}</p>
+                  <a href="/contact" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold inline-block hover:bg-gray-100">
+                    \${data.cta.primaryButton}
+                  </a>
+                </div>
+              </div>
+            \` + renderFooter();
+          });
+        </script>
+    </body>
+    </html>
+  `)
+})
+
+// Page About
+app.get('/about', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>À Propos - Factor AI</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/about-data.js"></script>
+        <script src="/static/nav-component.js"></script>
+        <script src="/static/i18n-page.js"></script>
+    </head>
+    <body class="bg-gray-50">
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const lang = getCurrentLang();
+            const data = getAboutData(lang);
+            
+            document.body.innerHTML = renderNavigation('about') + \`
+              <div class="max-w-7xl mx-auto px-4 py-12">
+                <div class="text-center mb-12">
+                  <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
+                  <p class="text-xl text-gray-600 mb-4">\${data.hero.subtitle}</p>
+                  <p class="text-gray-600 max-w-3xl mx-auto">\${data.hero.description}</p>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
+                  \${data.stats.map(stat => \`
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                      <i class="fas \${stat.icon} text-3xl text-indigo-600 mb-2"></i>
+                      <div class="text-3xl font-bold text-indigo-600">\${stat.value}</div>
+                      <div class="text-sm text-gray-600">\${stat.label}</div>
+                    </div>
+                  \`).join('')}
+                </div>
+
+                <!-- Vision & Mission -->
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                  <div class="bg-white rounded-xl shadow-lg p-8">
+                    <i class="fas \${data.vision.icon} text-4xl text-indigo-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold mb-4">\${data.vision.title}</h2>
+                    <p class="text-gray-600">\${data.vision.content}</p>
+                  </div>
+                  <div class="bg-white rounded-xl shadow-lg p-8">
+                    <i class="fas \${data.mission.icon} text-4xl text-indigo-600 mb-4"></i>
+                    <h2 class="text-2xl font-bold mb-4">\${data.mission.title}</h2>
+                    <p class="text-gray-600">\${data.mission.content}</p>
+                  </div>
+                </div>
+
+                <!-- Values -->
+                <div class="mb-16">
+                  <h2 class="text-3xl font-bold text-center mb-8">Nos Valeurs</h2>
+                  <div class="grid md:grid-cols-3 gap-6">
+                    \${data.values.map(value => \`
+                      <div class="bg-white rounded-xl shadow-lg p-6">
+                        <i class="fas \${value.icon} text-3xl text-indigo-600 mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">\${value.title}</h3>
+                        <p class="text-gray-600">\${value.description}</p>
+                      </div>
+                    \`).join('')}
+                  </div>
+                </div>
+
+                <!-- Team -->
+                <div class="mb-16">
+                  <h2 class="text-3xl font-bold text-center mb-4">\${data.team.title}</h2>
+                  <p class="text-center text-gray-600 mb-8">\${data.team.subtitle}</p>
+                  <div class="grid md:grid-cols-3 gap-6">
+                    \${data.team.members.map(member => \`
+                      <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                        <div class="w-20 h-20 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                          \${member.avatar}
+                        </div>
+                        <h3 class="text-xl font-bold">\${member.name}</h3>
+                        <p class="text-indigo-600 mb-2">\${member.role}</p>
+                        <p class="text-sm text-gray-600">\${member.bio}</p>
+                      </div>
+                    \`).join('')}
+                  </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-12 text-center">
+                  <h2 class="text-3xl font-bold mb-4">\${data.cta.title}</h2>
+                  <p class="text-xl mb-6">\${data.cta.subtitle}</p>
+                  <a href="/contact" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold inline-block hover:bg-gray-100">
+                    \${data.cta.primaryButton}
+                  </a>
+                </div>
+              </div>
+            \` + renderFooter();
+          });
+        </script>
+    </body>
+    </html>
+  `)
+})
+
+// Page Contact
+app.get('/contact', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact - Factor AI</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/nav-component.js"></script>
+        <script src="/static/i18n-page.js"></script>
+    </head>
+    <body class="bg-gray-50">
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const lang = getCurrentLang();
+            document.body.innerHTML = renderNavigation('contact') + \`
+              <div class="max-w-4xl mx-auto px-4 py-12">
+                <div class="text-center mb-12">
+                  <h1 class="text-4xl font-bold mb-4" data-i18n="contact_title">Contactez-Nous</h1>
+                  <p class="text-xl text-gray-600" data-i18n="contact_subtitle">Réservez Votre Consultation Gratuite</p>
+                  <p class="text-gray-500 mt-2" data-i18n="contact_desc">Prêt à transformer votre entreprise avec l'IA ?</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                  <form id="contactForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label class="block text-sm font-medium mb-2" data-i18n="contact_name">Nom complet</label>
+                        <input type="text" name="name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium mb-2" data-i18n="contact_email">Email professionnel</label>
+                        <input type="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+                      </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label class="block text-sm font-medium mb-2" data-i18n="contact_phone">Téléphone</label>
+                        <input type="tel" name="phone" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium mb-2" data-i18n="contact_company">Entreprise</label>
+                        <input type="text" name="company" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label class="block text-sm font-medium mb-2" data-i18n="contact_message">Parlez-nous de votre projet</label>
+                      <textarea name="message" rows="5" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"></textarea>
+                    </div>
+                    
+                    <div id="formMessage" class="hidden"></div>
+                    
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 font-semibold" data-i18n="contact_submit">
+                      Envoyer la demande
+                    </button>
+                  </form>
+                </div>
+
+                <div class="mt-12 grid md:grid-cols-3 gap-6">
+                  <div class="bg-white p-6 rounded-lg text-center">
+                    <i class="fas fa-envelope text-3xl text-indigo-600 mb-3"></i>
+                    <h3 class="font-bold mb-2">Email</h3>
+                    <p class="text-gray-600">contact@factor-ai.com</p>
+                  </div>
+                  <div class="bg-white p-6 rounded-lg text-center">
+                    <i class="fas fa-phone text-3xl text-indigo-600 mb-3"></i>
+                    <h3 class="font-bold mb-2">Téléphone</h3>
+                    <p class="text-gray-600">+33 1 23 45 67 89</p>
+                  </div>
+                  <div class="bg-white p-6 rounded-lg text-center">
+                    <i class="fas fa-map-marker-alt text-3xl text-indigo-600 mb-3"></i>
+                    <h3 class="font-bold mb-2">Adresse</h3>
+                    <p class="text-gray-600">Paris, France</p>
+                  </div>
+                </div>
+              </div>
+            \` + renderFooter();
+
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              const data = Object.fromEntries(formData);
+              
+              try {
+                const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                const messageEl = document.getElementById('formMessage');
+                messageEl.classList.remove('hidden');
+                
+                if (response.ok) {
+                  messageEl.className = 'bg-green-100 text-green-800 p-4 rounded-lg';
+                  messageEl.textContent = result.message;
+                  e.target.reset();
+                } else {
+                  messageEl.className = 'bg-red-100 text-red-800 p-4 rounded-lg';
+                  messageEl.textContent = result.error;
+                }
+              } catch (error) {
+                document.getElementById('formMessage').className = 'bg-red-100 text-red-800 p-4 rounded-lg block';
+                document.getElementById('formMessage').textContent = 'Erreur réseau';
+              }
+            });
+          });
+        </script>
+    </body>
+    </html>
+  `)
+})
+
+// Page FAQ
+app.get('/faq', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FAQ - Factor AI</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/faq-data.js"></script>
+        <script src="/static/nav-component.js"></script>
+        <script src="/static/i18n-page.js"></script>
+    </head>
+    <body class="bg-gray-50">
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const lang = getCurrentLang();
+            const data = getFaqData(lang);
+            
+            document.body.innerHTML = renderNavigation('faq') + \`
+              <div class="max-w-6xl mx-auto px-4 py-12">
+                <div class="text-center mb-12">
+                  <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
+                  <p class="text-xl text-gray-600">\${data.hero.subtitle}</p>
+                  <div class="mt-6 max-w-xl mx-auto">
+                    <input type="text" id="searchInput" placeholder="\${data.hero.searchPlaceholder}" 
+                           class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+                  </div>
+                </div>
+
+                <div id="faqContent" class="space-y-6">
+                  \${data.categories.map(cat => \`
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                      <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas \${cat.icon} text-indigo-600 mr-3"></i>
+                        \${cat.name}
+                      </h2>
+                      <div class="space-y-4">
+                        \${cat.questions.map((q, idx) => \`
+                          <div class="border-b last:border-0 pb-4 last:pb-0">
+                            <button onclick="toggleFaq(this)" class="w-full text-left flex justify-between items-center py-2 hover:text-indigo-600">
+                              <span class="font-semibold">\${q.question}</span>
+                              <i class="fas fa-chevron-down transition-transform"></i>
+                            </button>
+                            <div class="hidden mt-2 text-gray-600 pl-4">\${q.answer}</div>
+                          </div>
+                        \`).join('')}
+                      </div>
+                    </div>
+                  \`).join('')}
+                </div>
+
+                <div class="mt-12 bg-indigo-600 text-white rounded-xl p-8 text-center">
+                  <h2 class="text-2xl font-bold mb-2">\${data.cta.title}</h2>
+                  <p class="mb-4">\${data.cta.subtitle}</p>
+                  <a href="/contact" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold inline-block hover:bg-gray-100">
+                    \${data.cta.buttonText}
+                  </a>
+                </div>
+              </div>
+            \` + renderFooter();
+
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+              const results = searchFaqQuestions(e.target.value, lang);
+              if (e.target.value.trim()) {
+                document.getElementById('faqContent').innerHTML = results.length > 0 ? 
+                  results.map(r => \`
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                      <div class="flex items-center mb-2">
+                        <i class="fas \${r.categoryIcon} text-indigo-600 mr-2"></i>
+                        <span class="text-sm text-gray-500">\${r.categoryName}</span>
+                      </div>
+                      <h3 class="font-bold mb-2">\${r.question}</h3>
+                      <p class="text-gray-600">\${r.answer}</p>
+                    </div>
+                  \`).join('') : '<p class="text-center text-gray-500">' + data.cta.subtitle + '</p>';
+              } else {
+                location.reload();
+              }
+            });
+          });
+
+          function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+          }
+        </script>
+    </body>
+    </html>
+  `)
+})
+
+// Page Testimonials (simplified)
+app.get('/testimonials', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Témoignages - Factor AI</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/testimonials-data.js"></script>
+        <script src="/static/nav-component.js"></script>
+        <script src="/static/i18n-page.js"></script>
+    </head>
+    <body class="bg-gray-50">
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const lang = getCurrentLang();
+            const data = getTestimonialsData(lang);
+            
+            document.body.innerHTML = renderNavigation('testimonials') + \`
+              <div class="max-w-7xl mx-auto px-4 py-12">
+                <div class="text-center mb-12">
+                  <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
+                  <p class="text-xl text-gray-600 mb-8">\${data.hero.subtitle}</p>
+                  
+                  <div class="grid grid-cols-4 gap-6 max-w-3xl mx-auto">
+                    \${data.hero.stats.map(stat => \`
+                      <div class="bg-white rounded-lg shadow p-4">
+                        <div class="text-2xl font-bold text-indigo-600">\${stat.value}</div>
+                        <div class="text-sm text-gray-600">\${stat.label}</div>
+                      </div>
+                    \`).join('')}
+                  </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="mb-16">
+                  <h2 class="text-3xl font-bold mb-8">Témoignages Clients</h2>
+                  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    \${data.testimonials.slice(0,6).map(test => 
+                      '<div class="bg-white rounded-xl shadow-lg p-6">' +
+                        '<div class="flex items-center mb-4">' +
+                          '<div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mr-3">' +
+                            test.avatar +
+                          '</div>' +
+                          '<div>' +
+                            '<div class="font-bold">' + test.clientName + '</div>' +
+                            '<div class="text-sm text-gray-600">' + test.clientRole + '</div>' +
+                            '<div class="text-xs text-gray-500">' + test.companyName + '</div>' +
+                          '</div>' +
+                        '</div>' +
+                        '<div class="text-yellow-400 mb-2">★★★★★</div>' +
+                        '<p class="text-gray-600 italic mb-4">' + (test.quote || '') + '</p>' +
+                      '</div>'
+                    ).join('')}
+                  </div>
+                </div>
+
+                <!-- Case Studies -->
+                <div class="mb-16">
+                  <h2 class="text-3xl font-bold mb-8">Études de Cas</h2>
+                  <div class="space-y-6">
+                    \${data.caseStudies.map(cs => 
+                      '<div class="bg-white rounded-xl shadow-lg p-6">' +
+                        '<h3 class="text-xl font-bold mb-2">' + cs.title + '</h3>' +
+                        '<div class="text-indigo-600 mb-4">' + cs.industry + ' - ' + cs.client + '</div>' +
+                        '<div class="grid md:grid-cols-3 gap-4 text-sm">' +
+                          '<div>' +
+                            '<h4 class="font-bold text-red-600 mb-2">Défi</h4>' +
+                            '<p class="text-gray-600">' + cs.challenge.substring(0, 100) + '...</p>' +
+                          '</div>' +
+                          '<div>' +
+                            '<h4 class="font-bold text-blue-600 mb-2">Solution</h4>' +
+                            '<p class="text-gray-600">' + cs.solution.substring(0, 100) + '...</p>' +
+                          '</div>' +
+                          '<div>' +
+                            '<h4 class="font-bold text-green-600 mb-2">Résultats</h4>' +
+                            '<ul class="text-gray-600">' + cs.results.slice(0,2).map(r => '<li>• ' + r + '</li>').join('') + '</ul>' +
+                          '</div>' +
+                        '</div>' +
+                      '</div>'
+                    ).join('')}
+                  </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-12 text-center">
+                  <h2 class="text-3xl font-bold mb-4">\${data.cta.title}</h2>
+                  <p class="text-xl mb-6">\${data.cta.subtitle}</p>
+                  <a href="/contact" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold inline-block hover:bg-gray-100">
+                    \${data.cta.primaryButton}
+                  </a>
+                </div>
+              </div>
+            \` + renderFooter();
+          });
         </script>
     </body>
     </html>
