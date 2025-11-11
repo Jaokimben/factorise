@@ -224,22 +224,30 @@ app.get('/', (c) => {
         <section id="services" class="py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold text-center mb-12">Nos Services</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <a href="/services" class="bg-white p-8 rounded-xl shadow-lg card-hover block hover:shadow-2xl transition-all">
                         <i class="fas fa-brain text-4xl text-indigo-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-4">Stratégie IA</h3>
-                        <p class="text-gray-600">Définissez votre feuille de route IA avec nos experts certifiés</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+                        <p class="text-gray-600 mb-4">Définissez votre feuille de route IA avec nos experts certifiés</p>
+                        <span class="text-indigo-600 font-semibold">En savoir plus →</span>
+                    </a>
+                    <a href="/services" class="bg-white p-8 rounded-xl shadow-lg card-hover block hover:shadow-2xl transition-all">
                         <i class="fas fa-chart-line text-4xl text-indigo-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-4">Évaluation de Maturité</h3>
-                        <p class="text-gray-600">Analysez votre niveau de maturité IA et identifiez les opportunités</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+                        <p class="text-gray-600 mb-4">Analysez votre niveau de maturité IA et identifiez les opportunités</p>
+                        <span class="text-indigo-600 font-semibold">En savoir plus →</span>
+                    </a>
+                    <a href="/services" class="bg-white p-8 rounded-xl shadow-lg card-hover block hover:shadow-2xl transition-all">
                         <i class="fas fa-cogs text-4xl text-indigo-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-4">Transformation Digitale</h3>
-                        <p class="text-gray-600">Accompagnement complet dans votre transformation digitale</p>
-                    </div>
+                        <p class="text-gray-600 mb-4">Accompagnement complet dans votre transformation digitale</p>
+                        <span class="text-indigo-600 font-semibold">En savoir plus →</span>
+                    </a>
+                </div>
+                <div class="text-center">
+                    <a href="/services" class="inline-block bg-indigo-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-indigo-700 transition-colors shadow-lg">
+                        Voir tous nos services <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
             </div>
         </section>
@@ -618,14 +626,48 @@ app.get('/', (c) => {
             </div>
         </section>
 
+        <!-- Explorer Section -->
+        <section class="bg-gray-100 py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Explorer Factor AI</h2>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <a href="/use-cases" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all group">
+                        <div class="text-indigo-600 mb-4"><i class="fas fa-lightbulb text-4xl"></i></div>
+                        <h3 class="text-lg font-bold mb-2 group-hover:text-indigo-600">Cas d'Usage</h3>
+                        <p class="text-sm text-gray-600">18 exemples concrets d'applications IA</p>
+                    </a>
+                    <a href="/testimonials" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all group">
+                        <div class="text-indigo-600 mb-4"><i class="fas fa-star text-4xl"></i></div>
+                        <h3 class="text-lg font-bold mb-2 group-hover:text-indigo-600">Témoignages</h3>
+                        <p class="text-sm text-gray-600">Avis et retours de nos clients</p>
+                    </a>
+                    <a href="/about" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all group">
+                        <div class="text-indigo-600 mb-4"><i class="fas fa-users text-4xl"></i></div>
+                        <h3 class="text-lg font-bold mb-2 group-hover:text-indigo-600">À Propos</h3>
+                        <p class="text-sm text-gray-600">Notre équipe et notre vision</p>
+                    </a>
+                    <a href="/resources" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all group">
+                        <div class="text-indigo-600 mb-4"><i class="fas fa-book text-4xl"></i></div>
+                        <h3 class="text-lg font-bold mb-2 group-hover:text-indigo-600">Ressources</h3>
+                        <p class="text-sm text-gray-600">Guides, templates et cas clients</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
         <section class="gradient-bg text-white py-16">
             <div class="max-w-4xl mx-auto text-center px-4">
                 <h2 class="text-3xl font-bold mb-4">Prêt à transformer votre entreprise ?</h2>
                 <p class="text-xl mb-8">Commencez votre évaluation gratuite de maturité IA dès maintenant</p>
-                <a href="/register" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 inline-block">
-                    Démarrer l'évaluation gratuite
-                </a>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="/register" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 inline-block">
+                        Démarrer l'évaluation gratuite
+                    </a>
+                    <a href="/contact" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 inline-block">
+                        Nous contacter
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -1585,7 +1627,7 @@ app.get('/services', (c) => {
                   </a>
                 </div>
               </div>
-            \` + renderFooter();
+            \` + renderFooter('/services');
           });
         </script>
     </body>
@@ -1690,7 +1732,7 @@ app.get('/about', (c) => {
                   </a>
                 </div>
               </div>
-            \` + renderFooter();
+            \` + renderFooter('/about');
           });
         </script>
     </body>
@@ -1781,7 +1823,7 @@ app.get('/contact', (c) => {
                   </div>
                 </div>
               </div>
-            \` + renderFooter();
+            \` + renderFooter('/contact');
 
             // Form submission
             document.getElementById('contactForm').addEventListener('submit', async (e) => {
@@ -1884,7 +1926,7 @@ app.get('/faq', (c) => {
                   </a>
                 </div>
               </div>
-            \` + renderFooter();
+            \` + renderFooter('/faq');
 
             // Search functionality
             document.getElementById('searchInput').addEventListener('input', (e) => {
@@ -2111,7 +2153,7 @@ app.get('/testimonials', (c) => {
                   </div>
                 </div>
               </div>
-            \` + renderFooter();
+            \` + renderFooter('/testimonials');
           });
         </script>
     </body>
@@ -2289,7 +2331,7 @@ app.get('/use-cases', (c) => {
                   </div>
                 </div>
               </div>
-            \` + renderFooter();
+            \` + renderFooter('/use-cases');
           });
         </script>
     </body>
@@ -2610,7 +2652,7 @@ app.get('/case-studies-old', (c) => {
                   });
                 }
               </script>
-            \` + renderFooter();
+            \` + renderFooter('/resources');
           });
         </script>
     </body>

@@ -81,11 +81,61 @@ function renderNavigation(currentPage = '') {
   `;
 }
 
-// Footer component
-function renderFooter() {
-  const currentYear = new Date().getFullYear();
+// Cross-navigation component - shows related pages
+function renderCrossNavigation(currentPage = '') {
+  const pages = [
+    { path: '/', label: 'Accueil', icon: 'fa-home', description: 'Retour à la page principale' },
+    { path: '/services', label: 'Services', icon: 'fa-cogs', description: '7 services IA détaillés' },
+    { path: '/use-cases', label: 'Cas d\'Usage', icon: 'fa-lightbulb', description: '18 exemples concrets' },
+    { path: '/about', label: 'À Propos', icon: 'fa-users', description: 'Notre équipe et vision' },
+    { path: '/testimonials', label: 'Témoignages', icon: 'fa-star', description: 'Avis clients' },
+    { path: '/resources', label: 'Ressources', icon: 'fa-book', description: 'Guides et templates' },
+    { path: '/contact', label: 'Contact', icon: 'fa-envelope', description: 'Nous contacter' },
+    { path: '/faq', label: 'FAQ', icon: 'fa-question-circle', description: 'Questions fréquentes' }
+  ];
+  
+  // Filter out current page
+  const otherPages = pages.filter(p => p.path !== currentPage && p.path !== '/' + currentPage);
+  
+  // Show max 4 related pages
+  const relatedPages = otherPages.slice(0, 4);
   
   return `
+    <section class="bg-gradient-to-br from-gray-50 to-indigo-50 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Continuer votre exploration</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          ${relatedPages.map(page => `
+            <a href="${page.path}" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all group">
+              <div class="text-indigo-600 mb-4 group-hover:scale-110 transition-transform">
+                <i class="fas ${page.icon} text-4xl"></i>
+              </div>
+              <h3 class="text-lg font-bold mb-2 group-hover:text-indigo-600">${page.label}</h3>
+              <p class="text-sm text-gray-600">${page.description}</p>
+              <div class="mt-4 text-indigo-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                Découvrir →
+              </div>
+            </a>
+          `).join('')}
+        </div>
+        <div class="text-center mt-12">
+          <a href="/" class="inline-block bg-indigo-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-indigo-700 transition-colors shadow-lg">
+            <i class="fas fa-home mr-2"></i> Retour à l'accueil
+          </a>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+// Footer component with cross-navigation
+function renderFooter(currentPage = '') {
+  const currentYear = new Date().getFullYear();
+  
+  // Add cross-navigation before footer if currentPage is provided
+  const crossNav = currentPage ? renderCrossNavigation(currentPage) : '';
+  
+  return crossNav + `
     <footer class="bg-gray-900 text-white mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid md:grid-cols-4 gap-8">
