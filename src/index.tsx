@@ -175,6 +175,8 @@ app.get('/', (c) => {
         <title>Factorise.io - Transformation Digitale & IA</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/i18n-page.js"></script>
         <style>
           .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
           .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; }
@@ -337,6 +339,8 @@ app.get('/login', (c) => {
         <title>Connexion - Factorise.io</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
         <div class="min-h-screen flex items-center justify-center py-12 px-4">
@@ -415,6 +419,8 @@ app.get('/register', (c) => {
         <title>Inscription - Factorise.io</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
         <div class="min-h-screen flex items-center justify-center py-12 px-4">
@@ -514,6 +520,8 @@ app.get('/dashboard', (c) => {
         <title>Dashboard - Factorise.io</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
         <!-- Navigation -->
@@ -656,6 +664,9 @@ app.get('/assessment', (c) => {
         <title>Évaluation Maturité IA - Factorise.io</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/assessment-questions.js"></script>
+        <script src="/static/i18n-page.js"></script>
         <script src="/static/assessment.js"></script>
     </head>
     <body class="bg-gray-50">
@@ -730,6 +741,8 @@ app.get('/results', (c) => {
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/static/translations.js"></script>
+        <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
         <!-- Navigation -->

@@ -1,5 +1,9 @@
-// Questions d'évaluation de maturité IA organisées par catégorie
-const assessmentQuestions = {
+// Use the questions from assessment-questions.js based on current language
+const currentLang = getCurrentLang();
+const assessmentQuestions = getAssessmentQuestions(currentLang);
+
+// Fallback for old structure (will be overridden by i18n version above)
+const assessmentQuestionsOld = {
   vision: {
     title: "Vision & Stratégie IA",
     icon: "fa-lightbulb",
