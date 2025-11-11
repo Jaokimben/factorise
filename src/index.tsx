@@ -1325,12 +1325,13 @@ app.get('/services', (c) => {
         <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
+        <div id="app"></div>
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const lang = getCurrentLang();
             const data = getServicesData(lang);
             
-            document.body.innerHTML = renderNavigation('services') + \`
+            document.getElementById('app').innerHTML = renderNavigation('services') + \`
               <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
                 <div class="max-w-7xl mx-auto px-4 text-center">
                   <h1 class="text-5xl font-bold mb-6">\${data.hero.title}</h1>
@@ -1451,12 +1452,13 @@ app.get('/about', (c) => {
         <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
+        <div id="app"></div>
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const lang = getCurrentLang();
             const data = getAboutData(lang);
             
-            document.body.innerHTML = renderNavigation('about') + \`
+            document.getElementById('app').innerHTML = renderNavigation('about') + \`
               <div class="max-w-7xl mx-auto px-4 py-12">
                 <div class="text-center mb-12">
                   <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
@@ -1554,10 +1556,11 @@ app.get('/contact', (c) => {
         <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
+        <div id="app"></div>
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const lang = getCurrentLang();
-            document.body.innerHTML = renderNavigation('contact') + \`
+            document.getElementById('app').innerHTML = renderNavigation('contact') + \`
               <div class="max-w-4xl mx-auto px-4 py-12">
                 <div class="text-center mb-12">
                   <h1 class="text-4xl font-bold mb-4" data-i18n="contact_title">Contactez-Nous</h1>
@@ -1676,12 +1679,13 @@ app.get('/faq', (c) => {
         <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
+        <div id="app"></div>
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const lang = getCurrentLang();
             const data = getFaqData(lang);
             
-            document.body.innerHTML = renderNavigation('faq') + \`
+            document.getElementById('app').innerHTML = renderNavigation('faq') + \`
               <div class="max-w-6xl mx-auto px-4 py-12">
                 <div class="text-center mb-12">
                   <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
@@ -1774,12 +1778,13 @@ app.get('/testimonials', (c) => {
         <script src="/static/i18n-page.js"></script>
     </head>
     <body class="bg-gray-50">
+        <div id="app"></div>
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const lang = getCurrentLang();
             const data = getTestimonialsData(lang);
             
-            document.body.innerHTML = renderNavigation('testimonials') + \`
+            document.getElementById('app').innerHTML = renderNavigation('testimonials') + \`
               <!-- Hero Section -->
               <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
                 <div class="max-w-7xl mx-auto px-4 text-center">

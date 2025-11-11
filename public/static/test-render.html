@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/static/services-data.js"></script>
+    <script src="/static/nav-component.js"></script>
+    <script src="/static/translations.js"></script>
+    <script src="/static/i18n-page.js"></script>
+</head>
+<body class="bg-gray-50">
+    <div id="status">Loading JavaScript...</div>
+    <script>
+      console.log("Script started");
+      document.getElementById('status').textContent = "JavaScript is working!";
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log("DOMContentLoaded fired");
+        
+        try {
+          const lang = getCurrentLang();
+          console.log("Language:", lang);
+          
+          const data = getServicesData(lang);
+          console.log("Data loaded:", data ? "YES" : "NO");
+          
+          document.getElementById('status').innerHTML = `
+            <h1 class="text-2xl font-bold text-green-600">✅ All Functions Work!</h1>
+            <p>Language: ${lang}</p>
+            <p>Services count: ${data.services ? data.services.length : 'N/A'}</p>
+            <p>First service: ${data.services ? data.services[0].title : 'N/A'}</p>
+          `;
+        } catch (error) {
+          console.error("Error:", error);
+          document.getElementById('status').innerHTML = `
+            <h1 class="text-2xl font-bold text-red-600">❌ Error!</h1>
+            <p>${error.message}</p>
+            <pre>${error.stack}</pre>
+          `;
+        }
+      });
+    </script>
+</body>
+</html>
