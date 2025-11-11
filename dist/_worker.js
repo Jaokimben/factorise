@@ -1,4 +1,4 @@
-var yt=Object.defineProperty;var Fe=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in e?yt(e,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):e[t]=s;var h=(e,t,s)=>wt(e,typeof t!="symbol"?t+"":t,s),Oe=(e,t,s)=>t.has(e)||Fe("Cannot "+s);var o=(e,t,s)=>(Oe(e,t,"read from private field"),s?s.call(e):t.get(e)),f=(e,t,s)=>t.has(e)?Fe("Cannot add the same private member more than once"):t instanceof WeakSet?t.add(e):t.set(e,s),p=(e,t,s,r)=>(Oe(e,t,"write to private field"),r?r.call(e,s):t.set(e,s),s),x=(e,t,s)=>(Oe(e,t,"access private method"),s);var Me=(e,t,s,r)=>({set _(a){p(e,t,a,s)},get _(){return o(e,t,r)}});var Le=(e,t,s)=>(r,a)=>{let i=-1;return n(0);async function n(l){if(l<=i)throw new Error("next() called multiple times");i=l;let c,d=!1,u;if(e[l]?(u=e[l][0][0],r.req.routeIndex=l):u=l===e.length&&a||void 0,u)try{c=await u(r,()=>n(l+1))}catch(m){if(m instanceof Error&&t)r.error=m,c=await t(m,r),d=!0;else throw m}else r.finalized===!1&&s&&(c=await s(r));return c&&(r.finalized===!1||d)&&(r.res=c),r}},Et=Symbol(),jt=async(e,t=Object.create(null))=>{const{all:s=!1,dot:r=!1}=t,i=(e instanceof at?e.raw.headers:e.headers).get("Content-Type");return i!=null&&i.startsWith("multipart/form-data")||i!=null&&i.startsWith("application/x-www-form-urlencoded")?Ct(e,{all:s,dot:r}):{}};async function Ct(e,t){const s=await e.formData();return s?St(s,t):{}}function St(e,t){const s=Object.create(null);return e.forEach((r,a)=>{t.all||a.endsWith("[]")?At(s,a,r):s[a]=r}),t.dot&&Object.entries(s).forEach(([r,a])=>{r.includes(".")&&(Tt(s,r,a),delete s[r])}),s}var At=(e,t,s)=>{e[t]!==void 0?Array.isArray(e[t])?e[t].push(s):e[t]=[e[t],s]:t.endsWith("[]")?e[t]=[s]:e[t]=s},Tt=(e,t,s)=>{let r=e;const a=t.split(".");a.forEach((i,n)=>{n===a.length-1?r[i]=s:((!r[i]||typeof r[i]!="object"||Array.isArray(r[i])||r[i]instanceof File)&&(r[i]=Object.create(null)),r=r[i])})},Ze=e=>{const t=e.split("/");return t[0]===""&&t.shift(),t},Rt=e=>{const{groups:t,path:s}=It(e),r=Ze(s);return Ot(r,t)},It=e=>{const t=[];return e=e.replace(/\{[^}]+\}/g,(s,r)=>{const a=`@${r}`;return t.push([a,s]),a}),{groups:t,path:e}},Ot=(e,t)=>{for(let s=t.length-1;s>=0;s--){const[r]=t[s];for(let a=e.length-1;a>=0;a--)if(e[a].includes(r)){e[a]=e[a].replace(r,t[s][1]);break}}return e},we={},$t=(e,t)=>{if(e==="*")return"*";const s=e.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);if(s){const r=`${e}#${t}`;return we[r]||(s[2]?we[r]=t&&t[0]!==":"&&t[0]!=="*"?[r,s[1],new RegExp(`^${s[2]}(?=/${t})`)]:[e,s[1],new RegExp(`^${s[2]}$`)]:we[r]=[e,s[1],!0]),we[r]}return null},_e=(e,t)=>{try{return t(e)}catch{return e.replace(/(?:%[0-9A-Fa-f]{2})+/g,s=>{try{return t(s)}catch{return s}})}},Dt=e=>_e(e,decodeURI),et=e=>{const t=e.url,s=t.indexOf("/",t.indexOf(":")+4);let r=s;for(;r<t.length;r++){const a=t.charCodeAt(r);if(a===37){const i=t.indexOf("?",r),n=t.slice(s,i===-1?void 0:i);return Dt(n.includes("%25")?n.replace(/%25/g,"%2525"):n)}else if(a===63)break}return t.slice(s,r)},Nt=e=>{const t=et(e);return t.length>1&&t.at(-1)==="/"?t.slice(0,-1):t},se=(e,t,...s)=>(s.length&&(t=se(t,...s)),`${(e==null?void 0:e[0])==="/"?"":"/"}${e}${t==="/"?"":`${(e==null?void 0:e.at(-1))==="/"?"":"/"}${(t==null?void 0:t[0])==="/"?t.slice(1):t}`}`),tt=e=>{if(e.charCodeAt(e.length-1)!==63||!e.includes(":"))return null;const t=e.split("/"),s=[];let r="";return t.forEach(a=>{if(a!==""&&!/\:/.test(a))r+="/"+a;else if(/\:/.test(a))if(/\?/.test(a)){s.length===0&&r===""?s.push("/"):s.push(r);const i=a.replace("?","");r+="/"+i,s.push(r)}else r+="/"+a}),s.filter((a,i,n)=>n.indexOf(a)===i)},$e=e=>/[%+]/.test(e)?(e.indexOf("+")!==-1&&(e=e.replace(/\+/g," ")),e.indexOf("%")!==-1?_e(e,rt):e):e,st=(e,t,s)=>{let r;if(!s&&t&&!/[%+]/.test(t)){let n=e.indexOf(`?${t}`,8);for(n===-1&&(n=e.indexOf(`&${t}`,8));n!==-1;){const l=e.charCodeAt(n+t.length+1);if(l===61){const c=n+t.length+2,d=e.indexOf("&",c);return $e(e.slice(c,d===-1?void 0:d))}else if(l==38||isNaN(l))return"";n=e.indexOf(`&${t}`,n+1)}if(r=/[%+]/.test(e),!r)return}const a={};r??(r=/[%+]/.test(e));let i=e.indexOf("?",8);for(;i!==-1;){const n=e.indexOf("&",i+1);let l=e.indexOf("=",i);l>n&&n!==-1&&(l=-1);let c=e.slice(i+1,l===-1?n===-1?void 0:n:l);if(r&&(c=$e(c)),i=n,c==="")continue;let d;l===-1?d="":(d=e.slice(l+1,n===-1?void 0:n),r&&(d=$e(d))),s?(a[c]&&Array.isArray(a[c])||(a[c]=[]),a[c].push(d)):a[c]??(a[c]=d)}return t?a[t]:a},Pt=st,_t=(e,t)=>st(e,t,!0),rt=decodeURIComponent,qe=e=>_e(e,rt),ie,I,L,it,nt,Ne,H,ze,at=(ze=class{constructor(e,t="/",s=[[]]){f(this,L);h(this,"raw");f(this,ie);f(this,I);h(this,"routeIndex",0);h(this,"path");h(this,"bodyCache",{});f(this,H,e=>{const{bodyCache:t,raw:s}=this,r=t[e];if(r)return r;const a=Object.keys(t)[0];return a?t[a].then(i=>(a==="json"&&(i=JSON.stringify(i)),new Response(i)[e]())):t[e]=s[e]()});this.raw=e,this.path=t,p(this,I,s),p(this,ie,{})}param(e){return e?x(this,L,it).call(this,e):x(this,L,nt).call(this)}query(e){return Pt(this.url,e)}queries(e){return _t(this.url,e)}header(e){if(e)return this.raw.headers.get(e)??void 0;const t={};return this.raw.headers.forEach((s,r)=>{t[r]=s}),t}async parseBody(e){var t;return(t=this.bodyCache).parsedBody??(t.parsedBody=await jt(this,e))}json(){return o(this,H).call(this,"text").then(e=>JSON.parse(e))}text(){return o(this,H).call(this,"text")}arrayBuffer(){return o(this,H).call(this,"arrayBuffer")}blob(){return o(this,H).call(this,"blob")}formData(){return o(this,H).call(this,"formData")}addValidatedData(e,t){o(this,ie)[e]=t}valid(e){return o(this,ie)[e]}get url(){return this.raw.url}get method(){return this.raw.method}get[Et](){return o(this,I)}get matchedRoutes(){return o(this,I)[0].map(([[,e]])=>e)}get routePath(){return o(this,I)[0].map(([[,e]])=>e)[this.routeIndex].path}},ie=new WeakMap,I=new WeakMap,L=new WeakSet,it=function(e){const t=o(this,I)[0][this.routeIndex][1][e],s=x(this,L,Ne).call(this,t);return s&&/\%/.test(s)?qe(s):s},nt=function(){const e={},t=Object.keys(o(this,I)[0][this.routeIndex][1]);for(const s of t){const r=x(this,L,Ne).call(this,o(this,I)[0][this.routeIndex][1][s]);r!==void 0&&(e[s]=/\%/.test(r)?qe(r):r)}return e},Ne=function(e){return o(this,I)[1]?o(this,I)[1][e]:e},H=new WeakMap,ze),kt={Stringify:1},ot=async(e,t,s,r,a)=>{typeof e=="object"&&!(e instanceof String)&&(e instanceof Promise||(e=e.toString()),e instanceof Promise&&(e=await e));const i=e.callbacks;return i!=null&&i.length?(a?a[0]+=e:a=[e],Promise.all(i.map(l=>l({phase:t,buffer:a,context:r}))).then(l=>Promise.all(l.filter(Boolean).map(c=>ot(c,t,!1,r,a))).then(()=>a[0]))):Promise.resolve(e)},Ft="text/plain; charset=UTF-8",De=(e,t)=>({"Content-Type":e,...t}),ge,fe,_,ne,k,T,xe,oe,ce,K,ve,be,B,re,Ve,Mt=(Ve=class{constructor(e,t){f(this,B);f(this,ge);f(this,fe);h(this,"env",{});f(this,_);h(this,"finalized",!1);h(this,"error");f(this,ne);f(this,k);f(this,T);f(this,xe);f(this,oe);f(this,ce);f(this,K);f(this,ve);f(this,be);h(this,"render",(...e)=>(o(this,oe)??p(this,oe,t=>this.html(t)),o(this,oe).call(this,...e)));h(this,"setLayout",e=>p(this,xe,e));h(this,"getLayout",()=>o(this,xe));h(this,"setRenderer",e=>{p(this,oe,e)});h(this,"header",(e,t,s)=>{this.finalized&&p(this,T,new Response(o(this,T).body,o(this,T)));const r=o(this,T)?o(this,T).headers:o(this,K)??p(this,K,new Headers);t===void 0?r.delete(e):s!=null&&s.append?r.append(e,t):r.set(e,t)});h(this,"status",e=>{p(this,ne,e)});h(this,"set",(e,t)=>{o(this,_)??p(this,_,new Map),o(this,_).set(e,t)});h(this,"get",e=>o(this,_)?o(this,_).get(e):void 0);h(this,"newResponse",(...e)=>x(this,B,re).call(this,...e));h(this,"body",(e,t,s)=>x(this,B,re).call(this,e,t,s));h(this,"text",(e,t,s)=>!o(this,K)&&!o(this,ne)&&!t&&!s&&!this.finalized?new Response(e):x(this,B,re).call(this,e,t,De(Ft,s)));h(this,"json",(e,t,s)=>x(this,B,re).call(this,JSON.stringify(e),t,De("application/json",s)));h(this,"html",(e,t,s)=>{const r=a=>x(this,B,re).call(this,a,t,De("text/html; charset=UTF-8",s));return typeof e=="object"?ot(e,kt.Stringify,!1,{}).then(r):r(e)});h(this,"redirect",(e,t)=>{const s=String(e);return this.header("Location",/[^\x00-\xFF]/.test(s)?encodeURI(s):s),this.newResponse(null,t??302)});h(this,"notFound",()=>(o(this,ce)??p(this,ce,()=>new Response),o(this,ce).call(this,this)));p(this,ge,e),t&&(p(this,k,t.executionCtx),this.env=t.env,p(this,ce,t.notFoundHandler),p(this,be,t.path),p(this,ve,t.matchResult))}get req(){return o(this,fe)??p(this,fe,new at(o(this,ge),o(this,be),o(this,ve))),o(this,fe)}get event(){if(o(this,k)&&"respondWith"in o(this,k))return o(this,k);throw Error("This context has no FetchEvent")}get executionCtx(){if(o(this,k))return o(this,k);throw Error("This context has no ExecutionContext")}get res(){return o(this,T)||p(this,T,new Response(null,{headers:o(this,K)??p(this,K,new Headers)}))}set res(e){if(o(this,T)&&e){e=new Response(e.body,e);for(const[t,s]of o(this,T).headers.entries())if(t!=="content-type")if(t==="set-cookie"){const r=o(this,T).headers.getSetCookie();e.headers.delete("set-cookie");for(const a of r)e.headers.append("set-cookie",a)}else e.headers.set(t,s)}p(this,T,e),this.finalized=!0}get var(){return o(this,_)?Object.fromEntries(o(this,_)):{}}},ge=new WeakMap,fe=new WeakMap,_=new WeakMap,ne=new WeakMap,k=new WeakMap,T=new WeakMap,xe=new WeakMap,oe=new WeakMap,ce=new WeakMap,K=new WeakMap,ve=new WeakMap,be=new WeakMap,B=new WeakSet,re=function(e,t,s){const r=o(this,T)?new Headers(o(this,T).headers):o(this,K)??new Headers;if(typeof t=="object"&&"headers"in t){const i=t.headers instanceof Headers?t.headers:new Headers(t.headers);for(const[n,l]of i)n.toLowerCase()==="set-cookie"?r.append(n,l):r.set(n,l)}if(s)for(const[i,n]of Object.entries(s))if(typeof n=="string")r.set(i,n);else{r.delete(i);for(const l of n)r.append(i,l)}const a=typeof t=="number"?t:(t==null?void 0:t.status)??o(this,ne);return new Response(e,{status:a,headers:r})},Ve),E="ALL",Lt="all",qt=["get","post","put","delete","options","patch"],ct="Can not add a route since the matcher is already built.",lt=class extends Error{},Ht="__COMPOSED_HANDLER",Bt=e=>e.text("404 Not Found",404),He=(e,t)=>{if("getResponse"in e){const s=e.getResponse();return t.newResponse(s.body,s)}return console.error(e),t.text("Internal Server Error",500)},O,j,ut,$,G,Ee,je,We,dt=(We=class{constructor(t={}){f(this,j);h(this,"get");h(this,"post");h(this,"put");h(this,"delete");h(this,"options");h(this,"patch");h(this,"all");h(this,"on");h(this,"use");h(this,"router");h(this,"getPath");h(this,"_basePath","/");f(this,O,"/");h(this,"routes",[]);f(this,$,Bt);h(this,"errorHandler",He);h(this,"onError",t=>(this.errorHandler=t,this));h(this,"notFound",t=>(p(this,$,t),this));h(this,"fetch",(t,...s)=>x(this,j,je).call(this,t,s[1],s[0],t.method));h(this,"request",(t,s,r,a)=>t instanceof Request?this.fetch(s?new Request(t,s):t,r,a):(t=t.toString(),this.fetch(new Request(/^https?:\/\//.test(t)?t:`http://localhost${se("/",t)}`,s),r,a)));h(this,"fire",()=>{addEventListener("fetch",t=>{t.respondWith(x(this,j,je).call(this,t.request,t,void 0,t.request.method))})});[...qt,Lt].forEach(i=>{this[i]=(n,...l)=>(typeof n=="string"?p(this,O,n):x(this,j,G).call(this,i,o(this,O),n),l.forEach(c=>{x(this,j,G).call(this,i,o(this,O),c)}),this)}),this.on=(i,n,...l)=>{for(const c of[n].flat()){p(this,O,c);for(const d of[i].flat())l.map(u=>{x(this,j,G).call(this,d.toUpperCase(),o(this,O),u)})}return this},this.use=(i,...n)=>(typeof i=="string"?p(this,O,i):(p(this,O,"*"),n.unshift(i)),n.forEach(l=>{x(this,j,G).call(this,E,o(this,O),l)}),this);const{strict:r,...a}=t;Object.assign(this,a),this.getPath=r??!0?t.getPath??et:Nt}route(t,s){const r=this.basePath(t);return s.routes.map(a=>{var n;let i;s.errorHandler===He?i=a.handler:(i=async(l,c)=>(await Le([],s.errorHandler)(l,()=>a.handler(l,c))).res,i[Ht]=a.handler),x(n=r,j,G).call(n,a.method,a.path,i)}),this}basePath(t){const s=x(this,j,ut).call(this);return s._basePath=se(this._basePath,t),s}mount(t,s,r){let a,i;r&&(typeof r=="function"?i=r:(i=r.optionHandler,r.replaceRequest===!1?a=c=>c:a=r.replaceRequest));const n=i?c=>{const d=i(c);return Array.isArray(d)?d:[d]}:c=>{let d;try{d=c.executionCtx}catch{}return[c.env,d]};a||(a=(()=>{const c=se(this._basePath,t),d=c==="/"?0:c.length;return u=>{const m=new URL(u.url);return m.pathname=m.pathname.slice(d)||"/",new Request(m,u)}})());const l=async(c,d)=>{const u=await s(a(c.req.raw),...n(c));if(u)return u;await d()};return x(this,j,G).call(this,E,se(t,"*"),l),this}},O=new WeakMap,j=new WeakSet,ut=function(){const t=new dt({router:this.router,getPath:this.getPath});return t.errorHandler=this.errorHandler,p(t,$,o(this,$)),t.routes=this.routes,t},$=new WeakMap,G=function(t,s,r){t=t.toUpperCase(),s=se(this._basePath,s);const a={basePath:this._basePath,path:s,method:t,handler:r};this.router.add(t,s,[r,a]),this.routes.push(a)},Ee=function(t,s){if(t instanceof Error)return this.errorHandler(t,s);throw t},je=function(t,s,r,a){if(a==="HEAD")return(async()=>new Response(null,await x(this,j,je).call(this,t,s,r,"GET")))();const i=this.getPath(t,{env:r}),n=this.router.match(a,i),l=new Mt(t,{path:i,matchResult:n,env:r,executionCtx:s,notFoundHandler:o(this,$)});if(n[0].length===1){let d;try{d=n[0][0][0][0](l,async()=>{l.res=await o(this,$).call(this,l)})}catch(u){return x(this,j,Ee).call(this,u,l)}return d instanceof Promise?d.then(u=>u||(l.finalized?l.res:o(this,$).call(this,l))).catch(u=>x(this,j,Ee).call(this,u,l)):d??o(this,$).call(this,l)}const c=Le(n[0],this.errorHandler,o(this,$));return(async()=>{try{const d=await c(l);if(!d.finalized)throw new Error("Context is not finalized. Did you forget to return a Response object or `await next()`?");return d.res}catch(d){return x(this,j,Ee).call(this,d,l)}})()},We),pt=[];function Ut(e,t){const s=this.buildAllMatchers(),r=(a,i)=>{const n=s[a]||s[E],l=n[2][i];if(l)return l;const c=i.match(n[0]);if(!c)return[[],pt];const d=c.indexOf("",1);return[n[1][d],c]};return this.match=r,r(e,t)}var Se="[^/]+",me=".*",he="(?:|/.*)",ae=Symbol(),zt=new Set(".\\+*[^]$()");function Vt(e,t){return e.length===1?t.length===1?e<t?-1:1:-1:t.length===1||e===me||e===he?1:t===me||t===he?-1:e===Se?1:t===Se?-1:e.length===t.length?e<t?-1:1:t.length-e.length}var J,Q,D,Ge,Pe=(Ge=class{constructor(){f(this,J);f(this,Q);f(this,D,Object.create(null))}insert(t,s,r,a,i){if(t.length===0){if(o(this,J)!==void 0)throw ae;if(i)return;p(this,J,s);return}const[n,...l]=t,c=n==="*"?l.length===0?["","",me]:["","",Se]:n==="/*"?["","",he]:n.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);let d;if(c){const u=c[1];let m=c[2]||Se;if(u&&c[2]&&(m===".*"||(m=m.replace(/^\((?!\?:)(?=[^)]+\)$)/,"(?:"),/\((?!\?:)/.test(m))))throw ae;if(d=o(this,D)[m],!d){if(Object.keys(o(this,D)).some(g=>g!==me&&g!==he))throw ae;if(i)return;d=o(this,D)[m]=new Pe,u!==""&&p(d,Q,a.varIndex++)}!i&&u!==""&&r.push([u,o(d,Q)])}else if(d=o(this,D)[n],!d){if(Object.keys(o(this,D)).some(u=>u.length>1&&u!==me&&u!==he))throw ae;if(i)return;d=o(this,D)[n]=new Pe}d.insert(l,s,r,a,i)}buildRegExpStr(){const s=Object.keys(o(this,D)).sort(Vt).map(r=>{const a=o(this,D)[r];return(typeof o(a,Q)=="number"?`(${r})@${o(a,Q)}`:zt.has(r)?`\\${r}`:r)+a.buildRegExpStr()});return typeof o(this,J)=="number"&&s.unshift(`#${o(this,J)}`),s.length===0?"":s.length===1?s[0]:"(?:"+s.join("|")+")"}},J=new WeakMap,Q=new WeakMap,D=new WeakMap,Ge),Ae,ye,Ye,Wt=(Ye=class{constructor(){f(this,Ae,{varIndex:0});f(this,ye,new Pe)}insert(e,t,s){const r=[],a=[];for(let n=0;;){let l=!1;if(e=e.replace(/\{[^}]+\}/g,c=>{const d=`@\\${n}`;return a[n]=[d,c],n++,l=!0,d}),!l)break}const i=e.match(/(?::[^\/]+)|(?:\/\*$)|./g)||[];for(let n=a.length-1;n>=0;n--){const[l]=a[n];for(let c=i.length-1;c>=0;c--)if(i[c].indexOf(l)!==-1){i[c]=i[c].replace(l,a[n][1]);break}}return o(this,ye).insert(i,t,r,o(this,Ae),s),r}buildRegExp(){let e=o(this,ye).buildRegExpStr();if(e==="")return[/^$/,[],[]];let t=0;const s=[],r=[];return e=e.replace(/#(\d+)|@(\d+)|\.\*\$/g,(a,i,n)=>i!==void 0?(s[++t]=Number(i),"$()"):(n!==void 0&&(r[Number(n)]=++t),"")),[new RegExp(`^${e}`),s,r]}},Ae=new WeakMap,ye=new WeakMap,Ye),Gt=[/^$/,[],Object.create(null)],Ce=Object.create(null);function mt(e){return Ce[e]??(Ce[e]=new RegExp(e==="*"?"":`^${e.replace(/\/\*$|([.\\+*[^\]$()])/g,(t,s)=>s?`\\${s}`:"(?:|/.*)")}$`))}function Yt(){Ce=Object.create(null)}function Kt(e){var d;const t=new Wt,s=[];if(e.length===0)return Gt;const r=e.map(u=>[!/\*|\/:/.test(u[0]),...u]).sort(([u,m],[g,w])=>u?1:g?-1:m.length-w.length),a=Object.create(null);for(let u=0,m=-1,g=r.length;u<g;u++){const[w,R,v]=r[u];w?a[R]=[v.map(([A])=>[A,Object.create(null)]),pt]:m++;let y;try{y=t.insert(R,m,w)}catch(A){throw A===ae?new lt(R):A}w||(s[m]=v.map(([A,ee])=>{const de=Object.create(null);for(ee-=1;ee>=0;ee--){const[N,Re]=y[ee];de[N]=Re}return[A,de]}))}const[i,n,l]=t.buildRegExp();for(let u=0,m=s.length;u<m;u++)for(let g=0,w=s[u].length;g<w;g++){const R=(d=s[u][g])==null?void 0:d[1];if(!R)continue;const v=Object.keys(R);for(let y=0,A=v.length;y<A;y++)R[v[y]]=l[R[v[y]]]}const c=[];for(const u in n)c[u]=s[n[u]];return[i,c,a]}function te(e,t){if(e){for(const s of Object.keys(e).sort((r,a)=>a.length-r.length))if(mt(s).test(t))return[...e[s]]}}var U,z,Te,ht,Ke,Jt=(Ke=class{constructor(){f(this,Te);h(this,"name","RegExpRouter");f(this,U);f(this,z);h(this,"match",Ut);p(this,U,{[E]:Object.create(null)}),p(this,z,{[E]:Object.create(null)})}add(e,t,s){var l;const r=o(this,U),a=o(this,z);if(!r||!a)throw new Error(ct);r[e]||[r,a].forEach(c=>{c[e]=Object.create(null),Object.keys(c[E]).forEach(d=>{c[e][d]=[...c[E][d]]})}),t==="/*"&&(t="*");const i=(t.match(/\/:/g)||[]).length;if(/\*$/.test(t)){const c=mt(t);e===E?Object.keys(r).forEach(d=>{var u;(u=r[d])[t]||(u[t]=te(r[d],t)||te(r[E],t)||[])}):(l=r[e])[t]||(l[t]=te(r[e],t)||te(r[E],t)||[]),Object.keys(r).forEach(d=>{(e===E||e===d)&&Object.keys(r[d]).forEach(u=>{c.test(u)&&r[d][u].push([s,i])})}),Object.keys(a).forEach(d=>{(e===E||e===d)&&Object.keys(a[d]).forEach(u=>c.test(u)&&a[d][u].push([s,i]))});return}const n=tt(t)||[t];for(let c=0,d=n.length;c<d;c++){const u=n[c];Object.keys(a).forEach(m=>{var g;(e===E||e===m)&&((g=a[m])[u]||(g[u]=[...te(r[m],u)||te(r[E],u)||[]]),a[m][u].push([s,i-d+c+1]))})}}buildAllMatchers(){const e=Object.create(null);return Object.keys(o(this,z)).concat(Object.keys(o(this,U))).forEach(t=>{e[t]||(e[t]=x(this,Te,ht).call(this,t))}),p(this,U,p(this,z,void 0)),Yt(),e}},U=new WeakMap,z=new WeakMap,Te=new WeakSet,ht=function(e){const t=[];let s=e===E;return[o(this,U),o(this,z)].forEach(r=>{const a=r[e]?Object.keys(r[e]).map(i=>[i,r[e][i]]):[];a.length!==0?(s||(s=!0),t.push(...a)):e!==E&&t.push(...Object.keys(r[E]).map(i=>[i,r[E][i]]))}),s?Kt(t):null},Ke),V,F,Je,Qt=(Je=class{constructor(e){h(this,"name","SmartRouter");f(this,V,[]);f(this,F,[]);p(this,V,e.routers)}add(e,t,s){if(!o(this,F))throw new Error(ct);o(this,F).push([e,t,s])}match(e,t){if(!o(this,F))throw new Error("Fatal error");const s=o(this,V),r=o(this,F),a=s.length;let i=0,n;for(;i<a;i++){const l=s[i];try{for(let c=0,d=r.length;c<d;c++)l.add(...r[c]);n=l.match(e,t)}catch(c){if(c instanceof lt)continue;throw c}this.match=l.match.bind(l),p(this,V,[l]),p(this,F,void 0);break}if(i===a)throw new Error("Fatal error");return this.name=`SmartRouter + ${this.activeRouter.name}`,n}get activeRouter(){if(o(this,F)||o(this,V).length!==1)throw new Error("No active router has been determined yet.");return o(this,V)[0]}},V=new WeakMap,F=new WeakMap,Je),pe=Object.create(null),W,S,X,le,C,M,Y,Qe,gt=(Qe=class{constructor(e,t,s){f(this,M);f(this,W);f(this,S);f(this,X);f(this,le,0);f(this,C,pe);if(p(this,S,s||Object.create(null)),p(this,W,[]),e&&t){const r=Object.create(null);r[e]={handler:t,possibleKeys:[],score:0},p(this,W,[r])}p(this,X,[])}insert(e,t,s){p(this,le,++Me(this,le)._);let r=this;const a=Rt(t),i=[];for(let n=0,l=a.length;n<l;n++){const c=a[n],d=a[n+1],u=$t(c,d),m=Array.isArray(u)?u[0]:c;if(m in o(r,S)){r=o(r,S)[m],u&&i.push(u[1]);continue}o(r,S)[m]=new gt,u&&(o(r,X).push(u),i.push(u[1])),r=o(r,S)[m]}return o(r,W).push({[e]:{handler:s,possibleKeys:i.filter((n,l,c)=>c.indexOf(n)===l),score:o(this,le)}}),r}search(e,t){var l;const s=[];p(this,C,pe);let a=[this];const i=Ze(t),n=[];for(let c=0,d=i.length;c<d;c++){const u=i[c],m=c===d-1,g=[];for(let w=0,R=a.length;w<R;w++){const v=a[w],y=o(v,S)[u];y&&(p(y,C,o(v,C)),m?(o(y,S)["*"]&&s.push(...x(this,M,Y).call(this,o(y,S)["*"],e,o(v,C))),s.push(...x(this,M,Y).call(this,y,e,o(v,C)))):g.push(y));for(let A=0,ee=o(v,X).length;A<ee;A++){const de=o(v,X)[A],N=o(v,C)===pe?{}:{...o(v,C)};if(de==="*"){const q=o(v,S)["*"];q&&(s.push(...x(this,M,Y).call(this,q,e,o(v,C))),p(q,C,N),g.push(q));continue}const[Re,ke,ue]=de;if(!u&&!(ue instanceof RegExp))continue;const P=o(v,S)[Re],bt=i.slice(c).join("/");if(ue instanceof RegExp){const q=ue.exec(bt);if(q){if(N[ke]=q[0],s.push(...x(this,M,Y).call(this,P,e,o(v,C),N)),Object.keys(o(P,S)).length){p(P,C,N);const Ie=((l=q[0].match(/\//))==null?void 0:l.length)??0;(n[Ie]||(n[Ie]=[])).push(P)}continue}}(ue===!0||ue.test(u))&&(N[ke]=u,m?(s.push(...x(this,M,Y).call(this,P,e,N,o(v,C))),o(P,S)["*"]&&s.push(...x(this,M,Y).call(this,o(P,S)["*"],e,N,o(v,C)))):(p(P,C,N),g.push(P)))}}a=g.concat(n.shift()??[])}return s.length>1&&s.sort((c,d)=>c.score-d.score),[s.map(({handler:c,params:d})=>[c,d])]}},W=new WeakMap,S=new WeakMap,X=new WeakMap,le=new WeakMap,C=new WeakMap,M=new WeakSet,Y=function(e,t,s,r){const a=[];for(let i=0,n=o(e,W).length;i<n;i++){const l=o(e,W)[i],c=l[t]||l[E],d={};if(c!==void 0&&(c.params=Object.create(null),a.push(c),s!==pe||r&&r!==pe))for(let u=0,m=c.possibleKeys.length;u<m;u++){const g=c.possibleKeys[u],w=d[c.score];c.params[g]=r!=null&&r[g]&&!w?r[g]:s[g]??(r==null?void 0:r[g]),d[c.score]=!0}}return a},Qe),Z,Xe,Xt=(Xe=class{constructor(){h(this,"name","TrieRouter");f(this,Z);p(this,Z,new gt)}add(e,t,s){const r=tt(t);if(r){for(let a=0,i=r.length;a<i;a++)o(this,Z).insert(e,r[a],s);return}o(this,Z).insert(e,t,s)}match(e,t){return o(this,Z).search(e,t)}},Z=new WeakMap,Xe),ft=class extends dt{constructor(e={}){super(e),this.router=e.router??new Qt({routers:[new Jt,new Xt]})}},Zt=e=>{const s={...{origin:"*",allowMethods:["GET","HEAD","PUT","POST","DELETE","PATCH"],allowHeaders:[],exposeHeaders:[]},...e},r=(i=>typeof i=="string"?i==="*"?()=>i:n=>i===n?n:null:typeof i=="function"?i:n=>i.includes(n)?n:null)(s.origin),a=(i=>typeof i=="function"?i:Array.isArray(i)?()=>i:()=>[])(s.allowMethods);return async function(n,l){var u;function c(m,g){n.res.headers.set(m,g)}const d=await r(n.req.header("origin")||"",n);if(d&&c("Access-Control-Allow-Origin",d),s.credentials&&c("Access-Control-Allow-Credentials","true"),(u=s.exposeHeaders)!=null&&u.length&&c("Access-Control-Expose-Headers",s.exposeHeaders.join(",")),n.req.method==="OPTIONS"){s.origin!=="*"&&c("Vary","Origin"),s.maxAge!=null&&c("Access-Control-Max-Age",s.maxAge.toString());const m=await a(n.req.header("origin")||"",n);m.length&&c("Access-Control-Allow-Methods",m.join(","));let g=s.allowHeaders;if(!(g!=null&&g.length)){const w=n.req.header("Access-Control-Request-Headers");w&&(g=w.split(/\s*,\s*/))}return g!=null&&g.length&&(c("Access-Control-Allow-Headers",g.join(",")),n.res.headers.append("Vary","Access-Control-Request-Headers")),n.res.headers.delete("Content-Length"),n.res.headers.delete("Content-Type"),new Response(null,{headers:n.res.headers,status:204,statusText:"No Content"})}await l(),s.origin!=="*"&&n.header("Vary","Origin",{append:!0})}},es=/^\s*(?:text\/(?!event-stream(?:[;\s]|$))[^;\s]+|application\/(?:javascript|json|xml|xml-dtd|ecmascript|dart|postscript|rtf|tar|toml|vnd\.dart|vnd\.ms-fontobject|vnd\.ms-opentype|wasm|x-httpd-php|x-javascript|x-ns-proxy-autoconfig|x-sh|x-tar|x-virtualbox-hdd|x-virtualbox-ova|x-virtualbox-ovf|x-virtualbox-vbox|x-virtualbox-vdi|x-virtualbox-vhd|x-virtualbox-vmdk|x-www-form-urlencoded)|font\/(?:otf|ttf)|image\/(?:bmp|vnd\.adobe\.photoshop|vnd\.microsoft\.icon|vnd\.ms-dds|x-icon|x-ms-bmp)|message\/rfc822|model\/gltf-binary|x-shader\/x-fragment|x-shader\/x-vertex|[^;\s]+?\+(?:json|text|xml|yaml))(?:[;\s]|$)/i,Be=(e,t=ss)=>{const s=/\.([a-zA-Z0-9]+?)$/,r=e.match(s);if(!r)return;let a=t[r[1]];return a&&a.startsWith("text")&&(a+="; charset=utf-8"),a},ts={aac:"audio/aac",avi:"video/x-msvideo",avif:"image/avif",av1:"video/av1",bin:"application/octet-stream",bmp:"image/bmp",css:"text/css",csv:"text/csv",eot:"application/vnd.ms-fontobject",epub:"application/epub+zip",gif:"image/gif",gz:"application/gzip",htm:"text/html",html:"text/html",ico:"image/x-icon",ics:"text/calendar",jpeg:"image/jpeg",jpg:"image/jpeg",js:"text/javascript",json:"application/json",jsonld:"application/ld+json",map:"application/json",mid:"audio/x-midi",midi:"audio/x-midi",mjs:"text/javascript",mp3:"audio/mpeg",mp4:"video/mp4",mpeg:"video/mpeg",oga:"audio/ogg",ogv:"video/ogg",ogx:"application/ogg",opus:"audio/opus",otf:"font/otf",pdf:"application/pdf",png:"image/png",rtf:"application/rtf",svg:"image/svg+xml",tif:"image/tiff",tiff:"image/tiff",ts:"video/mp2t",ttf:"font/ttf",txt:"text/plain",wasm:"application/wasm",webm:"video/webm",weba:"audio/webm",webmanifest:"application/manifest+json",webp:"image/webp",woff:"font/woff",woff2:"font/woff2",xhtml:"application/xhtml+xml",xml:"application/xml",zip:"application/zip","3gp":"video/3gpp","3g2":"video/3gpp2",gltf:"model/gltf+json",glb:"model/gltf-binary"},ss=ts,rs=(...e)=>{let t=e.filter(a=>a!=="").join("/");t=t.replace(new RegExp("(?<=\\/)\\/+","g"),"");const s=t.split("/"),r=[];for(const a of s)a===".."&&r.length>0&&r.at(-1)!==".."?r.pop():a!=="."&&r.push(a);return r.join("/")||"."},xt={br:".br",zstd:".zst",gzip:".gz"},as=Object.keys(xt),is="index.html",ns=e=>{const t=e.root??"./",s=e.path,r=e.join??rs;return async(a,i)=>{var u,m,g,w;if(a.finalized)return i();let n;if(e.path)n=e.path;else try{if(n=decodeURIComponent(a.req.path),/(?:^|[\/\\])\.\.(?:$|[\/\\])/.test(n))throw new Error}catch{return await((u=e.onNotFound)==null?void 0:u.call(e,a.req.path,a)),i()}let l=r(t,!s&&e.rewriteRequestPath?e.rewriteRequestPath(n):n);e.isDir&&await e.isDir(l)&&(l=r(l,is));const c=e.getContent;let d=await c(l,a);if(d instanceof Response)return a.newResponse(d.body,d);if(d){const R=e.mimes&&Be(l,e.mimes)||Be(l);if(a.header("Content-Type",R||"application/octet-stream"),e.precompressed&&(!R||es.test(R))){const v=new Set((m=a.req.header("Accept-Encoding"))==null?void 0:m.split(",").map(y=>y.trim()));for(const y of as){if(!v.has(y))continue;const A=await c(l+xt[y],a);if(A){d=A,a.header("Content-Encoding",y),a.header("Vary","Accept-Encoding",{append:!0});break}}}return await((g=e.onFound)==null?void 0:g.call(e,l,a)),a.body(d)}await((w=e.onNotFound)==null?void 0:w.call(e,l,a)),await i()}},os=async(e,t)=>{let s;t&&t.manifest?typeof t.manifest=="string"?s=JSON.parse(t.manifest):s=t.manifest:typeof __STATIC_CONTENT_MANIFEST=="string"?s=JSON.parse(__STATIC_CONTENT_MANIFEST):s=__STATIC_CONTENT_MANIFEST;let r;t&&t.namespace?r=t.namespace:r=__STATIC_CONTENT;const a=s[e]||e;if(!a)return null;const i=await r.get(a,{type:"stream"});return i||null},cs=e=>async function(s,r){return ns({...e,getContent:async i=>os(i,{manifest:e.manifest,namespace:e.namespace?e.namespace:s.env?s.env.__STATIC_CONTENT:void 0})})(s,r)},ls=e=>cs(e);const b=new ft;b.use("/api/*",Zt());b.use("/static/*",ls({root:"./public"}));b.post("/api/auth/register",async e=>{try{const{email:t,password:s,firstName:r,lastName:a,company:i}=await e.req.json();if(!t||!s||!r||!a)return e.json({error:"Tous les champs sont requis"},400);if(await e.env.DB.prepare("SELECT id FROM users WHERE email = ?").bind(t).first())return e.json({error:"Cet email est déjà utilisé"},400);const l=await e.env.DB.prepare("INSERT INTO users (email, password, first_name, last_name, company) VALUES (?, ?, ?, ?, ?)").bind(t,s,r,a,i||"").run();return e.json({success:!0,userId:l.meta.last_row_id,message:"Compte créé avec succès"})}catch{return e.json({error:"Erreur lors de la création du compte"},500)}});b.post("/api/auth/login",async e=>{try{const{email:t,password:s}=await e.req.json(),r=await e.env.DB.prepare("SELECT id, email, first_name, last_name, company FROM users WHERE email = ? AND password = ?").bind(t,s).first();return r?e.json({success:!0,user:{id:r.id,email:r.email,firstName:r.first_name,lastName:r.last_name,company:r.company}}):e.json({error:"Email ou mot de passe incorrect"},401)}catch{return e.json({error:"Erreur lors de la connexion"},500)}});b.post("/api/assessments",async e=>{try{const{userId:t,assessmentType:s}=await e.req.json(),r=await e.env.DB.prepare("INSERT INTO assessments (user_id, assessment_type, status) VALUES (?, ?, ?)").bind(t,s,"in_progress").run();return e.json({success:!0,assessmentId:r.meta.last_row_id})}catch{return e.json({error:"Erreur lors de la création de l'évaluation"},500)}});b.post("/api/assessments/:id/answers",async e=>{try{const t=e.req.param("id"),{answers:s}=await e.req.json();for(const i of s)await e.env.DB.prepare("INSERT INTO assessment_answers (assessment_id, category, question_key, answer_value) VALUES (?, ?, ?, ?)").bind(t,i.category,i.questionKey,i.value).run();const r=s.reduce((i,n)=>i+n.value,0),a=Math.round(r/s.length*20);return await e.env.DB.prepare("UPDATE assessments SET status = ?, overall_score = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind("completed",a,t).run(),e.json({success:!0,score:a})}catch{return e.json({error:"Erreur lors de la sauvegarde des réponses"},500)}});b.get("/api/users/:userId/assessments",async e=>{try{const t=e.req.param("userId"),{results:s}=await e.env.DB.prepare("SELECT id, assessment_type, status, overall_score, created_at FROM assessments WHERE user_id = ? ORDER BY created_at DESC").bind(t).all();return e.json({assessments:s})}catch{return e.json({error:"Erreur lors de la récupération des évaluations"},500)}});b.get("/api/assessments/:id",async e=>{try{const t=e.req.param("id"),s=await e.env.DB.prepare("SELECT * FROM assessments WHERE id = ?").bind(t).first(),{results:r}=await e.env.DB.prepare("SELECT * FROM assessment_answers WHERE assessment_id = ?").bind(t).all();return e.json({assessment:s,answers:r})}catch{return e.json({error:"Erreur lors de la récupération de l'évaluation"},500)}});b.get("/",e=>e.html(`
+var yt=Object.defineProperty;var Fe=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in e?yt(e,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):e[t]=s;var g=(e,t,s)=>wt(e,typeof t!="symbol"?t+"":t,s),Oe=(e,t,s)=>t.has(e)||Fe("Cannot "+s);var o=(e,t,s)=>(Oe(e,t,"read from private field"),s?s.call(e):t.get(e)),f=(e,t,s)=>t.has(e)?Fe("Cannot add the same private member more than once"):t instanceof WeakSet?t.add(e):t.set(e,s),m=(e,t,s,i)=>(Oe(e,t,"write to private field"),i?i.call(e,s):t.set(e,s),s),x=(e,t,s)=>(Oe(e,t,"access private method"),s);var Me=(e,t,s,i)=>({set _(a){m(e,t,a,s)},get _(){return o(e,t,i)}});var Le=(e,t,s)=>(i,a)=>{let r=-1;return n(0);async function n(c){if(c<=r)throw new Error("next() called multiple times");r=c;let l,d=!1,p;if(e[c]?(p=e[c][0][0],i.req.routeIndex=c):p=c===e.length&&a||void 0,p)try{l=await p(i,()=>n(c+1))}catch(u){if(u instanceof Error&&t)i.error=u,l=await t(u,i),d=!0;else throw u}else i.finalized===!1&&s&&(l=await s(i));return l&&(i.finalized===!1||d)&&(i.res=l),i}},jt=Symbol(),Et=async(e,t=Object.create(null))=>{const{all:s=!1,dot:i=!1}=t,r=(e instanceof at?e.raw.headers:e.headers).get("Content-Type");return r!=null&&r.startsWith("multipart/form-data")||r!=null&&r.startsWith("application/x-www-form-urlencoded")?Ct(e,{all:s,dot:i}):{}};async function Ct(e,t){const s=await e.formData();return s?St(s,t):{}}function St(e,t){const s=Object.create(null);return e.forEach((i,a)=>{t.all||a.endsWith("[]")?At(s,a,i):s[a]=i}),t.dot&&Object.entries(s).forEach(([i,a])=>{i.includes(".")&&(Rt(s,i,a),delete s[i])}),s}var At=(e,t,s)=>{e[t]!==void 0?Array.isArray(e[t])?e[t].push(s):e[t]=[e[t],s]:t.endsWith("[]")?e[t]=[s]:e[t]=s},Rt=(e,t,s)=>{let i=e;const a=t.split(".");a.forEach((r,n)=>{n===a.length-1?i[r]=s:((!i[r]||typeof i[r]!="object"||Array.isArray(i[r])||i[r]instanceof File)&&(i[r]=Object.create(null)),i=i[r])})},Ze=e=>{const t=e.split("/");return t[0]===""&&t.shift(),t},Tt=e=>{const{groups:t,path:s}=It(e),i=Ze(s);return Ot(i,t)},It=e=>{const t=[];return e=e.replace(/\{[^}]+\}/g,(s,i)=>{const a=`@${i}`;return t.push([a,s]),a}),{groups:t,path:e}},Ot=(e,t)=>{for(let s=t.length-1;s>=0;s--){const[i]=t[s];for(let a=e.length-1;a>=0;a--)if(e[a].includes(i)){e[a]=e[a].replace(i,t[s][1]);break}}return e},we={},Dt=(e,t)=>{if(e==="*")return"*";const s=e.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);if(s){const i=`${e}#${t}`;return we[i]||(s[2]?we[i]=t&&t[0]!==":"&&t[0]!=="*"?[i,s[1],new RegExp(`^${s[2]}(?=/${t})`)]:[e,s[1],new RegExp(`^${s[2]}$`)]:we[i]=[e,s[1],!0]),we[i]}return null},Pe=(e,t)=>{try{return t(e)}catch{return e.replace(/(?:%[0-9A-Fa-f]{2})+/g,s=>{try{return t(s)}catch{return s}})}},$t=e=>Pe(e,decodeURI),et=e=>{const t=e.url,s=t.indexOf("/",t.indexOf(":")+4);let i=s;for(;i<t.length;i++){const a=t.charCodeAt(i);if(a===37){const r=t.indexOf("?",i),n=t.slice(s,r===-1?void 0:r);return $t(n.includes("%25")?n.replace(/%25/g,"%2525"):n)}else if(a===63)break}return t.slice(s,i)},kt=e=>{const t=et(e);return t.length>1&&t.at(-1)==="/"?t.slice(0,-1):t},se=(e,t,...s)=>(s.length&&(t=se(t,...s)),`${(e==null?void 0:e[0])==="/"?"":"/"}${e}${t==="/"?"":`${(e==null?void 0:e.at(-1))==="/"?"":"/"}${(t==null?void 0:t[0])==="/"?t.slice(1):t}`}`),tt=e=>{if(e.charCodeAt(e.length-1)!==63||!e.includes(":"))return null;const t=e.split("/"),s=[];let i="";return t.forEach(a=>{if(a!==""&&!/\:/.test(a))i+="/"+a;else if(/\:/.test(a))if(/\?/.test(a)){s.length===0&&i===""?s.push("/"):s.push(i);const r=a.replace("?","");i+="/"+r,s.push(i)}else i+="/"+a}),s.filter((a,r,n)=>n.indexOf(a)===r)},De=e=>/[%+]/.test(e)?(e.indexOf("+")!==-1&&(e=e.replace(/\+/g," ")),e.indexOf("%")!==-1?Pe(e,it):e):e,st=(e,t,s)=>{let i;if(!s&&t&&!/[%+]/.test(t)){let n=e.indexOf(`?${t}`,8);for(n===-1&&(n=e.indexOf(`&${t}`,8));n!==-1;){const c=e.charCodeAt(n+t.length+1);if(c===61){const l=n+t.length+2,d=e.indexOf("&",l);return De(e.slice(l,d===-1?void 0:d))}else if(c==38||isNaN(c))return"";n=e.indexOf(`&${t}`,n+1)}if(i=/[%+]/.test(e),!i)return}const a={};i??(i=/[%+]/.test(e));let r=e.indexOf("?",8);for(;r!==-1;){const n=e.indexOf("&",r+1);let c=e.indexOf("=",r);c>n&&n!==-1&&(c=-1);let l=e.slice(r+1,c===-1?n===-1?void 0:n:c);if(i&&(l=De(l)),r=n,l==="")continue;let d;c===-1?d="":(d=e.slice(c+1,n===-1?void 0:n),i&&(d=De(d))),s?(a[l]&&Array.isArray(a[l])||(a[l]=[]),a[l].push(d)):a[l]??(a[l]=d)}return t?a[t]:a},Nt=st,Pt=(e,t)=>st(e,t,!0),it=decodeURIComponent,qe=e=>Pe(e,it),re,I,L,rt,nt,ke,H,ze,at=(ze=class{constructor(e,t="/",s=[[]]){f(this,L);g(this,"raw");f(this,re);f(this,I);g(this,"routeIndex",0);g(this,"path");g(this,"bodyCache",{});f(this,H,e=>{const{bodyCache:t,raw:s}=this,i=t[e];if(i)return i;const a=Object.keys(t)[0];return a?t[a].then(r=>(a==="json"&&(r=JSON.stringify(r)),new Response(r)[e]())):t[e]=s[e]()});this.raw=e,this.path=t,m(this,I,s),m(this,re,{})}param(e){return e?x(this,L,rt).call(this,e):x(this,L,nt).call(this)}query(e){return Nt(this.url,e)}queries(e){return Pt(this.url,e)}header(e){if(e)return this.raw.headers.get(e)??void 0;const t={};return this.raw.headers.forEach((s,i)=>{t[i]=s}),t}async parseBody(e){var t;return(t=this.bodyCache).parsedBody??(t.parsedBody=await Et(this,e))}json(){return o(this,H).call(this,"text").then(e=>JSON.parse(e))}text(){return o(this,H).call(this,"text")}arrayBuffer(){return o(this,H).call(this,"arrayBuffer")}blob(){return o(this,H).call(this,"blob")}formData(){return o(this,H).call(this,"formData")}addValidatedData(e,t){o(this,re)[e]=t}valid(e){return o(this,re)[e]}get url(){return this.raw.url}get method(){return this.raw.method}get[jt](){return o(this,I)}get matchedRoutes(){return o(this,I)[0].map(([[,e]])=>e)}get routePath(){return o(this,I)[0].map(([[,e]])=>e)[this.routeIndex].path}},re=new WeakMap,I=new WeakMap,L=new WeakSet,rt=function(e){const t=o(this,I)[0][this.routeIndex][1][e],s=x(this,L,ke).call(this,t);return s&&/\%/.test(s)?qe(s):s},nt=function(){const e={},t=Object.keys(o(this,I)[0][this.routeIndex][1]);for(const s of t){const i=x(this,L,ke).call(this,o(this,I)[0][this.routeIndex][1][s]);i!==void 0&&(e[s]=/\%/.test(i)?qe(i):i)}return e},ke=function(e){return o(this,I)[1]?o(this,I)[1][e]:e},H=new WeakMap,ze),_t={Stringify:1},ot=async(e,t,s,i,a)=>{typeof e=="object"&&!(e instanceof String)&&(e instanceof Promise||(e=e.toString()),e instanceof Promise&&(e=await e));const r=e.callbacks;return r!=null&&r.length?(a?a[0]+=e:a=[e],Promise.all(r.map(c=>c({phase:t,buffer:a,context:i}))).then(c=>Promise.all(c.filter(Boolean).map(l=>ot(l,t,!1,i,a))).then(()=>a[0]))):Promise.resolve(e)},Ft="text/plain; charset=UTF-8",$e=(e,t)=>({"Content-Type":e,...t}),he,fe,P,ne,_,R,xe,oe,le,K,ve,be,B,ie,Ve,Mt=(Ve=class{constructor(e,t){f(this,B);f(this,he);f(this,fe);g(this,"env",{});f(this,P);g(this,"finalized",!1);g(this,"error");f(this,ne);f(this,_);f(this,R);f(this,xe);f(this,oe);f(this,le);f(this,K);f(this,ve);f(this,be);g(this,"render",(...e)=>(o(this,oe)??m(this,oe,t=>this.html(t)),o(this,oe).call(this,...e)));g(this,"setLayout",e=>m(this,xe,e));g(this,"getLayout",()=>o(this,xe));g(this,"setRenderer",e=>{m(this,oe,e)});g(this,"header",(e,t,s)=>{this.finalized&&m(this,R,new Response(o(this,R).body,o(this,R)));const i=o(this,R)?o(this,R).headers:o(this,K)??m(this,K,new Headers);t===void 0?i.delete(e):s!=null&&s.append?i.append(e,t):i.set(e,t)});g(this,"status",e=>{m(this,ne,e)});g(this,"set",(e,t)=>{o(this,P)??m(this,P,new Map),o(this,P).set(e,t)});g(this,"get",e=>o(this,P)?o(this,P).get(e):void 0);g(this,"newResponse",(...e)=>x(this,B,ie).call(this,...e));g(this,"body",(e,t,s)=>x(this,B,ie).call(this,e,t,s));g(this,"text",(e,t,s)=>!o(this,K)&&!o(this,ne)&&!t&&!s&&!this.finalized?new Response(e):x(this,B,ie).call(this,e,t,$e(Ft,s)));g(this,"json",(e,t,s)=>x(this,B,ie).call(this,JSON.stringify(e),t,$e("application/json",s)));g(this,"html",(e,t,s)=>{const i=a=>x(this,B,ie).call(this,a,t,$e("text/html; charset=UTF-8",s));return typeof e=="object"?ot(e,_t.Stringify,!1,{}).then(i):i(e)});g(this,"redirect",(e,t)=>{const s=String(e);return this.header("Location",/[^\x00-\xFF]/.test(s)?encodeURI(s):s),this.newResponse(null,t??302)});g(this,"notFound",()=>(o(this,le)??m(this,le,()=>new Response),o(this,le).call(this,this)));m(this,he,e),t&&(m(this,_,t.executionCtx),this.env=t.env,m(this,le,t.notFoundHandler),m(this,be,t.path),m(this,ve,t.matchResult))}get req(){return o(this,fe)??m(this,fe,new at(o(this,he),o(this,be),o(this,ve))),o(this,fe)}get event(){if(o(this,_)&&"respondWith"in o(this,_))return o(this,_);throw Error("This context has no FetchEvent")}get executionCtx(){if(o(this,_))return o(this,_);throw Error("This context has no ExecutionContext")}get res(){return o(this,R)||m(this,R,new Response(null,{headers:o(this,K)??m(this,K,new Headers)}))}set res(e){if(o(this,R)&&e){e=new Response(e.body,e);for(const[t,s]of o(this,R).headers.entries())if(t!=="content-type")if(t==="set-cookie"){const i=o(this,R).headers.getSetCookie();e.headers.delete("set-cookie");for(const a of i)e.headers.append("set-cookie",a)}else e.headers.set(t,s)}m(this,R,e),this.finalized=!0}get var(){return o(this,P)?Object.fromEntries(o(this,P)):{}}},he=new WeakMap,fe=new WeakMap,P=new WeakMap,ne=new WeakMap,_=new WeakMap,R=new WeakMap,xe=new WeakMap,oe=new WeakMap,le=new WeakMap,K=new WeakMap,ve=new WeakMap,be=new WeakMap,B=new WeakSet,ie=function(e,t,s){const i=o(this,R)?new Headers(o(this,R).headers):o(this,K)??new Headers;if(typeof t=="object"&&"headers"in t){const r=t.headers instanceof Headers?t.headers:new Headers(t.headers);for(const[n,c]of r)n.toLowerCase()==="set-cookie"?i.append(n,c):i.set(n,c)}if(s)for(const[r,n]of Object.entries(s))if(typeof n=="string")i.set(r,n);else{i.delete(r);for(const c of n)i.append(r,c)}const a=typeof t=="number"?t:(t==null?void 0:t.status)??o(this,ne);return new Response(e,{status:a,headers:i})},Ve),j="ALL",Lt="all",qt=["get","post","put","delete","options","patch"],lt="Can not add a route since the matcher is already built.",ct=class extends Error{},Ht="__COMPOSED_HANDLER",Bt=e=>e.text("404 Not Found",404),He=(e,t)=>{if("getResponse"in e){const s=e.getResponse();return t.newResponse(s.body,s)}return console.error(e),t.text("Internal Server Error",500)},O,E,pt,D,W,je,Ee,Ge,dt=(Ge=class{constructor(t={}){f(this,E);g(this,"get");g(this,"post");g(this,"put");g(this,"delete");g(this,"options");g(this,"patch");g(this,"all");g(this,"on");g(this,"use");g(this,"router");g(this,"getPath");g(this,"_basePath","/");f(this,O,"/");g(this,"routes",[]);f(this,D,Bt);g(this,"errorHandler",He);g(this,"onError",t=>(this.errorHandler=t,this));g(this,"notFound",t=>(m(this,D,t),this));g(this,"fetch",(t,...s)=>x(this,E,Ee).call(this,t,s[1],s[0],t.method));g(this,"request",(t,s,i,a)=>t instanceof Request?this.fetch(s?new Request(t,s):t,i,a):(t=t.toString(),this.fetch(new Request(/^https?:\/\//.test(t)?t:`http://localhost${se("/",t)}`,s),i,a)));g(this,"fire",()=>{addEventListener("fetch",t=>{t.respondWith(x(this,E,Ee).call(this,t.request,t,void 0,t.request.method))})});[...qt,Lt].forEach(r=>{this[r]=(n,...c)=>(typeof n=="string"?m(this,O,n):x(this,E,W).call(this,r,o(this,O),n),c.forEach(l=>{x(this,E,W).call(this,r,o(this,O),l)}),this)}),this.on=(r,n,...c)=>{for(const l of[n].flat()){m(this,O,l);for(const d of[r].flat())c.map(p=>{x(this,E,W).call(this,d.toUpperCase(),o(this,O),p)})}return this},this.use=(r,...n)=>(typeof r=="string"?m(this,O,r):(m(this,O,"*"),n.unshift(r)),n.forEach(c=>{x(this,E,W).call(this,j,o(this,O),c)}),this);const{strict:i,...a}=t;Object.assign(this,a),this.getPath=i??!0?t.getPath??et:kt}route(t,s){const i=this.basePath(t);return s.routes.map(a=>{var n;let r;s.errorHandler===He?r=a.handler:(r=async(c,l)=>(await Le([],s.errorHandler)(c,()=>a.handler(c,l))).res,r[Ht]=a.handler),x(n=i,E,W).call(n,a.method,a.path,r)}),this}basePath(t){const s=x(this,E,pt).call(this);return s._basePath=se(this._basePath,t),s}mount(t,s,i){let a,r;i&&(typeof i=="function"?r=i:(r=i.optionHandler,i.replaceRequest===!1?a=l=>l:a=i.replaceRequest));const n=r?l=>{const d=r(l);return Array.isArray(d)?d:[d]}:l=>{let d;try{d=l.executionCtx}catch{}return[l.env,d]};a||(a=(()=>{const l=se(this._basePath,t),d=l==="/"?0:l.length;return p=>{const u=new URL(p.url);return u.pathname=u.pathname.slice(d)||"/",new Request(u,p)}})());const c=async(l,d)=>{const p=await s(a(l.req.raw),...n(l));if(p)return p;await d()};return x(this,E,W).call(this,j,se(t,"*"),c),this}},O=new WeakMap,E=new WeakSet,pt=function(){const t=new dt({router:this.router,getPath:this.getPath});return t.errorHandler=this.errorHandler,m(t,D,o(this,D)),t.routes=this.routes,t},D=new WeakMap,W=function(t,s,i){t=t.toUpperCase(),s=se(this._basePath,s);const a={basePath:this._basePath,path:s,method:t,handler:i};this.router.add(t,s,[i,a]),this.routes.push(a)},je=function(t,s){if(t instanceof Error)return this.errorHandler(t,s);throw t},Ee=function(t,s,i,a){if(a==="HEAD")return(async()=>new Response(null,await x(this,E,Ee).call(this,t,s,i,"GET")))();const r=this.getPath(t,{env:i}),n=this.router.match(a,r),c=new Mt(t,{path:r,matchResult:n,env:i,executionCtx:s,notFoundHandler:o(this,D)});if(n[0].length===1){let d;try{d=n[0][0][0][0](c,async()=>{c.res=await o(this,D).call(this,c)})}catch(p){return x(this,E,je).call(this,p,c)}return d instanceof Promise?d.then(p=>p||(c.finalized?c.res:o(this,D).call(this,c))).catch(p=>x(this,E,je).call(this,p,c)):d??o(this,D).call(this,c)}const l=Le(n[0],this.errorHandler,o(this,D));return(async()=>{try{const d=await l(c);if(!d.finalized)throw new Error("Context is not finalized. Did you forget to return a Response object or `await next()`?");return d.res}catch(d){return x(this,E,je).call(this,d,c)}})()},Ge),mt=[];function Ut(e,t){const s=this.buildAllMatchers(),i=(a,r)=>{const n=s[a]||s[j],c=n[2][r];if(c)return c;const l=r.match(n[0]);if(!l)return[[],mt];const d=l.indexOf("",1);return[n[1][d],l]};return this.match=i,i(e,t)}var Se="[^/]+",ue=".*",ge="(?:|/.*)",ae=Symbol(),zt=new Set(".\\+*[^]$()");function Vt(e,t){return e.length===1?t.length===1?e<t?-1:1:-1:t.length===1||e===ue||e===ge?1:t===ue||t===ge?-1:e===Se?1:t===Se?-1:e.length===t.length?e<t?-1:1:t.length-e.length}var J,Q,$,We,Ne=(We=class{constructor(){f(this,J);f(this,Q);f(this,$,Object.create(null))}insert(t,s,i,a,r){if(t.length===0){if(o(this,J)!==void 0)throw ae;if(r)return;m(this,J,s);return}const[n,...c]=t,l=n==="*"?c.length===0?["","",ue]:["","",Se]:n==="/*"?["","",ge]:n.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);let d;if(l){const p=l[1];let u=l[2]||Se;if(p&&l[2]&&(u===".*"||(u=u.replace(/^\((?!\?:)(?=[^)]+\)$)/,"(?:"),/\((?!\?:)/.test(u))))throw ae;if(d=o(this,$)[u],!d){if(Object.keys(o(this,$)).some(h=>h!==ue&&h!==ge))throw ae;if(r)return;d=o(this,$)[u]=new Ne,p!==""&&m(d,Q,a.varIndex++)}!r&&p!==""&&i.push([p,o(d,Q)])}else if(d=o(this,$)[n],!d){if(Object.keys(o(this,$)).some(p=>p.length>1&&p!==ue&&p!==ge))throw ae;if(r)return;d=o(this,$)[n]=new Ne}d.insert(c,s,i,a,r)}buildRegExpStr(){const s=Object.keys(o(this,$)).sort(Vt).map(i=>{const a=o(this,$)[i];return(typeof o(a,Q)=="number"?`(${i})@${o(a,Q)}`:zt.has(i)?`\\${i}`:i)+a.buildRegExpStr()});return typeof o(this,J)=="number"&&s.unshift(`#${o(this,J)}`),s.length===0?"":s.length===1?s[0]:"(?:"+s.join("|")+")"}},J=new WeakMap,Q=new WeakMap,$=new WeakMap,We),Ae,ye,Ye,Gt=(Ye=class{constructor(){f(this,Ae,{varIndex:0});f(this,ye,new Ne)}insert(e,t,s){const i=[],a=[];for(let n=0;;){let c=!1;if(e=e.replace(/\{[^}]+\}/g,l=>{const d=`@\\${n}`;return a[n]=[d,l],n++,c=!0,d}),!c)break}const r=e.match(/(?::[^\/]+)|(?:\/\*$)|./g)||[];for(let n=a.length-1;n>=0;n--){const[c]=a[n];for(let l=r.length-1;l>=0;l--)if(r[l].indexOf(c)!==-1){r[l]=r[l].replace(c,a[n][1]);break}}return o(this,ye).insert(r,t,i,o(this,Ae),s),i}buildRegExp(){let e=o(this,ye).buildRegExpStr();if(e==="")return[/^$/,[],[]];let t=0;const s=[],i=[];return e=e.replace(/#(\d+)|@(\d+)|\.\*\$/g,(a,r,n)=>r!==void 0?(s[++t]=Number(r),"$()"):(n!==void 0&&(i[Number(n)]=++t),"")),[new RegExp(`^${e}`),s,i]}},Ae=new WeakMap,ye=new WeakMap,Ye),Wt=[/^$/,[],Object.create(null)],Ce=Object.create(null);function ut(e){return Ce[e]??(Ce[e]=new RegExp(e==="*"?"":`^${e.replace(/\/\*$|([.\\+*[^\]$()])/g,(t,s)=>s?`\\${s}`:"(?:|/.*)")}$`))}function Yt(){Ce=Object.create(null)}function Kt(e){var d;const t=new Gt,s=[];if(e.length===0)return Wt;const i=e.map(p=>[!/\*|\/:/.test(p[0]),...p]).sort(([p,u],[h,w])=>p?1:h?-1:u.length-w.length),a=Object.create(null);for(let p=0,u=-1,h=i.length;p<h;p++){const[w,T,v]=i[p];w?a[T]=[v.map(([A])=>[A,Object.create(null)]),mt]:u++;let y;try{y=t.insert(T,u,w)}catch(A){throw A===ae?new ct(T):A}w||(s[u]=v.map(([A,ee])=>{const de=Object.create(null);for(ee-=1;ee>=0;ee--){const[k,Te]=y[ee];de[k]=Te}return[A,de]}))}const[r,n,c]=t.buildRegExp();for(let p=0,u=s.length;p<u;p++)for(let h=0,w=s[p].length;h<w;h++){const T=(d=s[p][h])==null?void 0:d[1];if(!T)continue;const v=Object.keys(T);for(let y=0,A=v.length;y<A;y++)T[v[y]]=c[T[v[y]]]}const l=[];for(const p in n)l[p]=s[n[p]];return[r,l,a]}function te(e,t){if(e){for(const s of Object.keys(e).sort((i,a)=>a.length-i.length))if(ut(s).test(t))return[...e[s]]}}var U,z,Re,gt,Ke,Jt=(Ke=class{constructor(){f(this,Re);g(this,"name","RegExpRouter");f(this,U);f(this,z);g(this,"match",Ut);m(this,U,{[j]:Object.create(null)}),m(this,z,{[j]:Object.create(null)})}add(e,t,s){var c;const i=o(this,U),a=o(this,z);if(!i||!a)throw new Error(lt);i[e]||[i,a].forEach(l=>{l[e]=Object.create(null),Object.keys(l[j]).forEach(d=>{l[e][d]=[...l[j][d]]})}),t==="/*"&&(t="*");const r=(t.match(/\/:/g)||[]).length;if(/\*$/.test(t)){const l=ut(t);e===j?Object.keys(i).forEach(d=>{var p;(p=i[d])[t]||(p[t]=te(i[d],t)||te(i[j],t)||[])}):(c=i[e])[t]||(c[t]=te(i[e],t)||te(i[j],t)||[]),Object.keys(i).forEach(d=>{(e===j||e===d)&&Object.keys(i[d]).forEach(p=>{l.test(p)&&i[d][p].push([s,r])})}),Object.keys(a).forEach(d=>{(e===j||e===d)&&Object.keys(a[d]).forEach(p=>l.test(p)&&a[d][p].push([s,r]))});return}const n=tt(t)||[t];for(let l=0,d=n.length;l<d;l++){const p=n[l];Object.keys(a).forEach(u=>{var h;(e===j||e===u)&&((h=a[u])[p]||(h[p]=[...te(i[u],p)||te(i[j],p)||[]]),a[u][p].push([s,r-d+l+1]))})}}buildAllMatchers(){const e=Object.create(null);return Object.keys(o(this,z)).concat(Object.keys(o(this,U))).forEach(t=>{e[t]||(e[t]=x(this,Re,gt).call(this,t))}),m(this,U,m(this,z,void 0)),Yt(),e}},U=new WeakMap,z=new WeakMap,Re=new WeakSet,gt=function(e){const t=[];let s=e===j;return[o(this,U),o(this,z)].forEach(i=>{const a=i[e]?Object.keys(i[e]).map(r=>[r,i[e][r]]):[];a.length!==0?(s||(s=!0),t.push(...a)):e!==j&&t.push(...Object.keys(i[j]).map(r=>[r,i[j][r]]))}),s?Kt(t):null},Ke),V,F,Je,Qt=(Je=class{constructor(e){g(this,"name","SmartRouter");f(this,V,[]);f(this,F,[]);m(this,V,e.routers)}add(e,t,s){if(!o(this,F))throw new Error(lt);o(this,F).push([e,t,s])}match(e,t){if(!o(this,F))throw new Error("Fatal error");const s=o(this,V),i=o(this,F),a=s.length;let r=0,n;for(;r<a;r++){const c=s[r];try{for(let l=0,d=i.length;l<d;l++)c.add(...i[l]);n=c.match(e,t)}catch(l){if(l instanceof ct)continue;throw l}this.match=c.match.bind(c),m(this,V,[c]),m(this,F,void 0);break}if(r===a)throw new Error("Fatal error");return this.name=`SmartRouter + ${this.activeRouter.name}`,n}get activeRouter(){if(o(this,F)||o(this,V).length!==1)throw new Error("No active router has been determined yet.");return o(this,V)[0]}},V=new WeakMap,F=new WeakMap,Je),me=Object.create(null),G,S,X,ce,C,M,Y,Qe,ht=(Qe=class{constructor(e,t,s){f(this,M);f(this,G);f(this,S);f(this,X);f(this,ce,0);f(this,C,me);if(m(this,S,s||Object.create(null)),m(this,G,[]),e&&t){const i=Object.create(null);i[e]={handler:t,possibleKeys:[],score:0},m(this,G,[i])}m(this,X,[])}insert(e,t,s){m(this,ce,++Me(this,ce)._);let i=this;const a=Tt(t),r=[];for(let n=0,c=a.length;n<c;n++){const l=a[n],d=a[n+1],p=Dt(l,d),u=Array.isArray(p)?p[0]:l;if(u in o(i,S)){i=o(i,S)[u],p&&r.push(p[1]);continue}o(i,S)[u]=new ht,p&&(o(i,X).push(p),r.push(p[1])),i=o(i,S)[u]}return o(i,G).push({[e]:{handler:s,possibleKeys:r.filter((n,c,l)=>l.indexOf(n)===c),score:o(this,ce)}}),i}search(e,t){var c;const s=[];m(this,C,me);let a=[this];const r=Ze(t),n=[];for(let l=0,d=r.length;l<d;l++){const p=r[l],u=l===d-1,h=[];for(let w=0,T=a.length;w<T;w++){const v=a[w],y=o(v,S)[p];y&&(m(y,C,o(v,C)),u?(o(y,S)["*"]&&s.push(...x(this,M,Y).call(this,o(y,S)["*"],e,o(v,C))),s.push(...x(this,M,Y).call(this,y,e,o(v,C)))):h.push(y));for(let A=0,ee=o(v,X).length;A<ee;A++){const de=o(v,X)[A],k=o(v,C)===me?{}:{...o(v,C)};if(de==="*"){const q=o(v,S)["*"];q&&(s.push(...x(this,M,Y).call(this,q,e,o(v,C))),m(q,C,k),h.push(q));continue}const[Te,_e,pe]=de;if(!p&&!(pe instanceof RegExp))continue;const N=o(v,S)[Te],bt=r.slice(l).join("/");if(pe instanceof RegExp){const q=pe.exec(bt);if(q){if(k[_e]=q[0],s.push(...x(this,M,Y).call(this,N,e,o(v,C),k)),Object.keys(o(N,S)).length){m(N,C,k);const Ie=((c=q[0].match(/\//))==null?void 0:c.length)??0;(n[Ie]||(n[Ie]=[])).push(N)}continue}}(pe===!0||pe.test(p))&&(k[_e]=p,u?(s.push(...x(this,M,Y).call(this,N,e,k,o(v,C))),o(N,S)["*"]&&s.push(...x(this,M,Y).call(this,o(N,S)["*"],e,k,o(v,C)))):(m(N,C,k),h.push(N)))}}a=h.concat(n.shift()??[])}return s.length>1&&s.sort((l,d)=>l.score-d.score),[s.map(({handler:l,params:d})=>[l,d])]}},G=new WeakMap,S=new WeakMap,X=new WeakMap,ce=new WeakMap,C=new WeakMap,M=new WeakSet,Y=function(e,t,s,i){const a=[];for(let r=0,n=o(e,G).length;r<n;r++){const c=o(e,G)[r],l=c[t]||c[j],d={};if(l!==void 0&&(l.params=Object.create(null),a.push(l),s!==me||i&&i!==me))for(let p=0,u=l.possibleKeys.length;p<u;p++){const h=l.possibleKeys[p],w=d[l.score];l.params[h]=i!=null&&i[h]&&!w?i[h]:s[h]??(i==null?void 0:i[h]),d[l.score]=!0}}return a},Qe),Z,Xe,Xt=(Xe=class{constructor(){g(this,"name","TrieRouter");f(this,Z);m(this,Z,new ht)}add(e,t,s){const i=tt(t);if(i){for(let a=0,r=i.length;a<r;a++)o(this,Z).insert(e,i[a],s);return}o(this,Z).insert(e,t,s)}match(e,t){return o(this,Z).search(e,t)}},Z=new WeakMap,Xe),ft=class extends dt{constructor(e={}){super(e),this.router=e.router??new Qt({routers:[new Jt,new Xt]})}},Zt=e=>{const s={...{origin:"*",allowMethods:["GET","HEAD","PUT","POST","DELETE","PATCH"],allowHeaders:[],exposeHeaders:[]},...e},i=(r=>typeof r=="string"?r==="*"?()=>r:n=>r===n?n:null:typeof r=="function"?r:n=>r.includes(n)?n:null)(s.origin),a=(r=>typeof r=="function"?r:Array.isArray(r)?()=>r:()=>[])(s.allowMethods);return async function(n,c){var p;function l(u,h){n.res.headers.set(u,h)}const d=await i(n.req.header("origin")||"",n);if(d&&l("Access-Control-Allow-Origin",d),s.credentials&&l("Access-Control-Allow-Credentials","true"),(p=s.exposeHeaders)!=null&&p.length&&l("Access-Control-Expose-Headers",s.exposeHeaders.join(",")),n.req.method==="OPTIONS"){s.origin!=="*"&&l("Vary","Origin"),s.maxAge!=null&&l("Access-Control-Max-Age",s.maxAge.toString());const u=await a(n.req.header("origin")||"",n);u.length&&l("Access-Control-Allow-Methods",u.join(","));let h=s.allowHeaders;if(!(h!=null&&h.length)){const w=n.req.header("Access-Control-Request-Headers");w&&(h=w.split(/\s*,\s*/))}return h!=null&&h.length&&(l("Access-Control-Allow-Headers",h.join(",")),n.res.headers.append("Vary","Access-Control-Request-Headers")),n.res.headers.delete("Content-Length"),n.res.headers.delete("Content-Type"),new Response(null,{headers:n.res.headers,status:204,statusText:"No Content"})}await c(),s.origin!=="*"&&n.header("Vary","Origin",{append:!0})}},es=/^\s*(?:text\/(?!event-stream(?:[;\s]|$))[^;\s]+|application\/(?:javascript|json|xml|xml-dtd|ecmascript|dart|postscript|rtf|tar|toml|vnd\.dart|vnd\.ms-fontobject|vnd\.ms-opentype|wasm|x-httpd-php|x-javascript|x-ns-proxy-autoconfig|x-sh|x-tar|x-virtualbox-hdd|x-virtualbox-ova|x-virtualbox-ovf|x-virtualbox-vbox|x-virtualbox-vdi|x-virtualbox-vhd|x-virtualbox-vmdk|x-www-form-urlencoded)|font\/(?:otf|ttf)|image\/(?:bmp|vnd\.adobe\.photoshop|vnd\.microsoft\.icon|vnd\.ms-dds|x-icon|x-ms-bmp)|message\/rfc822|model\/gltf-binary|x-shader\/x-fragment|x-shader\/x-vertex|[^;\s]+?\+(?:json|text|xml|yaml))(?:[;\s]|$)/i,Be=(e,t=ss)=>{const s=/\.([a-zA-Z0-9]+?)$/,i=e.match(s);if(!i)return;let a=t[i[1]];return a&&a.startsWith("text")&&(a+="; charset=utf-8"),a},ts={aac:"audio/aac",avi:"video/x-msvideo",avif:"image/avif",av1:"video/av1",bin:"application/octet-stream",bmp:"image/bmp",css:"text/css",csv:"text/csv",eot:"application/vnd.ms-fontobject",epub:"application/epub+zip",gif:"image/gif",gz:"application/gzip",htm:"text/html",html:"text/html",ico:"image/x-icon",ics:"text/calendar",jpeg:"image/jpeg",jpg:"image/jpeg",js:"text/javascript",json:"application/json",jsonld:"application/ld+json",map:"application/json",mid:"audio/x-midi",midi:"audio/x-midi",mjs:"text/javascript",mp3:"audio/mpeg",mp4:"video/mp4",mpeg:"video/mpeg",oga:"audio/ogg",ogv:"video/ogg",ogx:"application/ogg",opus:"audio/opus",otf:"font/otf",pdf:"application/pdf",png:"image/png",rtf:"application/rtf",svg:"image/svg+xml",tif:"image/tiff",tiff:"image/tiff",ts:"video/mp2t",ttf:"font/ttf",txt:"text/plain",wasm:"application/wasm",webm:"video/webm",weba:"audio/webm",webmanifest:"application/manifest+json",webp:"image/webp",woff:"font/woff",woff2:"font/woff2",xhtml:"application/xhtml+xml",xml:"application/xml",zip:"application/zip","3gp":"video/3gpp","3g2":"video/3gpp2",gltf:"model/gltf+json",glb:"model/gltf-binary"},ss=ts,is=(...e)=>{let t=e.filter(a=>a!=="").join("/");t=t.replace(new RegExp("(?<=\\/)\\/+","g"),"");const s=t.split("/"),i=[];for(const a of s)a===".."&&i.length>0&&i.at(-1)!==".."?i.pop():a!=="."&&i.push(a);return i.join("/")||"."},xt={br:".br",zstd:".zst",gzip:".gz"},as=Object.keys(xt),rs="index.html",ns=e=>{const t=e.root??"./",s=e.path,i=e.join??is;return async(a,r)=>{var p,u,h,w;if(a.finalized)return r();let n;if(e.path)n=e.path;else try{if(n=decodeURIComponent(a.req.path),/(?:^|[\/\\])\.\.(?:$|[\/\\])/.test(n))throw new Error}catch{return await((p=e.onNotFound)==null?void 0:p.call(e,a.req.path,a)),r()}let c=i(t,!s&&e.rewriteRequestPath?e.rewriteRequestPath(n):n);e.isDir&&await e.isDir(c)&&(c=i(c,rs));const l=e.getContent;let d=await l(c,a);if(d instanceof Response)return a.newResponse(d.body,d);if(d){const T=e.mimes&&Be(c,e.mimes)||Be(c);if(a.header("Content-Type",T||"application/octet-stream"),e.precompressed&&(!T||es.test(T))){const v=new Set((u=a.req.header("Accept-Encoding"))==null?void 0:u.split(",").map(y=>y.trim()));for(const y of as){if(!v.has(y))continue;const A=await l(c+xt[y],a);if(A){d=A,a.header("Content-Encoding",y),a.header("Vary","Accept-Encoding",{append:!0});break}}}return await((h=e.onFound)==null?void 0:h.call(e,c,a)),a.body(d)}await((w=e.onNotFound)==null?void 0:w.call(e,c,a)),await r()}},os=async(e,t)=>{let s;t&&t.manifest?typeof t.manifest=="string"?s=JSON.parse(t.manifest):s=t.manifest:typeof __STATIC_CONTENT_MANIFEST=="string"?s=JSON.parse(__STATIC_CONTENT_MANIFEST):s=__STATIC_CONTENT_MANIFEST;let i;t&&t.namespace?i=t.namespace:i=__STATIC_CONTENT;const a=s[e]||e;if(!a)return null;const r=await i.get(a,{type:"stream"});return r||null},ls=e=>async function(s,i){return ns({...e,getContent:async r=>os(r,{manifest:e.manifest,namespace:e.namespace?e.namespace:s.env?s.env.__STATIC_CONTENT:void 0})})(s,i)},cs=e=>ls(e);const b=new ft;b.use("/api/*",Zt());b.use("/static/*",cs({root:"./public"}));b.post("/api/auth/register",async e=>{try{const{email:t,password:s,firstName:i,lastName:a,company:r}=await e.req.json();if(!t||!s||!i||!a)return e.json({error:"Tous les champs sont requis"},400);if(await e.env.DB.prepare("SELECT id FROM users WHERE email = ?").bind(t).first())return e.json({error:"Cet email est déjà utilisé"},400);const c=await e.env.DB.prepare("INSERT INTO users (email, password, first_name, last_name, company) VALUES (?, ?, ?, ?, ?)").bind(t,s,i,a,r||"").run();return e.json({success:!0,userId:c.meta.last_row_id,message:"Compte créé avec succès"})}catch{return e.json({error:"Erreur lors de la création du compte"},500)}});b.post("/api/auth/login",async e=>{try{const{email:t,password:s}=await e.req.json(),i=await e.env.DB.prepare("SELECT id, email, first_name, last_name, company FROM users WHERE email = ? AND password = ?").bind(t,s).first();return i?e.json({success:!0,user:{id:i.id,email:i.email,firstName:i.first_name,lastName:i.last_name,company:i.company}}):e.json({error:"Email ou mot de passe incorrect"},401)}catch{return e.json({error:"Erreur lors de la connexion"},500)}});b.post("/api/assessments",async e=>{try{const{userId:t,assessmentType:s}=await e.req.json(),i=await e.env.DB.prepare("INSERT INTO assessments (user_id, assessment_type, status) VALUES (?, ?, ?)").bind(t,s,"in_progress").run();return e.json({success:!0,assessmentId:i.meta.last_row_id})}catch{return e.json({error:"Erreur lors de la création de l'évaluation"},500)}});b.post("/api/assessments/:id/answers",async e=>{try{const t=e.req.param("id"),{answers:s}=await e.req.json();for(const r of s)await e.env.DB.prepare("INSERT INTO assessment_answers (assessment_id, category, question_key, answer_value) VALUES (?, ?, ?, ?)").bind(t,r.category,r.questionKey,r.value).run();const i=s.reduce((r,n)=>r+n.value,0),a=Math.round(i/s.length*20);return await e.env.DB.prepare("UPDATE assessments SET status = ?, overall_score = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind("completed",a,t).run(),e.json({success:!0,score:a})}catch{return e.json({error:"Erreur lors de la sauvegarde des réponses"},500)}});b.get("/api/users/:userId/assessments",async e=>{try{const t=e.req.param("userId"),{results:s}=await e.env.DB.prepare("SELECT id, assessment_type, status, overall_score, created_at FROM assessments WHERE user_id = ? ORDER BY created_at DESC").bind(t).all();return e.json({assessments:s})}catch{return e.json({error:"Erreur lors de la récupération des évaluations"},500)}});b.get("/api/assessments/:id",async e=>{try{const t=e.req.param("id"),s=await e.env.DB.prepare("SELECT * FROM assessments WHERE id = ?").bind(t).first(),{results:i}=await e.env.DB.prepare("SELECT * FROM assessment_answers WHERE assessment_id = ?").bind(t).all();return e.json({assessment:s,answers:i})}catch{return e.json({error:"Erreur lors de la récupération de l'évaluation"},500)}});b.get("/",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -70,6 +70,180 @@ var yt=Object.defineProperty;var Fe=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
                         <i class="fas fa-cogs text-4xl text-indigo-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-4">Transformation Digitale</h3>
                         <p class="text-gray-600">Accompagnement complet dans votre transformation digitale</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="bg-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Notre Processus Éprouvé</h2>
+                    <p class="text-xl text-gray-600">Une approche en 3 étapes pour des résultats garantis</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all h-full">
+                            <div class="absolute -top-6 left-8">
+                                <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                                    1
+                                </div>
+                            </div>
+                            <div class="mt-8">
+                                <div class="text-indigo-600 mb-4">
+                                    <i class="fas fa-handshake text-5xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3">Consultation Gratuite</h3>
+                                <p class="text-gray-600 mb-4">Nous comprenons vos besoins et objectifs business pour identifier les opportunités IA à fort ROI.</p>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Analyse de vos défis actuels</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Identification des opportunités</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Évaluation du potentiel ROI</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-6 border-t border-indigo-200">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-500">Durée</span>
+                                        <span class="font-semibold">30-60 min</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-2">
+                                        <span class="text-sm text-gray-500">Livrable</span>
+                                        <span class="font-semibold text-sm">Rapport opportunités</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arrow -->
+                        <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+                            <i class="fas fa-arrow-right text-3xl text-indigo-300"></i>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all h-full">
+                            <div class="absolute -top-6 left-8">
+                                <div class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                                    2
+                                </div>
+                            </div>
+                            <div class="mt-8">
+                                <div class="text-purple-600 mb-4">
+                                    <i class="fas fa-project-diagram text-5xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3">Diagramme & POC</h3>
+                                <p class="text-gray-600 mb-4">Validation rapide avec un proof-of-concept fonctionnel sur vos vraies données.</p>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Diagrammes de processus</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>POC en 1-2 semaines</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Tests avec données réelles</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-6 border-t border-purple-200">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-500">Durée</span>
+                                        <span class="font-semibold">1-2 semaines</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-2">
+                                        <span class="text-sm text-gray-500">Livrable</span>
+                                        <span class="font-semibold text-sm">POC fonctionnel</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arrow -->
+                        <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+                            <i class="fas fa-arrow-right text-3xl text-purple-300"></i>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all h-full">
+                            <div class="absolute -top-6 left-8">
+                                <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                                    3
+                                </div>
+                            </div>
+                            <div class="mt-8">
+                                <div class="text-green-600 mb-4">
+                                    <i class="fas fa-rocket text-5xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3">Lancement Projet</h3>
+                                <p class="text-gray-600 mb-4">Déploiement et intégration complète dans votre infrastructure existante.</p>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Intégration stack existant</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Architecture scalable</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Formation et support</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-6 border-t border-green-200">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-500">Durée</span>
+                                        <span class="font-semibold">4-12 semaines</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-2">
+                                        <span class="text-sm text-gray-500">Livrable</span>
+                                        <span class="font-semibold text-sm">Solution en prod</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Proof Stats -->
+                <div class="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-12 text-white">
+                    <div class="grid md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <div class="text-5xl font-bold mb-2">200+</div>
+                            <div class="text-indigo-200">Agents IA Construits</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold mb-2">1M$</div>
+                            <div class="text-indigo-200">Économies Moyennes/An</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold mb-2">84%</div>
+                            <div class="text-indigo-200">Amélioration Résolution</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold mb-2">50+</div>
+                            <div class="text-indigo-200">Clients Satisfaits</div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <p class="text-xl mb-6">Besoin d'aide pour construire des agents IA ? Nous avons construit 200+ agents. Nous savons ce qui fonctionne.</p>
+                        <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 inline-block shadow-lg">
+                            Réserver une Consultation Gratuite
+                        </a>
                     </div>
                 </div>
             </div>
@@ -913,7 +1087,7 @@ var yt=Object.defineProperty;var Fe=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.post("/api/contact",async e=>{try{const{name:t,email:s,phone:r,company:a,role:i,message:n,preferredDate:l,budget:c}=await e.req.json();return console.log("Contact form submission:",{name:t,email:s,company:a}),e.json({success:!0,message:"Votre demande a été envoyée avec succès. Nous vous recontacterons sous 24h."})}catch{return e.json({error:"Erreur lors de l'envoi du formulaire"},500)}});b.get("/services",e=>e.html(`
+  `));b.post("/api/contact",async e=>{try{const{name:t,email:s,phone:i,company:a,role:r,message:n,preferredDate:c,budget:l}=await e.req.json();return console.log("Contact form submission:",{name:t,email:s,company:a}),e.json({success:!0,message:"Votre demande a été envoyée avec succès. Nous vous recontacterons sous 24h."})}catch{return e.json({error:"Erreur lors de l'envoi du formulaire"},500)}});b.get("/services",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -934,36 +1108,87 @@ var yt=Object.defineProperty;var Fe=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
             const data = getServicesData(lang);
             
             document.body.innerHTML = renderNavigation('services') + \`
-              <div class="max-w-7xl mx-auto px-4 py-12">
-                <div class="text-center mb-12">
-                  <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
-                  <p class="text-xl text-gray-600">\${data.hero.subtitle}</p>
+              <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                  <h1 class="text-5xl font-bold mb-6">\${data.hero.title}</h1>
+                  <p class="text-2xl mb-8 opacity-90">\${data.hero.subtitle}</p>
+                  <div class="flex justify-center gap-4">
+                    <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100">Démarrer un Projet</a>
+                    <a href="/testimonials" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-indigo-600">Voir Études de Cas</a>
+                  </div>
                 </div>
+              </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  \${data.services.map(service => \`
-                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all">
-                      <div class="flex items-center mb-4">
-                        <i class="fas \${service.icon} text-4xl text-indigo-600 mr-4"></i>
-                        <h2 class="text-xl font-bold">\${service.title}</h2>
-                      </div>
-                      <p class="text-gray-600 mb-4">\${service.description}</p>
-                      
-                      <div class="mb-4">
-                        <h3 class="font-semibold mb-2">Fonctionnalités :</h3>
-                        <ul class="text-sm text-gray-600 space-y-1">
-                          \${service.features.slice(0,3).map(f => \`<li><i class="fas fa-check text-green-600 mr-2"></i>\${f}</li>\`).join('')}
-                        </ul>
-                      </div>
-                      
-                      <div class="bg-indigo-50 rounded-lg p-3 mt-4">
-                        <div class="grid grid-cols-3 gap-2 text-center text-sm">
-                          \${Object.entries(service.metrics).map(([key, val]) => \`
+              <div class="max-w-7xl mx-auto px-4 py-12">
+                <!-- Services Grid -->
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                  \${data.services.map((service, idx) => \`
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all group">
+                      <div class="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 text-white">
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center">
+                            <i class="fas \${service.icon} text-5xl mr-4"></i>
                             <div>
-                              <div class="font-bold text-indigo-600">\${val}</div>
-                              <div class="text-xs text-gray-600">\${key}</div>
+                              <h2 class="text-2xl font-bold">\${service.title}</h2>
+                              <p class="text-indigo-100 text-sm mt-1">\${service.tagline}</p>
                             </div>
-                          \`).join('')}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="p-6">
+                        <p class="text-gray-700 mb-6">\${service.description}</p>
+                        
+                        <!-- Features -->
+                        <div class="mb-6">
+                          <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-list-check text-indigo-600 mr-2"></i>
+                            Fonctionnalités
+                          </h3>
+                          <div class="grid gap-2">
+                            \${service.features.slice(0,5).map(f => 
+                              '<div class="flex items-start text-sm">' +
+                                '<i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>' +
+                                '<span class="text-gray-600">' + f + '</span>' +
+                              '</div>'
+                            ).join('')}
+                          </div>
+                        </div>
+                        
+                        <!-- Benefits -->
+                        <div class="mb-6">
+                          <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-award text-indigo-600 mr-2"></i>
+                            Bénéfices
+                          </h3>
+                          <div class="grid gap-2">
+                            \${service.benefits.slice(0,3).map(b => 
+                              '<div class="flex items-start text-sm">' +
+                                '<i class="fas fa-arrow-right text-indigo-500 mr-2 mt-1"></i>' +
+                                '<span class="text-gray-600">' + b + '</span>' +
+                              '</div>'
+                            ).join('')}
+                          </div>
+                        </div>
+                        
+                        <!-- Metrics -->
+                        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4">
+                          <h4 class="font-bold text-sm mb-3 text-gray-700">Métriques Clés</h4>
+                          <div class="grid grid-cols-3 gap-4">
+                            \${Object.entries(service.metrics).map(([key, val]) => 
+                              '<div class="text-center">' +
+                                '<div class="text-2xl font-bold text-indigo-600">' + val + '</div>' +
+                                '<div class="text-xs text-gray-600 mt-1">' + key + '</div>' +
+                              '</div>'
+                            ).join('')}
+                          </div>
+                        </div>
+                        
+                        <!-- CTA -->
+                        <div class="mt-6">
+                          <a href="/contact" class="block text-center bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+                            En savoir plus
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -1312,78 +1537,178 @@ var yt=Object.defineProperty;var Fe=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
             const data = getTestimonialsData(lang);
             
             document.body.innerHTML = renderNavigation('testimonials') + \`
-              <div class="max-w-7xl mx-auto px-4 py-12">
-                <div class="text-center mb-12">
-                  <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
-                  <p class="text-xl text-gray-600 mb-8">\${data.hero.subtitle}</p>
+              <!-- Hero Section -->
+              <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                  <h1 class="text-5xl font-bold mb-6">\${data.hero.title}</h1>
+                  <p class="text-2xl mb-12 opacity-90">\${data.hero.subtitle}</p>
                   
-                  <div class="grid grid-cols-4 gap-6 max-w-3xl mx-auto">
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                     \${data.hero.stats.map(stat => \`
-                      <div class="bg-white rounded-lg shadow p-4">
-                        <div class="text-2xl font-bold text-indigo-600">\${stat.value}</div>
-                        <div class="text-sm text-gray-600">\${stat.label}</div>
+                      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                        <div class="text-4xl font-bold mb-2">\${stat.value}</div>
+                        <div class="text-sm text-indigo-100">\${stat.label}</div>
                       </div>
                     \`).join('')}
                   </div>
                 </div>
+              </div>
 
-                <!-- Testimonials -->
+              <div class="max-w-7xl mx-auto px-4 py-16">
+                <!-- Case Studies Section (Featured First) -->
+                <div class="mb-20">
+                  <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Études de Cas Détaillées</h2>
+                    <p class="text-xl text-gray-600">Découvrez comment nous transformons les entreprises avec l'IA</p>
+                  </div>
+                  
+                  <div class="space-y-12">
+                    \${data.caseStudies.map((cs, idx) => 
+                      '<div class="bg-white rounded-2xl shadow-xl overflow-hidden">' +
+                        '<!-- Header with gradient -->' +
+                        '<div class="bg-gradient-to-r from-indigo-500 to-purple-500 p-8 text-white">' +
+                          '<div class="flex items-start justify-between mb-4">' +
+                            '<div>' +
+                              '<h3 class="text-3xl font-bold mb-2">' + cs.title + '</h3>' +
+                              '<div class="flex items-center text-indigo-100 text-sm">' +
+                                '<i class="fas fa-building mr-2"></i>' + cs.client + 
+                                '<span class="mx-3">•</span>' +
+                                '<i class="fas fa-industry mr-2"></i>' + cs.industry +
+                              '</div>' +
+                            '</div>' +
+                            '<div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-sm font-bold">' +
+                              cs.duration +
+                            '</div>' +
+                          '</div>' +
+                        '</div>' +
+                        
+                        '<!-- Body Content -->' +
+                        '<div class="p-8">' +
+                          '<!-- Challenge Section -->' +
+                          '<div class="mb-8">' +
+                            '<div class="flex items-center mb-4">' +
+                              '<div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">' +
+                                '<i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>' +
+                              '</div>' +
+                              '<h4 class="text-2xl font-bold text-gray-800">Le Défi</h4>' +
+                            '</div>' +
+                            '<p class="text-gray-700 text-lg leading-relaxed pl-13">' + cs.challenge + '</p>' +
+                          '</div>' +
+                          
+                          '<!-- Solution Section -->' +
+                          '<div class="mb-8">' +
+                            '<div class="flex items-center mb-4">' +
+                              '<div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">' +
+                                '<i class="fas fa-lightbulb text-blue-600 text-xl"></i>' +
+                              '</div>' +
+                              '<h4 class="text-2xl font-bold text-gray-800">Notre Solution</h4>' +
+                            '</div>' +
+                            '<p class="text-gray-700 text-lg leading-relaxed pl-13 mb-4">' + cs.solution + '</p>' +
+                            '<div class="pl-13">' +
+                              '<h5 class="font-bold text-gray-700 mb-3">Technologies Utilisées:</h5>' +
+                              '<div class="flex flex-wrap gap-2">' +
+                                cs.technologies.map(tech => 
+                                  '<span class="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">' +
+                                    '<i class="fas fa-code mr-1"></i>' + tech +
+                                  '</span>'
+                                ).join('') +
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                          
+                          '<!-- Results Section with Metrics -->' +
+                          '<div class="mb-6">' +
+                            '<div class="flex items-center mb-4">' +
+                              '<div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">' +
+                                '<i class="fas fa-chart-line text-green-600 text-xl"></i>' +
+                              '</div>' +
+                              '<h4 class="text-2xl font-bold text-gray-800">Résultats Mesurables</h4>' +
+                            '</div>' +
+                            '<div class="grid md:grid-cols-3 gap-4 mb-6">' +
+                              cs.results.slice(0,3).map(result => 
+                                '<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 border border-green-200">' +
+                                  '<i class="fas fa-check-circle text-green-600 text-2xl mb-2"></i>' +
+                                  '<p class="text-gray-800 font-semibold">' + result + '</p>' +
+                                '</div>'
+                              ).join('') +
+                            '</div>' +
+                          '</div>' +
+                          
+                          '<!-- Impact Metrics Bar -->' +
+                          '<div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">' +
+                            '<div class="grid md:grid-cols-3 gap-6 text-center">' +
+                              Object.entries(cs.metrics || {}).slice(0,3).map(([key, val]) =>
+                                '<div>' +
+                                  '<div class="text-3xl font-bold text-indigo-600 mb-1">' + val + '</div>' +
+                                  '<div class="text-sm text-gray-600 font-medium">' + key + '</div>' +
+                                '</div>'
+                              ).join('') +
+                            '</div>' +
+                          '</div>' +
+                          
+                          '<!-- Testimonial Quote -->' +
+                          (cs.testimonial ? 
+                            '<div class="mt-6 bg-gray-50 rounded-xl p-6 border-l-4 border-indigo-600">' +
+                              '<i class="fas fa-quote-left text-indigo-300 text-2xl mb-3"></i>' +
+                              '<p class="text-gray-700 italic text-lg mb-4">' + cs.testimonial + '</p>' +
+                              '<div class="flex items-center">' +
+                                '<div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mr-3">' +
+                                  (cs.testimonialAuthor ? cs.testimonialAuthor.substring(0,2).toUpperCase() : 'XX') +
+                                '</div>' +
+                                '<div>' +
+                                  '<div class="font-bold text-gray-800">' + (cs.testimonialAuthor || '') + '</div>' +
+                                  '<div class="text-sm text-gray-600">' + (cs.testimonialRole || '') + '</div>' +
+                                '</div>' +
+                              '</div>' +
+                            '</div>'
+                          : '') +
+                        '</div>' +
+                      '</div>'
+                    ).join('')}
+                  </div>
+                </div>
+
+                <!-- Testimonials Grid Section -->
                 <div class="mb-16">
-                  <h2 class="text-3xl font-bold mb-8">Témoignages Clients</h2>
+                  <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Ce Que Disent Nos Clients</h2>
+                    <p class="text-xl text-gray-600">Plus de 50+ entreprises nous font confiance</p>
+                  </div>
+                  
                   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    \${data.testimonials.slice(0,6).map(test => 
-                      '<div class="bg-white rounded-xl shadow-lg p-6">' +
+                    \${data.testimonials.slice(0,6).map(testimonial => 
+                      '<div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow">' +
                         '<div class="flex items-center mb-4">' +
-                          '<div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mr-3">' +
-                            test.avatar +
+                          '<div class="w-14 h-14 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mr-3">' +
+                            testimonial.avatar +
                           '</div>' +
                           '<div>' +
-                            '<div class="font-bold">' + test.clientName + '</div>' +
-                            '<div class="text-sm text-gray-600">' + test.clientRole + '</div>' +
-                            '<div class="text-xs text-gray-500">' + test.companyName + '</div>' +
+                            '<div class="font-bold text-gray-800">' + testimonial.clientName + '</div>' +
+                            '<div class="text-sm text-gray-600">' + testimonial.clientRole + '</div>' +
+                            '<div class="text-xs text-indigo-600 font-medium">' + testimonial.companyName + '</div>' +
                           '</div>' +
                         '</div>' +
-                        '<div class="text-yellow-400 mb-2">★★★★★</div>' +
-                        '<p class="text-gray-600 italic mb-4">' + (test.quote || '') + '</p>' +
+                        '<div class="flex text-yellow-400 mb-3 text-lg">' +
+                          '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>' +
+                        '</div>' +
+                        '<p class="text-gray-700 italic leading-relaxed">' + (testimonial.quote || testimonial.feedback || '') + '</p>' +
                       '</div>'
                     ).join('')}
                   </div>
                 </div>
 
-                <!-- Case Studies -->
-                <div class="mb-16">
-                  <h2 class="text-3xl font-bold mb-8">Études de Cas</h2>
-                  <div class="space-y-6">
-                    \${data.caseStudies.map(cs => 
-                      '<div class="bg-white rounded-xl shadow-lg p-6">' +
-                        '<h3 class="text-xl font-bold mb-2">' + cs.title + '</h3>' +
-                        '<div class="text-indigo-600 mb-4">' + cs.industry + ' - ' + cs.client + '</div>' +
-                        '<div class="grid md:grid-cols-3 gap-4 text-sm">' +
-                          '<div>' +
-                            '<h4 class="font-bold text-red-600 mb-2">Défi</h4>' +
-                            '<p class="text-gray-600">' + cs.challenge.substring(0, 100) + '...</p>' +
-                          '</div>' +
-                          '<div>' +
-                            '<h4 class="font-bold text-blue-600 mb-2">Solution</h4>' +
-                            '<p class="text-gray-600">' + cs.solution.substring(0, 100) + '...</p>' +
-                          '</div>' +
-                          '<div>' +
-                            '<h4 class="font-bold text-green-600 mb-2">Résultats</h4>' +
-                            '<ul class="text-gray-600">' + cs.results.slice(0,2).map(r => '<li>• ' + r + '</li>').join('') + '</ul>' +
-                          '</div>' +
-                        '</div>' +
-                      '</div>'
-                    ).join('')}
+                <!-- Final CTA -->
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-12 text-center shadow-2xl">
+                  <h2 class="text-4xl font-bold mb-4">\${data.cta.title}</h2>
+                  <p class="text-xl mb-8 opacity-90">\${data.cta.subtitle}</p>
+                  <div class="flex justify-center gap-4">
+                    <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                      \${data.cta.primaryButton}
+                    </a>
+                    <a href="/services" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-indigo-600 transition-colors">
+                      Nos Services
+                    </a>
                   </div>
-                </div>
-
-                <!-- CTA -->
-                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-12 text-center">
-                  <h2 class="text-3xl font-bold mb-4">\${data.cta.title}</h2>
-                  <p class="text-xl mb-6">\${data.cta.subtitle}</p>
-                  <a href="/contact" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold inline-block hover:bg-gray-100">
-                    \${data.cta.primaryButton}
-                  </a>
                 </div>
               </div>
             \` + renderFooter();

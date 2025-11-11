@@ -243,6 +243,180 @@ app.get('/', (c) => {
             </div>
         </section>
 
+        <!-- Process Section -->
+        <section id="process" class="bg-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Notre Processus Éprouvé</h2>
+                    <p class="text-xl text-gray-600">Une approche en 3 étapes pour des résultats garantis</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all h-full">
+                            <div class="absolute -top-6 left-8">
+                                <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                                    1
+                                </div>
+                            </div>
+                            <div class="mt-8">
+                                <div class="text-indigo-600 mb-4">
+                                    <i class="fas fa-handshake text-5xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3">Consultation Gratuite</h3>
+                                <p class="text-gray-600 mb-4">Nous comprenons vos besoins et objectifs business pour identifier les opportunités IA à fort ROI.</p>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Analyse de vos défis actuels</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Identification des opportunités</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Évaluation du potentiel ROI</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-6 border-t border-indigo-200">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-500">Durée</span>
+                                        <span class="font-semibold">30-60 min</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-2">
+                                        <span class="text-sm text-gray-500">Livrable</span>
+                                        <span class="font-semibold text-sm">Rapport opportunités</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arrow -->
+                        <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+                            <i class="fas fa-arrow-right text-3xl text-indigo-300"></i>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all h-full">
+                            <div class="absolute -top-6 left-8">
+                                <div class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                                    2
+                                </div>
+                            </div>
+                            <div class="mt-8">
+                                <div class="text-purple-600 mb-4">
+                                    <i class="fas fa-project-diagram text-5xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3">Diagramme & POC</h3>
+                                <p class="text-gray-600 mb-4">Validation rapide avec un proof-of-concept fonctionnel sur vos vraies données.</p>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Diagrammes de processus</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>POC en 1-2 semaines</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Tests avec données réelles</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-6 border-t border-purple-200">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-500">Durée</span>
+                                        <span class="font-semibold">1-2 semaines</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-2">
+                                        <span class="text-sm text-gray-500">Livrable</span>
+                                        <span class="font-semibold text-sm">POC fonctionnel</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arrow -->
+                        <div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+                            <i class="fas fa-arrow-right text-3xl text-purple-300"></i>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all h-full">
+                            <div class="absolute -top-6 left-8">
+                                <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                                    3
+                                </div>
+                            </div>
+                            <div class="mt-8">
+                                <div class="text-green-600 mb-4">
+                                    <i class="fas fa-rocket text-5xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3">Lancement Projet</h3>
+                                <p class="text-gray-600 mb-4">Déploiement et intégration complète dans votre infrastructure existante.</p>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Intégration stack existant</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Architecture scalable</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2"></i>
+                                        <span>Formation et support</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-6 border-t border-green-200">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-500">Durée</span>
+                                        <span class="font-semibold">4-12 semaines</span>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-2">
+                                        <span class="text-sm text-gray-500">Livrable</span>
+                                        <span class="font-semibold text-sm">Solution en prod</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Proof Stats -->
+                <div class="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-12 text-white">
+                    <div class="grid md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <div class="text-5xl font-bold mb-2">200+</div>
+                            <div class="text-indigo-200">Agents IA Construits</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold mb-2">1M$</div>
+                            <div class="text-indigo-200">Économies Moyennes/An</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold mb-2">84%</div>
+                            <div class="text-indigo-200">Amélioration Résolution</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold mb-2">50+</div>
+                            <div class="text-indigo-200">Clients Satisfaits</div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <p class="text-xl mb-6">Besoin d'aide pour construire des agents IA ? Nous avons construit 200+ agents. Nous savons ce qui fonctionne.</p>
+                        <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 inline-block shadow-lg">
+                            Réserver une Consultation Gratuite
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section id="about" class="bg-gray-100 py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1157,36 +1331,87 @@ app.get('/services', (c) => {
             const data = getServicesData(lang);
             
             document.body.innerHTML = renderNavigation('services') + \`
-              <div class="max-w-7xl mx-auto px-4 py-12">
-                <div class="text-center mb-12">
-                  <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
-                  <p class="text-xl text-gray-600">\${data.hero.subtitle}</p>
+              <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                  <h1 class="text-5xl font-bold mb-6">\${data.hero.title}</h1>
+                  <p class="text-2xl mb-8 opacity-90">\${data.hero.subtitle}</p>
+                  <div class="flex justify-center gap-4">
+                    <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100">Démarrer un Projet</a>
+                    <a href="/testimonials" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-indigo-600">Voir Études de Cas</a>
+                  </div>
                 </div>
+              </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  \${data.services.map(service => \`
-                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all">
-                      <div class="flex items-center mb-4">
-                        <i class="fas \${service.icon} text-4xl text-indigo-600 mr-4"></i>
-                        <h2 class="text-xl font-bold">\${service.title}</h2>
-                      </div>
-                      <p class="text-gray-600 mb-4">\${service.description}</p>
-                      
-                      <div class="mb-4">
-                        <h3 class="font-semibold mb-2">Fonctionnalités :</h3>
-                        <ul class="text-sm text-gray-600 space-y-1">
-                          \${service.features.slice(0,3).map(f => \`<li><i class="fas fa-check text-green-600 mr-2"></i>\${f}</li>\`).join('')}
-                        </ul>
-                      </div>
-                      
-                      <div class="bg-indigo-50 rounded-lg p-3 mt-4">
-                        <div class="grid grid-cols-3 gap-2 text-center text-sm">
-                          \${Object.entries(service.metrics).map(([key, val]) => \`
+              <div class="max-w-7xl mx-auto px-4 py-12">
+                <!-- Services Grid -->
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                  \${data.services.map((service, idx) => \`
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all group">
+                      <div class="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 text-white">
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center">
+                            <i class="fas \${service.icon} text-5xl mr-4"></i>
                             <div>
-                              <div class="font-bold text-indigo-600">\${val}</div>
-                              <div class="text-xs text-gray-600">\${key}</div>
+                              <h2 class="text-2xl font-bold">\${service.title}</h2>
+                              <p class="text-indigo-100 text-sm mt-1">\${service.tagline}</p>
                             </div>
-                          \`).join('')}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="p-6">
+                        <p class="text-gray-700 mb-6">\${service.description}</p>
+                        
+                        <!-- Features -->
+                        <div class="mb-6">
+                          <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-list-check text-indigo-600 mr-2"></i>
+                            Fonctionnalités
+                          </h3>
+                          <div class="grid gap-2">
+                            \${service.features.slice(0,5).map(f => 
+                              '<div class="flex items-start text-sm">' +
+                                '<i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>' +
+                                '<span class="text-gray-600">' + f + '</span>' +
+                              '</div>'
+                            ).join('')}
+                          </div>
+                        </div>
+                        
+                        <!-- Benefits -->
+                        <div class="mb-6">
+                          <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-award text-indigo-600 mr-2"></i>
+                            Bénéfices
+                          </h3>
+                          <div class="grid gap-2">
+                            \${service.benefits.slice(0,3).map(b => 
+                              '<div class="flex items-start text-sm">' +
+                                '<i class="fas fa-arrow-right text-indigo-500 mr-2 mt-1"></i>' +
+                                '<span class="text-gray-600">' + b + '</span>' +
+                              '</div>'
+                            ).join('')}
+                          </div>
+                        </div>
+                        
+                        <!-- Metrics -->
+                        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4">
+                          <h4 class="font-bold text-sm mb-3 text-gray-700">Métriques Clés</h4>
+                          <div class="grid grid-cols-3 gap-4">
+                            \${Object.entries(service.metrics).map(([key, val]) => 
+                              '<div class="text-center">' +
+                                '<div class="text-2xl font-bold text-indigo-600">' + val + '</div>' +
+                                '<div class="text-xs text-gray-600 mt-1">' + key + '</div>' +
+                              '</div>'
+                            ).join('')}
+                          </div>
+                        </div>
+                        
+                        <!-- CTA -->
+                        <div class="mt-6">
+                          <a href="/contact" class="block text-center bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+                            En savoir plus
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -1555,78 +1780,178 @@ app.get('/testimonials', (c) => {
             const data = getTestimonialsData(lang);
             
             document.body.innerHTML = renderNavigation('testimonials') + \`
-              <div class="max-w-7xl mx-auto px-4 py-12">
-                <div class="text-center mb-12">
-                  <h1 class="text-4xl font-bold mb-4">\${data.hero.title}</h1>
-                  <p class="text-xl text-gray-600 mb-8">\${data.hero.subtitle}</p>
+              <!-- Hero Section -->
+              <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                  <h1 class="text-5xl font-bold mb-6">\${data.hero.title}</h1>
+                  <p class="text-2xl mb-12 opacity-90">\${data.hero.subtitle}</p>
                   
-                  <div class="grid grid-cols-4 gap-6 max-w-3xl mx-auto">
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                     \${data.hero.stats.map(stat => \`
-                      <div class="bg-white rounded-lg shadow p-4">
-                        <div class="text-2xl font-bold text-indigo-600">\${stat.value}</div>
-                        <div class="text-sm text-gray-600">\${stat.label}</div>
+                      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                        <div class="text-4xl font-bold mb-2">\${stat.value}</div>
+                        <div class="text-sm text-indigo-100">\${stat.label}</div>
                       </div>
                     \`).join('')}
                   </div>
                 </div>
+              </div>
 
-                <!-- Testimonials -->
+              <div class="max-w-7xl mx-auto px-4 py-16">
+                <!-- Case Studies Section (Featured First) -->
+                <div class="mb-20">
+                  <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Études de Cas Détaillées</h2>
+                    <p class="text-xl text-gray-600">Découvrez comment nous transformons les entreprises avec l'IA</p>
+                  </div>
+                  
+                  <div class="space-y-12">
+                    \${data.caseStudies.map((cs, idx) => 
+                      '<div class="bg-white rounded-2xl shadow-xl overflow-hidden">' +
+                        '<!-- Header with gradient -->' +
+                        '<div class="bg-gradient-to-r from-indigo-500 to-purple-500 p-8 text-white">' +
+                          '<div class="flex items-start justify-between mb-4">' +
+                            '<div>' +
+                              '<h3 class="text-3xl font-bold mb-2">' + cs.title + '</h3>' +
+                              '<div class="flex items-center text-indigo-100 text-sm">' +
+                                '<i class="fas fa-building mr-2"></i>' + cs.client + 
+                                '<span class="mx-3">•</span>' +
+                                '<i class="fas fa-industry mr-2"></i>' + cs.industry +
+                              '</div>' +
+                            '</div>' +
+                            '<div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-sm font-bold">' +
+                              cs.duration +
+                            '</div>' +
+                          '</div>' +
+                        '</div>' +
+                        
+                        '<!-- Body Content -->' +
+                        '<div class="p-8">' +
+                          '<!-- Challenge Section -->' +
+                          '<div class="mb-8">' +
+                            '<div class="flex items-center mb-4">' +
+                              '<div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">' +
+                                '<i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>' +
+                              '</div>' +
+                              '<h4 class="text-2xl font-bold text-gray-800">Le Défi</h4>' +
+                            '</div>' +
+                            '<p class="text-gray-700 text-lg leading-relaxed pl-13">' + cs.challenge + '</p>' +
+                          '</div>' +
+                          
+                          '<!-- Solution Section -->' +
+                          '<div class="mb-8">' +
+                            '<div class="flex items-center mb-4">' +
+                              '<div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">' +
+                                '<i class="fas fa-lightbulb text-blue-600 text-xl"></i>' +
+                              '</div>' +
+                              '<h4 class="text-2xl font-bold text-gray-800">Notre Solution</h4>' +
+                            '</div>' +
+                            '<p class="text-gray-700 text-lg leading-relaxed pl-13 mb-4">' + cs.solution + '</p>' +
+                            '<div class="pl-13">' +
+                              '<h5 class="font-bold text-gray-700 mb-3">Technologies Utilisées:</h5>' +
+                              '<div class="flex flex-wrap gap-2">' +
+                                cs.technologies.map(tech => 
+                                  '<span class="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">' +
+                                    '<i class="fas fa-code mr-1"></i>' + tech +
+                                  '</span>'
+                                ).join('') +
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                          
+                          '<!-- Results Section with Metrics -->' +
+                          '<div class="mb-6">' +
+                            '<div class="flex items-center mb-4">' +
+                              '<div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">' +
+                                '<i class="fas fa-chart-line text-green-600 text-xl"></i>' +
+                              '</div>' +
+                              '<h4 class="text-2xl font-bold text-gray-800">Résultats Mesurables</h4>' +
+                            '</div>' +
+                            '<div class="grid md:grid-cols-3 gap-4 mb-6">' +
+                              cs.results.slice(0,3).map(result => 
+                                '<div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 border border-green-200">' +
+                                  '<i class="fas fa-check-circle text-green-600 text-2xl mb-2"></i>' +
+                                  '<p class="text-gray-800 font-semibold">' + result + '</p>' +
+                                '</div>'
+                              ).join('') +
+                            '</div>' +
+                          '</div>' +
+                          
+                          '<!-- Impact Metrics Bar -->' +
+                          '<div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">' +
+                            '<div class="grid md:grid-cols-3 gap-6 text-center">' +
+                              Object.entries(cs.metrics || {}).slice(0,3).map(([key, val]) =>
+                                '<div>' +
+                                  '<div class="text-3xl font-bold text-indigo-600 mb-1">' + val + '</div>' +
+                                  '<div class="text-sm text-gray-600 font-medium">' + key + '</div>' +
+                                '</div>'
+                              ).join('') +
+                            '</div>' +
+                          '</div>' +
+                          
+                          '<!-- Testimonial Quote -->' +
+                          (cs.testimonial ? 
+                            '<div class="mt-6 bg-gray-50 rounded-xl p-6 border-l-4 border-indigo-600">' +
+                              '<i class="fas fa-quote-left text-indigo-300 text-2xl mb-3"></i>' +
+                              '<p class="text-gray-700 italic text-lg mb-4">' + cs.testimonial + '</p>' +
+                              '<div class="flex items-center">' +
+                                '<div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mr-3">' +
+                                  (cs.testimonialAuthor ? cs.testimonialAuthor.substring(0,2).toUpperCase() : 'XX') +
+                                '</div>' +
+                                '<div>' +
+                                  '<div class="font-bold text-gray-800">' + (cs.testimonialAuthor || '') + '</div>' +
+                                  '<div class="text-sm text-gray-600">' + (cs.testimonialRole || '') + '</div>' +
+                                '</div>' +
+                              '</div>' +
+                            '</div>'
+                          : '') +
+                        '</div>' +
+                      '</div>'
+                    ).join('')}
+                  </div>
+                </div>
+
+                <!-- Testimonials Grid Section -->
                 <div class="mb-16">
-                  <h2 class="text-3xl font-bold mb-8">Témoignages Clients</h2>
+                  <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Ce Que Disent Nos Clients</h2>
+                    <p class="text-xl text-gray-600">Plus de 50+ entreprises nous font confiance</p>
+                  </div>
+                  
                   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    \${data.testimonials.slice(0,6).map(test => 
-                      '<div class="bg-white rounded-xl shadow-lg p-6">' +
+                    \${data.testimonials.slice(0,6).map(testimonial => 
+                      '<div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow">' +
                         '<div class="flex items-center mb-4">' +
-                          '<div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mr-3">' +
-                            test.avatar +
+                          '<div class="w-14 h-14 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mr-3">' +
+                            testimonial.avatar +
                           '</div>' +
                           '<div>' +
-                            '<div class="font-bold">' + test.clientName + '</div>' +
-                            '<div class="text-sm text-gray-600">' + test.clientRole + '</div>' +
-                            '<div class="text-xs text-gray-500">' + test.companyName + '</div>' +
+                            '<div class="font-bold text-gray-800">' + testimonial.clientName + '</div>' +
+                            '<div class="text-sm text-gray-600">' + testimonial.clientRole + '</div>' +
+                            '<div class="text-xs text-indigo-600 font-medium">' + testimonial.companyName + '</div>' +
                           '</div>' +
                         '</div>' +
-                        '<div class="text-yellow-400 mb-2">★★★★★</div>' +
-                        '<p class="text-gray-600 italic mb-4">' + (test.quote || '') + '</p>' +
+                        '<div class="flex text-yellow-400 mb-3 text-lg">' +
+                          '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>' +
+                        '</div>' +
+                        '<p class="text-gray-700 italic leading-relaxed">' + (testimonial.quote || testimonial.feedback || '') + '</p>' +
                       '</div>'
                     ).join('')}
                   </div>
                 </div>
 
-                <!-- Case Studies -->
-                <div class="mb-16">
-                  <h2 class="text-3xl font-bold mb-8">Études de Cas</h2>
-                  <div class="space-y-6">
-                    \${data.caseStudies.map(cs => 
-                      '<div class="bg-white rounded-xl shadow-lg p-6">' +
-                        '<h3 class="text-xl font-bold mb-2">' + cs.title + '</h3>' +
-                        '<div class="text-indigo-600 mb-4">' + cs.industry + ' - ' + cs.client + '</div>' +
-                        '<div class="grid md:grid-cols-3 gap-4 text-sm">' +
-                          '<div>' +
-                            '<h4 class="font-bold text-red-600 mb-2">Défi</h4>' +
-                            '<p class="text-gray-600">' + cs.challenge.substring(0, 100) + '...</p>' +
-                          '</div>' +
-                          '<div>' +
-                            '<h4 class="font-bold text-blue-600 mb-2">Solution</h4>' +
-                            '<p class="text-gray-600">' + cs.solution.substring(0, 100) + '...</p>' +
-                          '</div>' +
-                          '<div>' +
-                            '<h4 class="font-bold text-green-600 mb-2">Résultats</h4>' +
-                            '<ul class="text-gray-600">' + cs.results.slice(0,2).map(r => '<li>• ' + r + '</li>').join('') + '</ul>' +
-                          '</div>' +
-                        '</div>' +
-                      '</div>'
-                    ).join('')}
+                <!-- Final CTA -->
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-12 text-center shadow-2xl">
+                  <h2 class="text-4xl font-bold mb-4">\${data.cta.title}</h2>
+                  <p class="text-xl mb-8 opacity-90">\${data.cta.subtitle}</p>
+                  <div class="flex justify-center gap-4">
+                    <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                      \${data.cta.primaryButton}
+                    </a>
+                    <a href="/services" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-indigo-600 transition-colors">
+                      Nos Services
+                    </a>
                   </div>
-                </div>
-
-                <!-- CTA -->
-                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-12 text-center">
-                  <h2 class="text-3xl font-bold mb-4">\${data.cta.title}</h2>
-                  <p class="text-xl mb-6">\${data.cta.subtitle}</p>
-                  <a href="/contact" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold inline-block hover:bg-gray-100">
-                    \${data.cta.primaryButton}
-                  </a>
                 </div>
               </div>
             \` + renderFooter();
