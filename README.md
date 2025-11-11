@@ -1,24 +1,65 @@
 # Factor AI - Plateforme Complète de Transformation IA
 
-> **Version 4.0.0** - Complete Edition | Sandbox URL: https://3000-iq3bbj8ibym15nrja4r5h-18e660f9.sandbox.novita.ai
+> **Version 4.1.0** - Professional Layouts Edition | Sandbox URL: https://3000-iq3bbj8ibym15nrja4r5h-18e660f9.sandbox.novita.ai
 
 ## 🎯 Vue d'ensemble du projet
 
 **Factor AI** (anciennement Factorise.io) est une plateforme web professionnelle complète pour la transformation digitale et l'intelligence artificielle. Elle combine un site vitrine multi-pages avec un système d'évaluation de maturité IA avancé.
 
-### ✨ Nouveautés V4 (2025-01-11)
+### ✨ Nouveautés V4.1 (2025-11-11) - LAYOUTS PROFESSIONNELS
+
+**3 sections améliorées pour correspondre à factorise.io** :
+
+1. **Page Services (`/services`)** - Layout Premium
+   - **2-colonnes** au lieu de 3 pour meilleure lisibilité
+   - **Headers gradient** indigo-violet avec grandes icônes
+   - **Cartes détaillées** avec 3 sections :
+     - ✓ **Fonctionnalités** (5 items avec icônes check)
+     - ⭐ **Bénéfices** (3 items avec flèches)
+     - 📊 **Métriques clés** (box gradient avec 3 KPIs)
+   - **CTA individuel** par service
+   - Hero section avec 2 boutons CTA
+
+2. **Homepage - Section Process** - Workflow 3 Étapes
+   - **3 cartes gradient** (bleu/violet/vert) avec numéros
+   - Chaque étape inclut :
+     - Grande icône FontAwesome
+     - Titre + description détaillée
+     - Checklist de 4-5 points
+     - Durée estimée
+     - Livrable clé
+   - **Barre de social proof** en bas :
+     - 4 statistiques (200+ agents, 1M$, 84%, 50+)
+     - CTA "Réserver une Consultation Gratuite"
+
+3. **Page Études de Cas (`/testimonials`)** - Format Détaillé
+   - **Hero gradient** avec 4 stats en cards
+   - **Études de cas expandables** :
+     - Header gradient avec client/industrie/durée
+     - 🔴 **Défi** : Description complète avec icône
+     - 💡 **Solution** : Détails + technologies badges
+     - 📈 **Résultats** : 3 cartes gradient avec métriques
+     - **Metrics bar** : 3 KPIs principaux en highlight
+     - **Citation client** avec avatar
+   - **Testimonials grid** : 6 cartes avec stars 5★
+   - CTA final avec 2 boutons
+
+**Bundle size** : 125 KB (optimisé)  
+**Tests** : Toutes les pages retournent 200 OK  
+**Backup V4.1** : https://page.gensparksite.com/project_backups/v4.1_professional_layouts.tar.gz
+
+### Historique V4 (2025-01-11)
 
 **5 nouvelles pages professionnelles** ajoutées :
-- `/services` - 7 services IA détaillés avec métriques ROI
+- `/services` - 7 services IA détaillés avec métriques ROI (maintenant avec layout premium V4.1)
 - `/about` - Vision, mission, équipe de 6 experts, technologies
 - `/contact` - Formulaire fonctionnel + API endpoint
 - `/faq` - 15+ questions avec recherche en temps réel
-- `/testimonials` - 6 témoignages + 3 études de cas détaillées
+- `/testimonials` - 6 témoignages + 3 études de cas détaillées (maintenant avec format expandable V4.1)
 
 **96 KB de données structurées** bilingues FR/EN ajoutées  
 **100+ nouvelles clés** de traduction  
-**Navigation unifiée** sur toutes les pages  
-**Bundle optimisé** : 105 KB (production-ready)
+**Navigation unifiée** sur toutes les pages
 
 ### Objectifs
 
@@ -41,12 +82,18 @@
 
 #### 1. Pages Professionnelles Factor AI (V4 - NOUVEAU)
 
-##### Page Services (`/services`)
+##### Page Services (`/services`) - ⭐ V4.1 PREMIUM LAYOUT
 - **7 services détaillés** : AI Agents, Workflow Automation, Chatbots, Voice AI, KRS, Consulting
-- **Métriques ROI** pour chaque service
-- **Features, Benefits, Use Cases** complets
-- **Cartes interactives** avec animations hover
-- **CTA vers contact** intégré
+- **Layout 2-colonnes professionnelles** pour meilleure lisibilité
+- **Headers gradient indigo-violet** avec grandes icônes + tagline
+- **Cartes structurées** avec 4 sections :
+  - ✓ **Fonctionnalités** (5 features avec checkmarks verts)
+  - ⭐ **Bénéfices** (3 benefits avec flèches indigo)
+  - 📊 **Métriques Clés** (box gradient avec 3 KPIs/service)
+  - 🎯 **CTA individuel** "En savoir plus"
+- **Hero section** avec gradient + 2 CTA (Démarrer/Voir Cas)
+- **Animations hover** : shadow-xl, transformations
+- **CTA final** : Box gradient avec bouton consultation
 
 ##### Page À Propos (`/about`)
 - **Vision & Mission** de Factor AI
@@ -76,26 +123,54 @@
 - **Accordéons cliquables** pour afficher/masquer réponses
 - **24 KB de contenu** structuré bilingue
 
-##### Page Témoignages (`/testimonials`)
-- **6 témoignages clients** complets avec :
-  - Avatars, noms, rôles, entreprises
-  - Notes 5 étoiles
-  - Citations authentiques
-  - Métriques de résultats concrets
-- **3 études de cas détaillées** :
+##### Page Témoignages (`/testimonials`) - ⭐ V4.1 FORMAT DÉTAILLÉ
+- **Hero gradient** avec 4 statistiques :
+  - Cards semi-transparentes avec backdrop-blur
+  - Valeurs prominentes (200+, 98%, 84%, 50+)
+  
+- **3 études de cas expandables** :
   - **E-commerce** (FashionHub) : -70% temps réponse, +28% conversions
   - **Finance** (FinanceConnect) : -900K€/an coûts, +35% satisfaction
   - **SaaS** (DataFlow) : -90% temps recherche, +25% productivité
-- **Données structurées** : Défi, Solution, Résultats avec métriques
+  
+  Structure par étude de cas :
+  - **Header gradient** : Titre + client + industrie + durée (badge)
+  - 🔴 **Le Défi** : Icône rouge + description complète (~150 mots)
+  - 💡 **Notre Solution** : Icône bleue + détails solution + badges technologies
+  - 📈 **Résultats Mesurables** : 3 cartes gradient vert avec checkmarks
+  - 📊 **Metrics Bar** : 3 KPIs principaux en highlight (gradient indigo)
+  - 💬 **Citation client** : Box avec quote + avatar + nom/rôle
+  
+- **6 témoignages clients** en grid 3 colonnes :
+  - Avatars gradient indigo-violet
+  - 5 étoiles jaunes (icônes Font Awesome)
+  - Citations complètes avec hover effect
+  - Noms/rôles/entreprises structurés
+  
+- **CTA final** : Gradient box avec 2 boutons (Contact + Services)
 
 #### 2. Site Vitrine Public (Homepage)
 - **Page d'accueil** avec sections :
   - Hero section avec CTA (Call-to-Action)
   - Services proposés (3 cartes)
+  - **⭐ Section Process V4.1** : Workflow 3 étapes professionnel
+    - 🔵 **Étape 1 - Consultation Gratuite** (gradient bleu)
+      - Grande icône + titre + description
+      - Checklist 4 points (analyse besoins, objectifs, ROI, roadmap)
+      - Durée : 30-45 min | Livrable : Document stratégique
+    - 🟣 **Étape 2 - Diagramme & POC** (gradient violet)
+      - Checklist 5 points (diagramme détaillé, modèles IA, tests, validation, recommandations)
+      - Durée : 2-4 semaines | Livrable : POC fonctionnel
+    - 🟢 **Étape 3 - Lancement Projet** (gradient vert)
+      - Checklist 5 points (dev complet, intégration, formation, docs, support)
+      - Durée : 4-12 semaines | Livrable : Solution déployée
+    - **Barre de social proof** :
+      - 4 stats visuelles (200+ agents, 1M$ économies, 84% satisfaction, 50+ clients)
+      - CTA principal : "Réserver une Consultation Gratuite"
   - Section À propos avec expertise
   - CTA secondaire
   - Footer complet avec contact
-- **Design moderne** avec Tailwind CSS
+- **Design moderne** avec Tailwind CSS + gradients
 - **Responsive** pour tous les appareils
 - **Navigation fluide** avec ancres
 
