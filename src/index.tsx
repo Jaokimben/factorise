@@ -417,6 +417,163 @@ app.get('/', (c) => {
             </div>
         </section>
 
+        <!-- Agentic Process Section -->
+        <section id="agentic-process" class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Comment Fonctionnent nos Agents IA ?</h2>
+                    <p class="text-xl text-gray-600">Architecture agentic moderne avec orchestration intelligente</p>
+                </div>
+
+                <!-- Agentic Workflow Diagram -->
+                <div class="bg-white rounded-3xl shadow-2xl p-8 mb-12">
+                    <div class="grid md:grid-cols-5 gap-6">
+                        <!-- Step 1: Input -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <i class="fas fa-keyboard text-2xl text-white"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">1. Input</h3>
+                            <p class="text-sm text-gray-600">Requête utilisateur en langage naturel</p>
+                        </div>
+
+                        <div class="flex items-center justify-center">
+                            <i class="fas fa-arrow-right text-3xl text-indigo-300"></i>
+                        </div>
+
+                        <!-- Step 2: Orchestrator -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <i class="fas fa-brain text-2xl text-white"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">2. Orchestrator</h3>
+                            <p class="text-sm text-gray-600">IA maître décompose en sous-tâches</p>
+                        </div>
+
+                        <div class="flex items-center justify-center">
+                            <i class="fas fa-arrow-right text-3xl text-indigo-300"></i>
+                        </div>
+
+                        <!-- Step 3: Specialized Agents -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                <i class="fas fa-users-cog text-2xl text-white"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">3. Agents Spécialisés</h3>
+                            <p class="text-sm text-gray-600">Exécution parallèle des tâches</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Step 4: Tools & APIs -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-tools text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">4. Outils & APIs</h4>
+                                    <p class="text-sm text-gray-600">Accès bases de données, APIs externes, calculateurs, recherche web</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Output -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-check-circle text-indigo-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">5. Résultat Synthétisé</h4>
+                                    <p class="text-sm text-gray-600">Orchestrator combine les réponses en réponse finale cohérente</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Types Grid -->
+                <div class="grid md:grid-cols-4 gap-6 mb-12">
+                    <!-- Research Agent -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-search text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Research Agent</h3>
+                        <p class="text-sm text-gray-600">Recherche et analyse d'information</p>
+                        <div class="mt-3 text-xs text-gray-500">
+                            <i class="fas fa-check mr-1"></i>Web scraping<br>
+                            <i class="fas fa-check mr-1"></i>Data extraction<br>
+                            <i class="fas fa-check mr-1"></i>Fact checking
+                        </div>
+                    </div>
+
+                    <!-- Reasoning Agent -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-lightbulb text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Reasoning Agent</h3>
+                        <p class="text-sm text-gray-600">Raisonnement logique et analyse</p>
+                        <div class="mt-3 text-xs text-gray-500">
+                            <i class="fas fa-check mr-1"></i>Problem solving<br>
+                            <i class="fas fa-check mr-1"></i>Decision making<br>
+                            <i class="fas fa-check mr-1"></i>Pattern detection
+                        </div>
+                    </div>
+
+                    <!-- Action Agent -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-cogs text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Action Agent</h3>
+                        <p class="text-sm text-gray-600">Exécution d'actions concrètes</p>
+                        <div class="mt-3 text-xs text-gray-500">
+                            <i class="fas fa-check mr-1"></i>API calls<br>
+                            <i class="fas fa-check mr-1"></i>DB operations<br>
+                            <i class="fas fa-check mr-1"></i>File handling
+                        </div>
+                    </div>
+
+                    <!-- Communication Agent -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-comments text-orange-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Communication Agent</h3>
+                        <p class="text-sm text-gray-600">Interface utilisateur naturelle</p>
+                        <div class="mt-3 text-xs text-gray-500">
+                            <i class="fas fa-check mr-1"></i>Natural language<br>
+                            <i class="fas fa-check mr-1"></i>Context awareness<br>
+                            <i class="fas fa-check mr-1"></i>Multi-turn dialog
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits of Agentic Approach -->
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Pourquoi l'Approche Agentic ?</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">🎯</div>
+                            <h4 class="font-bold mb-2">Spécialisation</h4>
+                            <p class="text-sm opacity-90">Chaque agent excelle dans son domaine au lieu d'un modèle généraliste</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">⚡</div>
+                            <h4 class="font-bold mb-2">Parallélisation</h4>
+                            <p class="text-sm opacity-90">Exécution simultanée de multiples tâches pour des réponses 10x plus rapides</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">🔄</div>
+                            <h4 class="font-bold mb-2">Modularité</h4>
+                            <p class="text-sm opacity-90">Ajout/remplacement d'agents sans réarchitecturer tout le système</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section id="about" class="bg-gray-100 py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1949,6 +2106,155 @@ app.get('/testimonials', (c) => {
                     </a>
                     <a href="/services" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-indigo-600 transition-colors">
                       Nos Services
+                    </a>
+                  </div>
+                </div>
+              </div>
+            \` + renderFooter();
+          });
+        </script>
+    </body>
+    </html>
+  `)
+})
+
+// Page Use Cases
+app.get('/use-cases', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cas d'Usage IA - Factor AI</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/use-cases-data.js"></script>
+        <script src="/static/nav-component.js"></script>
+        <script src="/static/i18n-page.js"></script>
+    </head>
+    <body class="bg-gray-50">
+        <div id="app"></div>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const lang = getCurrentLang();
+            const data = getUseCasesData(lang);
+            
+            document.getElementById('app').innerHTML = renderNavigation('use-cases') + \`
+              <!-- Hero Section -->
+              <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                  <h1 class="text-5xl font-bold mb-6">\${data.hero.title}</h1>
+                  <p class="text-2xl mb-4 opacity-90">\${data.hero.subtitle}</p>
+                  <p class="text-lg opacity-80 max-w-3xl mx-auto">\${data.hero.description}</p>
+                </div>
+              </div>
+
+              <div class="max-w-7xl mx-auto px-4 py-16">
+                <!-- Categories -->
+                \${data.categories.map((category, catIdx) => \`
+                  <div class="mb-20">
+                    <!-- Category Header -->
+                    <div class="text-center mb-12">
+                      <div class="inline-block mb-4">
+                        <div class="w-20 h-20 bg-gradient-to-r \${category.color} rounded-2xl flex items-center justify-center">
+                          <i class="fas \${category.icon} text-4xl text-white"></i>
+                        </div>
+                      </div>
+                      <h2 class="text-4xl font-bold mb-3">\${category.name}</h2>
+                      <p class="text-xl text-gray-600">\${category.description}</p>
+                    </div>
+
+                    <!-- Use Cases Grid -->
+                    <div class="grid md:grid-cols-2 gap-8">
+                      \${category.useCases.map((useCase, ucIdx) => 
+                        '<div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">' +
+                          '<!-- Header -->' +
+                          '<div class="bg-gradient-to-r ' + category.color + ' p-6 text-white">' +
+                            '<h3 class="text-2xl font-bold mb-2">' + useCase.title + '</h3>' +
+                            '<div class="text-sm opacity-90">' +
+                              '<i class="fas fa-industry mr-2"></i>' + useCase.industry +
+                            '</div>' +
+                          '</div>' +
+                          
+                          '<div class="p-6">' +
+                            '<!-- Challenge -->' +
+                            '<div class="mb-6">' +
+                              '<div class="flex items-center mb-3">' +
+                                '<div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">' +
+                                  '<i class="fas fa-exclamation-circle text-red-600"></i>' +
+                                '</div>' +
+                                '<h4 class="text-lg font-bold">Défi</h4>' +
+                              '</div>' +
+                              '<p class="text-gray-700 pl-11">' + useCase.challenge + '</p>' +
+                            '</div>' +
+                            
+                            '<!-- Solution -->' +
+                            '<div class="mb-6">' +
+                              '<div class="flex items-center mb-3">' +
+                                '<div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">' +
+                                  '<i class="fas fa-lightbulb text-blue-600"></i>' +
+                                '</div>' +
+                                '<h4 class="text-lg font-bold">Solution</h4>' +
+                              '</div>' +
+                              '<p class="text-gray-700 pl-11 mb-3">' + useCase.solution + '</p>' +
+                              '<div class="pl-11 flex flex-wrap gap-2">' +
+                                useCase.technologies.map(tech =>
+                                  '<span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">' +
+                                    '<i class="fas fa-code mr-1"></i>' + tech +
+                                  '</span>'
+                                ).join('') +
+                              '</div>' +
+                            '</div>' +
+                            
+                            '<!-- Benefits -->' +
+                            '<div class="mb-6">' +
+                              '<div class="flex items-center mb-3">' +
+                                '<div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">' +
+                                  '<i class="fas fa-check-circle text-green-600"></i>' +
+                                '</div>' +
+                                '<h4 class="text-lg font-bold">Bénéfices</h4>' +
+                              '</div>' +
+                              '<div class="pl-11 space-y-2">' +
+                                useCase.benefits.map(benefit =>
+                                  '<div class="flex items-start text-sm">' +
+                                    '<i class="fas fa-arrow-right text-green-500 mr-2 mt-1"></i>' +
+                                    '<span class="text-gray-700">' + benefit + '</span>' +
+                                  '</div>'
+                                ).join('') +
+                              '</div>' +
+                            '</div>' +
+                            
+                            '<!-- Metrics -->' +
+                            '<div class="bg-gradient-to-r from-gray-50 to-indigo-50 rounded-xl p-4">' +
+                              '<h4 class="font-bold text-sm mb-3">Résultats Mesurables</h4>' +
+                              '<div class="grid grid-cols-3 gap-3">' +
+                                Object.entries(useCase.metrics).map(([key, val]) =>
+                                  '<div class="text-center">' +
+                                    '<div class="text-2xl font-bold text-indigo-600">' + val + '</div>' +
+                                    '<div class="text-xs text-gray-600 mt-1">' + key + '</div>' +
+                                  '</div>'
+                                ).join('') +
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>'
+                      ).join('')}
+                    </div>
+                  </div>
+                \`).join('')}
+
+                <!-- CTA Final -->
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-12 text-center shadow-2xl">
+                  <h2 class="text-4xl font-bold mb-4">\${data.cta.title}</h2>
+                  <p class="text-xl mb-8 opacity-90">\${data.cta.subtitle}</p>
+                  <div class="flex justify-center gap-4">
+                    <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                      \${data.cta.primaryButton}
+                    </a>
+                    <a href="/services" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-indigo-600 transition-colors">
+                      \${data.cta.secondaryButton}
                     </a>
                   </div>
                 </div>
