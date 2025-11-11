@@ -1878,31 +1878,25 @@ app.get('/testimonials', (c) => {
                           '</div>' +
                           
                           '<!-- Impact Metrics Bar -->' +
-                          '<div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">' +
-                            '<div class="grid md:grid-cols-3 gap-6 text-center">' +
-                              Object.entries(cs.metrics || {}).slice(0,3).map(([key, val]) =>
-                                '<div>' +
-                                  '<div class="text-3xl font-bold text-indigo-600 mb-1">' + val + '</div>' +
-                                  '<div class="text-sm text-gray-600 font-medium">' + key + '</div>' +
-                                '</div>'
-                              ).join('') +
-                            '</div>' +
-                          '</div>' +
+                          (cs.metrics && cs.metrics.after ? 
+                            '<div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">' +
+                              '<h5 class="text-center font-bold text-gray-700 mb-4">Métriques Clés (Après)</h5>' +
+                              '<div class="grid md:grid-cols-4 gap-4 text-center">' +
+                                Object.entries(cs.metrics.after).map(([key, val]) =>
+                                  '<div>' +
+                                    '<div class="text-2xl font-bold text-indigo-600 mb-1">' + val + '</div>' +
+                                    '<div class="text-xs text-gray-600 font-medium">' + key + '</div>' +
+                                  '</div>'
+                                ).join('') +
+                              '</div>' +
+                            '</div>' 
+                          : '') +
                           
                           '<!-- Testimonial Quote -->' +
-                          (cs.testimonial ? 
+                          (cs.testimonialQuote ? 
                             '<div class="mt-6 bg-gray-50 rounded-xl p-6 border-l-4 border-indigo-600">' +
                               '<i class="fas fa-quote-left text-indigo-300 text-2xl mb-3"></i>' +
-                              '<p class="text-gray-700 italic text-lg mb-4">' + cs.testimonial + '</p>' +
-                              '<div class="flex items-center">' +
-                                '<div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold mr-3">' +
-                                  (cs.testimonialAuthor ? cs.testimonialAuthor.substring(0,2).toUpperCase() : 'XX') +
-                                '</div>' +
-                                '<div>' +
-                                  '<div class="font-bold text-gray-800">' + (cs.testimonialAuthor || '') + '</div>' +
-                                  '<div class="text-sm text-gray-600">' + (cs.testimonialRole || '') + '</div>' +
-                                '</div>' +
-                              '</div>' +
+                              '<p class="text-gray-700 italic text-lg leading-relaxed">' + cs.testimonialQuote + '</p>' +
                             '</div>'
                           : '') +
                         '</div>' +

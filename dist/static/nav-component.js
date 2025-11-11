@@ -105,11 +105,11 @@ function renderFooter() {
           <div>
             <h4 class="font-bold mb-4" data-i18n="footer_services">Services</h4>
             <ul class="space-y-2 text-gray-400">
-              <li><a href="/services#ai-agents" class="hover:text-indigo-400">Agents IA</a></li>
-              <li><a href="/services#workflows" class="hover:text-indigo-400">Automatisation</a></li>
-              <li><a href="/services#chatbots" class="hover:text-indigo-400">Chatbots</a></li>
-              <li><a href="/services#voice-ai" class="hover:text-indigo-400">IA Vocale</a></li>
-              <li><a href="/services#consulting" class="hover:text-indigo-400">Conseil</a></li>
+              <li><a href="/services" class="hover:text-indigo-400">Agents IA</a></li>
+              <li><a href="/services" class="hover:text-indigo-400">Automatisation</a></li>
+              <li><a href="/services" class="hover:text-indigo-400">Chatbots</a></li>
+              <li><a href="/services" class="hover:text-indigo-400">IA Vocale</a></li>
+              <li><a href="/services" class="hover:text-indigo-400">Conseil</a></li>
             </ul>
           </div>
           
