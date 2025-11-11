@@ -50,14 +50,20 @@
 - **Historique** des évaluations avec dates et statuts
 - **Accès rapide** à une nouvelle évaluation
 
-#### 4. Évaluation de Maturité IA
-- **5 catégories d'évaluation** :
-  1. **Vision & Stratégie IA** (4 questions)
-  2. **Données & Gouvernance** (4 questions)
-  3. **Technologies & Outils** (4 questions)
-  4. **Organisation & Compétences** (4 questions)
-  5. **Éthique & Conformité** (4 questions)
-- **20 questions au total** avec échelle de 1 à 5
+#### 4. Évaluation de Maturité IA (Version Professionnelle)
+- **10 catégories d'évaluation complètes** :
+  1. **Stratégie & Vision IA** (4 questions)
+  2. **Gouvernance & Politique** (4 questions)
+  3. **Données & Infrastructure** (4 questions)
+  4. **Modèles & Développement** (4 questions)
+  5. **MLOps & Production** (4 questions)
+  6. **Sécurité & Confidentialité** (4 questions)
+  7. **Talents & Organisation** (4 questions)
+  8. **Mesure & ROI** (4 questions)
+  9. **Adoption & Change Management** (4 questions)
+  10. **Éthique & Responsabilité** (4 questions)
+- **40 questions professionnelles** avec échelle de 1 à 5
+- **Niveaux de maturité** : Initial, Répétable, Défini, Géré, Optimisé
 - **Interface progressive** : une catégorie à la fois
 - **Barre de progression** en temps réel
 - **Validation** : impossible de passer à la suite sans répondre
@@ -79,9 +85,18 @@
   - Code couleur selon l'urgence
 - **Export PDF** : impression des résultats
 
+#### 6. Centre de Ressources (/resources)
+- **9 ressources téléchargeables** professionnelles :
+  - **Guides** : Implémentation IA, Gouvernance, MLOps Best Practices
+  - **Templates** : Stratégie IA (PPTX), Calculateur ROI (Excel), Roadmap Maturité
+  - **Cas Clients** : Retail, Finance, Manufacturing
+- **Organisé par type** : Guides, Templates, Cas d'usage
+- **Métadonnées** : Taille, format, nombre de pages, industrie
+
 ### 🔧 Fonctionnalités techniques
 
 - **Multi-langue** : Système i18n avec FR/EN, extensible à d'autres langues
+- **Assessment avancé** : 10 catégories, 40 questions, framework de maturité
 - **Architecture** : Hono + Cloudflare Pages + D1 Database
 - **Frontend** : HTML/CSS avec Tailwind CSS, Axios pour les appels API
 - **Backend** : API RESTful avec Hono
