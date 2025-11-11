@@ -432,7 +432,37 @@ const translations = {
     footer_newsletter_button: "Subscribe",
     footer_social_linkedin: "LinkedIn",
     footer_social_twitter: "Twitter",
-    footer_social_github: "GitHub"
+    footer_social_github: "GitHub",
+    
+    // Cross-navigation
+    cross_nav_title: "Continue your exploration",
+    cross_nav_back_home: "Back to home",
+    cross_nav_discover: "Discover",
+    cross_nav_use_cases_desc: "18 concrete examples",
+    cross_nav_testimonials_desc: "Client reviews",
+    cross_nav_about_desc: "Our team and vision",
+    cross_nav_resources_desc: "Guides and templates",
+    cross_nav_services_desc: "7 detailed AI services",
+    cross_nav_contact_desc: "Contact us",
+    cross_nav_faq_desc: "Frequently asked questions",
+    
+    // Homepage sections
+    home_services_title: "Our Services",
+    home_services_cta: "See all our services",
+    home_services_learn_more: "Learn more →",
+    home_explorer_title: "Explore Factor AI",
+    home_cta_title: "Ready to transform your business?",
+    home_cta_subtitle: "Start your free AI maturity assessment now",
+    home_cta_primary: "Start free assessment",
+    home_cta_secondary: "Contact us",
+    
+    // Services cards
+    service_strategy_title: "AI Strategy",
+    service_strategy_desc: "Define your AI roadmap with our certified experts",
+    service_assessment_title: "Maturity Assessment",
+    service_assessment_desc: "Analyze your AI maturity level and identify opportunities",
+    service_transformation_title: "Digital Transformation",
+    service_transformation_desc: "Complete support for your digital transformation journey"
   }
 };
 
@@ -450,15 +480,6 @@ function t(key, lang = 'fr', vars = {}) {
 
 // Get current language from localStorage or default to French
 function getCurrentLang() {
-  return localStorage.getItem('lang') || 'fr';
-}
-
-// Set language
-function setLanguage(lang) {
-  localStorage.setItem('lang', lang);
-  window.location.reload();
-}
-tLang() {
   return localStorage.getItem('lang') || 'fr';
 }
 
