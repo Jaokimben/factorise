@@ -22,6 +22,7 @@ function renderNavigation(currentPage = '') {
             <a href="/" class="nav-link ${currentPage === 'home' ? 'text-indigo-600 font-semibold' : 'text-gray-700 hover:text-indigo-600'}" data-i18n="nav_home">Accueil</a>
             <a href="/services" class="nav-link ${currentPage === 'services' ? 'text-indigo-600 font-semibold' : 'text-gray-700 hover:text-indigo-600'}" data-i18n="nav_services">Services</a>
             <a href="/use-cases" class="nav-link ${currentPage === 'use-cases' ? 'text-indigo-600 font-semibold' : 'text-gray-700 hover:text-indigo-600'}">Cas d'Usage</a>
+            <a href="/case-studies" class="nav-link ${currentPage === 'case-studies' ? 'text-indigo-600 font-semibold' : 'text-gray-700 hover:text-indigo-600'}">Études de Cas</a>
             <a href="/about" class="nav-link ${currentPage === 'about' ? 'text-indigo-600 font-semibold' : 'text-gray-700 hover:text-indigo-600'}" data-i18n="nav_about">À propos</a>
             <a href="/testimonials" class="nav-link ${currentPage === 'testimonials' ? 'text-indigo-600 font-semibold' : 'text-gray-700 hover:text-indigo-600'}" data-i18n="nav_testimonials">Témoignages</a>
             <a href="/faq" class="nav-link ${currentPage === 'faq' ? 'text-indigo-600 font-semibold' : 'text-gray-700 hover:text-indigo-600'}" data-i18n="nav_faq">FAQ</a>
@@ -55,6 +56,7 @@ function renderNavigation(currentPage = '') {
           <a href="/" class="block py-2 text-gray-700 hover:text-indigo-600" data-i18n="nav_home">Accueil</a>
           <a href="/services" class="block py-2 text-gray-700 hover:text-indigo-600" data-i18n="nav_services">Services</a>
           <a href="/use-cases" class="block py-2 text-gray-700 hover:text-indigo-600">Cas d'Usage</a>
+          <a href="/case-studies" class="block py-2 text-gray-700 hover:text-indigo-600">Études de Cas</a>
           <a href="/about" class="block py-2 text-gray-700 hover:text-indigo-600" data-i18n="nav_about">À propos</a>
           <a href="/testimonials" class="block py-2 text-gray-700 hover:text-indigo-600" data-i18n="nav_testimonials">Témoignages</a>
           <a href="/faq" class="block py-2 text-gray-700 hover:text-indigo-600" data-i18n="nav_faq">FAQ</a>

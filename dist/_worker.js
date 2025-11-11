@@ -1,4 +1,4 @@
-var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in e?yt(e,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):e[t]=s;var g=(e,t,s)=>wt(e,typeof t!="symbol"?t+"":t,s),ke=(e,t,s)=>t.has(e)||Me("Cannot "+s);var o=(e,t,s)=>(ke(e,t,"read from private field"),s?s.call(e):t.get(e)),x=(e,t,s)=>t.has(e)?Me("Cannot add the same private member more than once"):t instanceof WeakSet?t.add(e):t.set(e,s),m=(e,t,s,a)=>(ke(e,t,"write to private field"),a?a.call(e,s):t.set(e,s),s),f=(e,t,s)=>(ke(e,t,"access private method"),s);var _e=(e,t,s,a)=>({set _(i){m(e,t,i,s)},get _(){return o(e,t,a)}});var Le=(e,t,s)=>(a,i)=>{let r=-1;return n(0);async function n(c){if(c<=r)throw new Error("next() called multiple times");r=c;let l,d=!1,p;if(e[c]?(p=e[c][0][0],a.req.routeIndex=c):p=c===e.length&&i||void 0,p)try{l=await p(a,()=>n(c+1))}catch(u){if(u instanceof Error&&t)a.error=u,l=await t(u,a),d=!0;else throw u}else a.finalized===!1&&s&&(l=await s(a));return l&&(a.finalized===!1||d)&&(a.res=l),a}},jt=Symbol(),Et=async(e,t=Object.create(null))=>{const{all:s=!1,dot:a=!1}=t,r=(e instanceof it?e.raw.headers:e.headers).get("Content-Type");return r!=null&&r.startsWith("multipart/form-data")||r!=null&&r.startsWith("application/x-www-form-urlencoded")?Ct(e,{all:s,dot:a}):{}};async function Ct(e,t){const s=await e.formData();return s?At(s,t):{}}function At(e,t){const s=Object.create(null);return e.forEach((a,i)=>{t.all||i.endsWith("[]")?St(s,i,a):s[i]=a}),t.dot&&Object.entries(s).forEach(([a,i])=>{a.includes(".")&&(It(s,a,i),delete s[a])}),s}var St=(e,t,s)=>{e[t]!==void 0?Array.isArray(e[t])?e[t].push(s):e[t]=[e[t],s]:t.endsWith("[]")?e[t]=[s]:e[t]=s},It=(e,t,s)=>{let a=e;const i=t.split(".");i.forEach((r,n)=>{n===i.length-1?a[r]=s:((!a[r]||typeof a[r]!="object"||Array.isArray(a[r])||a[r]instanceof File)&&(a[r]=Object.create(null)),a=a[r])})},Ze=e=>{const t=e.split("/");return t[0]===""&&t.shift(),t},Rt=e=>{const{groups:t,path:s}=Tt(e),a=Ze(s);return kt(a,t)},Tt=e=>{const t=[];return e=e.replace(/\{[^}]+\}/g,(s,a)=>{const i=`@${a}`;return t.push([i,s]),i}),{groups:t,path:e}},kt=(e,t)=>{for(let s=t.length-1;s>=0;s--){const[a]=t[s];for(let i=e.length-1;i>=0;i--)if(e[i].includes(a)){e[i]=e[i].replace(a,t[s][1]);break}}return e},we={},Ot=(e,t)=>{if(e==="*")return"*";const s=e.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);if(s){const a=`${e}#${t}`;return we[a]||(s[2]?we[a]=t&&t[0]!==":"&&t[0]!=="*"?[a,s[1],new RegExp(`^${s[2]}(?=/${t})`)]:[e,s[1],new RegExp(`^${s[2]}$`)]:we[a]=[e,s[1],!0]),we[a]}return null},Ne=(e,t)=>{try{return t(e)}catch{return e.replace(/(?:%[0-9A-Fa-f]{2})+/g,s=>{try{return t(s)}catch{return s}})}},Dt=e=>Ne(e,decodeURI),et=e=>{const t=e.url,s=t.indexOf("/",t.indexOf(":")+4);let a=s;for(;a<t.length;a++){const i=t.charCodeAt(a);if(i===37){const r=t.indexOf("?",a),n=t.slice(s,r===-1?void 0:r);return Dt(n.includes("%25")?n.replace(/%25/g,"%2525"):n)}else if(i===63)break}return t.slice(s,a)},$t=e=>{const t=et(e);return t.length>1&&t.at(-1)==="/"?t.slice(0,-1):t},se=(e,t,...s)=>(s.length&&(t=se(t,...s)),`${(e==null?void 0:e[0])==="/"?"":"/"}${e}${t==="/"?"":`${(e==null?void 0:e.at(-1))==="/"?"":"/"}${(t==null?void 0:t[0])==="/"?t.slice(1):t}`}`),tt=e=>{if(e.charCodeAt(e.length-1)!==63||!e.includes(":"))return null;const t=e.split("/"),s=[];let a="";return t.forEach(i=>{if(i!==""&&!/\:/.test(i))a+="/"+i;else if(/\:/.test(i))if(/\?/.test(i)){s.length===0&&a===""?s.push("/"):s.push(a);const r=i.replace("?","");a+="/"+r,s.push(a)}else a+="/"+i}),s.filter((i,r,n)=>n.indexOf(i)===r)},Oe=e=>/[%+]/.test(e)?(e.indexOf("+")!==-1&&(e=e.replace(/\+/g," ")),e.indexOf("%")!==-1?Ne(e,at):e):e,st=(e,t,s)=>{let a;if(!s&&t&&!/[%+]/.test(t)){let n=e.indexOf(`?${t}`,8);for(n===-1&&(n=e.indexOf(`&${t}`,8));n!==-1;){const c=e.charCodeAt(n+t.length+1);if(c===61){const l=n+t.length+2,d=e.indexOf("&",l);return Oe(e.slice(l,d===-1?void 0:d))}else if(c==38||isNaN(c))return"";n=e.indexOf(`&${t}`,n+1)}if(a=/[%+]/.test(e),!a)return}const i={};a??(a=/[%+]/.test(e));let r=e.indexOf("?",8);for(;r!==-1;){const n=e.indexOf("&",r+1);let c=e.indexOf("=",r);c>n&&n!==-1&&(c=-1);let l=e.slice(r+1,c===-1?n===-1?void 0:n:c);if(a&&(l=Oe(l)),r=n,l==="")continue;let d;c===-1?d="":(d=e.slice(c+1,n===-1?void 0:n),a&&(d=Oe(d))),s?(i[l]&&Array.isArray(i[l])||(i[l]=[]),i[l].push(d)):i[l]??(i[l]=d)}return t?i[t]:i},Pt=st,Nt=(e,t)=>st(e,t,!0),at=decodeURIComponent,qe=e=>Ne(e,at),re,T,L,rt,nt,$e,B,ze,it=(ze=class{constructor(e,t="/",s=[[]]){x(this,L);g(this,"raw");x(this,re);x(this,T);g(this,"routeIndex",0);g(this,"path");g(this,"bodyCache",{});x(this,B,e=>{const{bodyCache:t,raw:s}=this,a=t[e];if(a)return a;const i=Object.keys(t)[0];return i?t[i].then(r=>(i==="json"&&(r=JSON.stringify(r)),new Response(r)[e]())):t[e]=s[e]()});this.raw=e,this.path=t,m(this,T,s),m(this,re,{})}param(e){return e?f(this,L,rt).call(this,e):f(this,L,nt).call(this)}query(e){return Pt(this.url,e)}queries(e){return Nt(this.url,e)}header(e){if(e)return this.raw.headers.get(e)??void 0;const t={};return this.raw.headers.forEach((s,a)=>{t[a]=s}),t}async parseBody(e){var t;return(t=this.bodyCache).parsedBody??(t.parsedBody=await Et(this,e))}json(){return o(this,B).call(this,"text").then(e=>JSON.parse(e))}text(){return o(this,B).call(this,"text")}arrayBuffer(){return o(this,B).call(this,"arrayBuffer")}blob(){return o(this,B).call(this,"blob")}formData(){return o(this,B).call(this,"formData")}addValidatedData(e,t){o(this,re)[e]=t}valid(e){return o(this,re)[e]}get url(){return this.raw.url}get method(){return this.raw.method}get[jt](){return o(this,T)}get matchedRoutes(){return o(this,T)[0].map(([[,e]])=>e)}get routePath(){return o(this,T)[0].map(([[,e]])=>e)[this.routeIndex].path}},re=new WeakMap,T=new WeakMap,L=new WeakSet,rt=function(e){const t=o(this,T)[0][this.routeIndex][1][e],s=f(this,L,$e).call(this,t);return s&&/\%/.test(s)?qe(s):s},nt=function(){const e={},t=Object.keys(o(this,T)[0][this.routeIndex][1]);for(const s of t){const a=f(this,L,$e).call(this,o(this,T)[0][this.routeIndex][1][s]);a!==void 0&&(e[s]=/\%/.test(a)?qe(a):a)}return e},$e=function(e){return o(this,T)[1]?o(this,T)[1][e]:e},B=new WeakMap,ze),Ft={Stringify:1},ot=async(e,t,s,a,i)=>{typeof e=="object"&&!(e instanceof String)&&(e instanceof Promise||(e=e.toString()),e instanceof Promise&&(e=await e));const r=e.callbacks;return r!=null&&r.length?(i?i[0]+=e:i=[e],Promise.all(r.map(c=>c({phase:t,buffer:i,context:a}))).then(c=>Promise.all(c.filter(Boolean).map(l=>ot(l,t,!1,a,i))).then(()=>i[0]))):Promise.resolve(e)},Mt="text/plain; charset=UTF-8",De=(e,t)=>({"Content-Type":e,...t}),he,xe,N,ne,F,I,fe,oe,le,K,ve,be,H,ae,Ve,_t=(Ve=class{constructor(e,t){x(this,H);x(this,he);x(this,xe);g(this,"env",{});x(this,N);g(this,"finalized",!1);g(this,"error");x(this,ne);x(this,F);x(this,I);x(this,fe);x(this,oe);x(this,le);x(this,K);x(this,ve);x(this,be);g(this,"render",(...e)=>(o(this,oe)??m(this,oe,t=>this.html(t)),o(this,oe).call(this,...e)));g(this,"setLayout",e=>m(this,fe,e));g(this,"getLayout",()=>o(this,fe));g(this,"setRenderer",e=>{m(this,oe,e)});g(this,"header",(e,t,s)=>{this.finalized&&m(this,I,new Response(o(this,I).body,o(this,I)));const a=o(this,I)?o(this,I).headers:o(this,K)??m(this,K,new Headers);t===void 0?a.delete(e):s!=null&&s.append?a.append(e,t):a.set(e,t)});g(this,"status",e=>{m(this,ne,e)});g(this,"set",(e,t)=>{o(this,N)??m(this,N,new Map),o(this,N).set(e,t)});g(this,"get",e=>o(this,N)?o(this,N).get(e):void 0);g(this,"newResponse",(...e)=>f(this,H,ae).call(this,...e));g(this,"body",(e,t,s)=>f(this,H,ae).call(this,e,t,s));g(this,"text",(e,t,s)=>!o(this,K)&&!o(this,ne)&&!t&&!s&&!this.finalized?new Response(e):f(this,H,ae).call(this,e,t,De(Mt,s)));g(this,"json",(e,t,s)=>f(this,H,ae).call(this,JSON.stringify(e),t,De("application/json",s)));g(this,"html",(e,t,s)=>{const a=i=>f(this,H,ae).call(this,i,t,De("text/html; charset=UTF-8",s));return typeof e=="object"?ot(e,Ft.Stringify,!1,{}).then(a):a(e)});g(this,"redirect",(e,t)=>{const s=String(e);return this.header("Location",/[^\x00-\xFF]/.test(s)?encodeURI(s):s),this.newResponse(null,t??302)});g(this,"notFound",()=>(o(this,le)??m(this,le,()=>new Response),o(this,le).call(this,this)));m(this,he,e),t&&(m(this,F,t.executionCtx),this.env=t.env,m(this,le,t.notFoundHandler),m(this,be,t.path),m(this,ve,t.matchResult))}get req(){return o(this,xe)??m(this,xe,new it(o(this,he),o(this,be),o(this,ve))),o(this,xe)}get event(){if(o(this,F)&&"respondWith"in o(this,F))return o(this,F);throw Error("This context has no FetchEvent")}get executionCtx(){if(o(this,F))return o(this,F);throw Error("This context has no ExecutionContext")}get res(){return o(this,I)||m(this,I,new Response(null,{headers:o(this,K)??m(this,K,new Headers)}))}set res(e){if(o(this,I)&&e){e=new Response(e.body,e);for(const[t,s]of o(this,I).headers.entries())if(t!=="content-type")if(t==="set-cookie"){const a=o(this,I).headers.getSetCookie();e.headers.delete("set-cookie");for(const i of a)e.headers.append("set-cookie",i)}else e.headers.set(t,s)}m(this,I,e),this.finalized=!0}get var(){return o(this,N)?Object.fromEntries(o(this,N)):{}}},he=new WeakMap,xe=new WeakMap,N=new WeakMap,ne=new WeakMap,F=new WeakMap,I=new WeakMap,fe=new WeakMap,oe=new WeakMap,le=new WeakMap,K=new WeakMap,ve=new WeakMap,be=new WeakMap,H=new WeakSet,ae=function(e,t,s){const a=o(this,I)?new Headers(o(this,I).headers):o(this,K)??new Headers;if(typeof t=="object"&&"headers"in t){const r=t.headers instanceof Headers?t.headers:new Headers(t.headers);for(const[n,c]of r)n.toLowerCase()==="set-cookie"?a.append(n,c):a.set(n,c)}if(s)for(const[r,n]of Object.entries(s))if(typeof n=="string")a.set(r,n);else{a.delete(r);for(const c of n)a.append(r,c)}const i=typeof t=="number"?t:(t==null?void 0:t.status)??o(this,ne);return new Response(e,{status:i,headers:a})},Ve),j="ALL",Lt="all",qt=["get","post","put","delete","options","patch"],lt="Can not add a route since the matcher is already built.",ct=class extends Error{},Bt="__COMPOSED_HANDLER",Ht=e=>e.text("404 Not Found",404),Be=(e,t)=>{if("getResponse"in e){const s=e.getResponse();return t.newResponse(s.body,s)}return console.error(e),t.text("Internal Server Error",500)},k,E,pt,O,W,je,Ee,Ge,dt=(Ge=class{constructor(t={}){x(this,E);g(this,"get");g(this,"post");g(this,"put");g(this,"delete");g(this,"options");g(this,"patch");g(this,"all");g(this,"on");g(this,"use");g(this,"router");g(this,"getPath");g(this,"_basePath","/");x(this,k,"/");g(this,"routes",[]);x(this,O,Ht);g(this,"errorHandler",Be);g(this,"onError",t=>(this.errorHandler=t,this));g(this,"notFound",t=>(m(this,O,t),this));g(this,"fetch",(t,...s)=>f(this,E,Ee).call(this,t,s[1],s[0],t.method));g(this,"request",(t,s,a,i)=>t instanceof Request?this.fetch(s?new Request(t,s):t,a,i):(t=t.toString(),this.fetch(new Request(/^https?:\/\//.test(t)?t:`http://localhost${se("/",t)}`,s),a,i)));g(this,"fire",()=>{addEventListener("fetch",t=>{t.respondWith(f(this,E,Ee).call(this,t.request,t,void 0,t.request.method))})});[...qt,Lt].forEach(r=>{this[r]=(n,...c)=>(typeof n=="string"?m(this,k,n):f(this,E,W).call(this,r,o(this,k),n),c.forEach(l=>{f(this,E,W).call(this,r,o(this,k),l)}),this)}),this.on=(r,n,...c)=>{for(const l of[n].flat()){m(this,k,l);for(const d of[r].flat())c.map(p=>{f(this,E,W).call(this,d.toUpperCase(),o(this,k),p)})}return this},this.use=(r,...n)=>(typeof r=="string"?m(this,k,r):(m(this,k,"*"),n.unshift(r)),n.forEach(c=>{f(this,E,W).call(this,j,o(this,k),c)}),this);const{strict:a,...i}=t;Object.assign(this,i),this.getPath=a??!0?t.getPath??et:$t}route(t,s){const a=this.basePath(t);return s.routes.map(i=>{var n;let r;s.errorHandler===Be?r=i.handler:(r=async(c,l)=>(await Le([],s.errorHandler)(c,()=>i.handler(c,l))).res,r[Bt]=i.handler),f(n=a,E,W).call(n,i.method,i.path,r)}),this}basePath(t){const s=f(this,E,pt).call(this);return s._basePath=se(this._basePath,t),s}mount(t,s,a){let i,r;a&&(typeof a=="function"?r=a:(r=a.optionHandler,a.replaceRequest===!1?i=l=>l:i=a.replaceRequest));const n=r?l=>{const d=r(l);return Array.isArray(d)?d:[d]}:l=>{let d;try{d=l.executionCtx}catch{}return[l.env,d]};i||(i=(()=>{const l=se(this._basePath,t),d=l==="/"?0:l.length;return p=>{const u=new URL(p.url);return u.pathname=u.pathname.slice(d)||"/",new Request(u,p)}})());const c=async(l,d)=>{const p=await s(i(l.req.raw),...n(l));if(p)return p;await d()};return f(this,E,W).call(this,j,se(t,"*"),c),this}},k=new WeakMap,E=new WeakSet,pt=function(){const t=new dt({router:this.router,getPath:this.getPath});return t.errorHandler=this.errorHandler,m(t,O,o(this,O)),t.routes=this.routes,t},O=new WeakMap,W=function(t,s,a){t=t.toUpperCase(),s=se(this._basePath,s);const i={basePath:this._basePath,path:s,method:t,handler:a};this.router.add(t,s,[a,i]),this.routes.push(i)},je=function(t,s){if(t instanceof Error)return this.errorHandler(t,s);throw t},Ee=function(t,s,a,i){if(i==="HEAD")return(async()=>new Response(null,await f(this,E,Ee).call(this,t,s,a,"GET")))();const r=this.getPath(t,{env:a}),n=this.router.match(i,r),c=new _t(t,{path:r,matchResult:n,env:a,executionCtx:s,notFoundHandler:o(this,O)});if(n[0].length===1){let d;try{d=n[0][0][0][0](c,async()=>{c.res=await o(this,O).call(this,c)})}catch(p){return f(this,E,je).call(this,p,c)}return d instanceof Promise?d.then(p=>p||(c.finalized?c.res:o(this,O).call(this,c))).catch(p=>f(this,E,je).call(this,p,c)):d??o(this,O).call(this,c)}const l=Le(n[0],this.errorHandler,o(this,O));return(async()=>{try{const d=await l(c);if(!d.finalized)throw new Error("Context is not finalized. Did you forget to return a Response object or `await next()`?");return d.res}catch(d){return f(this,E,je).call(this,d,c)}})()},Ge),mt=[];function Ut(e,t){const s=this.buildAllMatchers(),a=(i,r)=>{const n=s[i]||s[j],c=n[2][r];if(c)return c;const l=r.match(n[0]);if(!l)return[[],mt];const d=l.indexOf("",1);return[n[1][d],l]};return this.match=a,a(e,t)}var Ae="[^/]+",ue=".*",ge="(?:|/.*)",ie=Symbol(),zt=new Set(".\\+*[^]$()");function Vt(e,t){return e.length===1?t.length===1?e<t?-1:1:-1:t.length===1||e===ue||e===ge?1:t===ue||t===ge?-1:e===Ae?1:t===Ae?-1:e.length===t.length?e<t?-1:1:t.length-e.length}var Q,J,D,We,Pe=(We=class{constructor(){x(this,Q);x(this,J);x(this,D,Object.create(null))}insert(t,s,a,i,r){if(t.length===0){if(o(this,Q)!==void 0)throw ie;if(r)return;m(this,Q,s);return}const[n,...c]=t,l=n==="*"?c.length===0?["","",ue]:["","",Ae]:n==="/*"?["","",ge]:n.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);let d;if(l){const p=l[1];let u=l[2]||Ae;if(p&&l[2]&&(u===".*"||(u=u.replace(/^\((?!\?:)(?=[^)]+\)$)/,"(?:"),/\((?!\?:)/.test(u))))throw ie;if(d=o(this,D)[u],!d){if(Object.keys(o(this,D)).some(h=>h!==ue&&h!==ge))throw ie;if(r)return;d=o(this,D)[u]=new Pe,p!==""&&m(d,J,i.varIndex++)}!r&&p!==""&&a.push([p,o(d,J)])}else if(d=o(this,D)[n],!d){if(Object.keys(o(this,D)).some(p=>p.length>1&&p!==ue&&p!==ge))throw ie;if(r)return;d=o(this,D)[n]=new Pe}d.insert(c,s,a,i,r)}buildRegExpStr(){const s=Object.keys(o(this,D)).sort(Vt).map(a=>{const i=o(this,D)[a];return(typeof o(i,J)=="number"?`(${a})@${o(i,J)}`:zt.has(a)?`\\${a}`:a)+i.buildRegExpStr()});return typeof o(this,Q)=="number"&&s.unshift(`#${o(this,Q)}`),s.length===0?"":s.length===1?s[0]:"(?:"+s.join("|")+")"}},Q=new WeakMap,J=new WeakMap,D=new WeakMap,We),Se,ye,Ye,Gt=(Ye=class{constructor(){x(this,Se,{varIndex:0});x(this,ye,new Pe)}insert(e,t,s){const a=[],i=[];for(let n=0;;){let c=!1;if(e=e.replace(/\{[^}]+\}/g,l=>{const d=`@\\${n}`;return i[n]=[d,l],n++,c=!0,d}),!c)break}const r=e.match(/(?::[^\/]+)|(?:\/\*$)|./g)||[];for(let n=i.length-1;n>=0;n--){const[c]=i[n];for(let l=r.length-1;l>=0;l--)if(r[l].indexOf(c)!==-1){r[l]=r[l].replace(c,i[n][1]);break}}return o(this,ye).insert(r,t,a,o(this,Se),s),a}buildRegExp(){let e=o(this,ye).buildRegExpStr();if(e==="")return[/^$/,[],[]];let t=0;const s=[],a=[];return e=e.replace(/#(\d+)|@(\d+)|\.\*\$/g,(i,r,n)=>r!==void 0?(s[++t]=Number(r),"$()"):(n!==void 0&&(a[Number(n)]=++t),"")),[new RegExp(`^${e}`),s,a]}},Se=new WeakMap,ye=new WeakMap,Ye),Wt=[/^$/,[],Object.create(null)],Ce=Object.create(null);function ut(e){return Ce[e]??(Ce[e]=new RegExp(e==="*"?"":`^${e.replace(/\/\*$|([.\\+*[^\]$()])/g,(t,s)=>s?`\\${s}`:"(?:|/.*)")}$`))}function Yt(){Ce=Object.create(null)}function Kt(e){var d;const t=new Gt,s=[];if(e.length===0)return Wt;const a=e.map(p=>[!/\*|\/:/.test(p[0]),...p]).sort(([p,u],[h,w])=>p?1:h?-1:u.length-w.length),i=Object.create(null);for(let p=0,u=-1,h=a.length;p<h;p++){const[w,R,v]=a[p];w?i[R]=[v.map(([S])=>[S,Object.create(null)]),mt]:u++;let y;try{y=t.insert(R,u,w)}catch(S){throw S===ie?new ct(R):S}w||(s[u]=v.map(([S,ee])=>{const de=Object.create(null);for(ee-=1;ee>=0;ee--){const[$,Re]=y[ee];de[$]=Re}return[S,de]}))}const[r,n,c]=t.buildRegExp();for(let p=0,u=s.length;p<u;p++)for(let h=0,w=s[p].length;h<w;h++){const R=(d=s[p][h])==null?void 0:d[1];if(!R)continue;const v=Object.keys(R);for(let y=0,S=v.length;y<S;y++)R[v[y]]=c[R[v[y]]]}const l=[];for(const p in n)l[p]=s[n[p]];return[r,l,i]}function te(e,t){if(e){for(const s of Object.keys(e).sort((a,i)=>i.length-a.length))if(ut(s).test(t))return[...e[s]]}}var U,z,Ie,gt,Ke,Qt=(Ke=class{constructor(){x(this,Ie);g(this,"name","RegExpRouter");x(this,U);x(this,z);g(this,"match",Ut);m(this,U,{[j]:Object.create(null)}),m(this,z,{[j]:Object.create(null)})}add(e,t,s){var c;const a=o(this,U),i=o(this,z);if(!a||!i)throw new Error(lt);a[e]||[a,i].forEach(l=>{l[e]=Object.create(null),Object.keys(l[j]).forEach(d=>{l[e][d]=[...l[j][d]]})}),t==="/*"&&(t="*");const r=(t.match(/\/:/g)||[]).length;if(/\*$/.test(t)){const l=ut(t);e===j?Object.keys(a).forEach(d=>{var p;(p=a[d])[t]||(p[t]=te(a[d],t)||te(a[j],t)||[])}):(c=a[e])[t]||(c[t]=te(a[e],t)||te(a[j],t)||[]),Object.keys(a).forEach(d=>{(e===j||e===d)&&Object.keys(a[d]).forEach(p=>{l.test(p)&&a[d][p].push([s,r])})}),Object.keys(i).forEach(d=>{(e===j||e===d)&&Object.keys(i[d]).forEach(p=>l.test(p)&&i[d][p].push([s,r]))});return}const n=tt(t)||[t];for(let l=0,d=n.length;l<d;l++){const p=n[l];Object.keys(i).forEach(u=>{var h;(e===j||e===u)&&((h=i[u])[p]||(h[p]=[...te(a[u],p)||te(a[j],p)||[]]),i[u][p].push([s,r-d+l+1]))})}}buildAllMatchers(){const e=Object.create(null);return Object.keys(o(this,z)).concat(Object.keys(o(this,U))).forEach(t=>{e[t]||(e[t]=f(this,Ie,gt).call(this,t))}),m(this,U,m(this,z,void 0)),Yt(),e}},U=new WeakMap,z=new WeakMap,Ie=new WeakSet,gt=function(e){const t=[];let s=e===j;return[o(this,U),o(this,z)].forEach(a=>{const i=a[e]?Object.keys(a[e]).map(r=>[r,a[e][r]]):[];i.length!==0?(s||(s=!0),t.push(...i)):e!==j&&t.push(...Object.keys(a[j]).map(r=>[r,a[j][r]]))}),s?Kt(t):null},Ke),V,M,Qe,Jt=(Qe=class{constructor(e){g(this,"name","SmartRouter");x(this,V,[]);x(this,M,[]);m(this,V,e.routers)}add(e,t,s){if(!o(this,M))throw new Error(lt);o(this,M).push([e,t,s])}match(e,t){if(!o(this,M))throw new Error("Fatal error");const s=o(this,V),a=o(this,M),i=s.length;let r=0,n;for(;r<i;r++){const c=s[r];try{for(let l=0,d=a.length;l<d;l++)c.add(...a[l]);n=c.match(e,t)}catch(l){if(l instanceof ct)continue;throw l}this.match=c.match.bind(c),m(this,V,[c]),m(this,M,void 0);break}if(r===i)throw new Error("Fatal error");return this.name=`SmartRouter + ${this.activeRouter.name}`,n}get activeRouter(){if(o(this,M)||o(this,V).length!==1)throw new Error("No active router has been determined yet.");return o(this,V)[0]}},V=new WeakMap,M=new WeakMap,Qe),me=Object.create(null),G,A,X,ce,C,_,Y,Je,ht=(Je=class{constructor(e,t,s){x(this,_);x(this,G);x(this,A);x(this,X);x(this,ce,0);x(this,C,me);if(m(this,A,s||Object.create(null)),m(this,G,[]),e&&t){const a=Object.create(null);a[e]={handler:t,possibleKeys:[],score:0},m(this,G,[a])}m(this,X,[])}insert(e,t,s){m(this,ce,++_e(this,ce)._);let a=this;const i=Rt(t),r=[];for(let n=0,c=i.length;n<c;n++){const l=i[n],d=i[n+1],p=Ot(l,d),u=Array.isArray(p)?p[0]:l;if(u in o(a,A)){a=o(a,A)[u],p&&r.push(p[1]);continue}o(a,A)[u]=new ht,p&&(o(a,X).push(p),r.push(p[1])),a=o(a,A)[u]}return o(a,G).push({[e]:{handler:s,possibleKeys:r.filter((n,c,l)=>l.indexOf(n)===c),score:o(this,ce)}}),a}search(e,t){var c;const s=[];m(this,C,me);let i=[this];const r=Ze(t),n=[];for(let l=0,d=r.length;l<d;l++){const p=r[l],u=l===d-1,h=[];for(let w=0,R=i.length;w<R;w++){const v=i[w],y=o(v,A)[p];y&&(m(y,C,o(v,C)),u?(o(y,A)["*"]&&s.push(...f(this,_,Y).call(this,o(y,A)["*"],e,o(v,C))),s.push(...f(this,_,Y).call(this,y,e,o(v,C)))):h.push(y));for(let S=0,ee=o(v,X).length;S<ee;S++){const de=o(v,X)[S],$=o(v,C)===me?{}:{...o(v,C)};if(de==="*"){const q=o(v,A)["*"];q&&(s.push(...f(this,_,Y).call(this,q,e,o(v,C))),m(q,C,$),h.push(q));continue}const[Re,Fe,pe]=de;if(!p&&!(pe instanceof RegExp))continue;const P=o(v,A)[Re],bt=r.slice(l).join("/");if(pe instanceof RegExp){const q=pe.exec(bt);if(q){if($[Fe]=q[0],s.push(...f(this,_,Y).call(this,P,e,o(v,C),$)),Object.keys(o(P,A)).length){m(P,C,$);const Te=((c=q[0].match(/\//))==null?void 0:c.length)??0;(n[Te]||(n[Te]=[])).push(P)}continue}}(pe===!0||pe.test(p))&&($[Fe]=p,u?(s.push(...f(this,_,Y).call(this,P,e,$,o(v,C))),o(P,A)["*"]&&s.push(...f(this,_,Y).call(this,o(P,A)["*"],e,$,o(v,C)))):(m(P,C,$),h.push(P)))}}i=h.concat(n.shift()??[])}return s.length>1&&s.sort((l,d)=>l.score-d.score),[s.map(({handler:l,params:d})=>[l,d])]}},G=new WeakMap,A=new WeakMap,X=new WeakMap,ce=new WeakMap,C=new WeakMap,_=new WeakSet,Y=function(e,t,s,a){const i=[];for(let r=0,n=o(e,G).length;r<n;r++){const c=o(e,G)[r],l=c[t]||c[j],d={};if(l!==void 0&&(l.params=Object.create(null),i.push(l),s!==me||a&&a!==me))for(let p=0,u=l.possibleKeys.length;p<u;p++){const h=l.possibleKeys[p],w=d[l.score];l.params[h]=a!=null&&a[h]&&!w?a[h]:s[h]??(a==null?void 0:a[h]),d[l.score]=!0}}return i},Je),Z,Xe,Xt=(Xe=class{constructor(){g(this,"name","TrieRouter");x(this,Z);m(this,Z,new ht)}add(e,t,s){const a=tt(t);if(a){for(let i=0,r=a.length;i<r;i++)o(this,Z).insert(e,a[i],s);return}o(this,Z).insert(e,t,s)}match(e,t){return o(this,Z).search(e,t)}},Z=new WeakMap,Xe),xt=class extends dt{constructor(e={}){super(e),this.router=e.router??new Jt({routers:[new Qt,new Xt]})}},Zt=e=>{const s={...{origin:"*",allowMethods:["GET","HEAD","PUT","POST","DELETE","PATCH"],allowHeaders:[],exposeHeaders:[]},...e},a=(r=>typeof r=="string"?r==="*"?()=>r:n=>r===n?n:null:typeof r=="function"?r:n=>r.includes(n)?n:null)(s.origin),i=(r=>typeof r=="function"?r:Array.isArray(r)?()=>r:()=>[])(s.allowMethods);return async function(n,c){var p;function l(u,h){n.res.headers.set(u,h)}const d=await a(n.req.header("origin")||"",n);if(d&&l("Access-Control-Allow-Origin",d),s.credentials&&l("Access-Control-Allow-Credentials","true"),(p=s.exposeHeaders)!=null&&p.length&&l("Access-Control-Expose-Headers",s.exposeHeaders.join(",")),n.req.method==="OPTIONS"){s.origin!=="*"&&l("Vary","Origin"),s.maxAge!=null&&l("Access-Control-Max-Age",s.maxAge.toString());const u=await i(n.req.header("origin")||"",n);u.length&&l("Access-Control-Allow-Methods",u.join(","));let h=s.allowHeaders;if(!(h!=null&&h.length)){const w=n.req.header("Access-Control-Request-Headers");w&&(h=w.split(/\s*,\s*/))}return h!=null&&h.length&&(l("Access-Control-Allow-Headers",h.join(",")),n.res.headers.append("Vary","Access-Control-Request-Headers")),n.res.headers.delete("Content-Length"),n.res.headers.delete("Content-Type"),new Response(null,{headers:n.res.headers,status:204,statusText:"No Content"})}await c(),s.origin!=="*"&&n.header("Vary","Origin",{append:!0})}},es=/^\s*(?:text\/(?!event-stream(?:[;\s]|$))[^;\s]+|application\/(?:javascript|json|xml|xml-dtd|ecmascript|dart|postscript|rtf|tar|toml|vnd\.dart|vnd\.ms-fontobject|vnd\.ms-opentype|wasm|x-httpd-php|x-javascript|x-ns-proxy-autoconfig|x-sh|x-tar|x-virtualbox-hdd|x-virtualbox-ova|x-virtualbox-ovf|x-virtualbox-vbox|x-virtualbox-vdi|x-virtualbox-vhd|x-virtualbox-vmdk|x-www-form-urlencoded)|font\/(?:otf|ttf)|image\/(?:bmp|vnd\.adobe\.photoshop|vnd\.microsoft\.icon|vnd\.ms-dds|x-icon|x-ms-bmp)|message\/rfc822|model\/gltf-binary|x-shader\/x-fragment|x-shader\/x-vertex|[^;\s]+?\+(?:json|text|xml|yaml))(?:[;\s]|$)/i,He=(e,t=ss)=>{const s=/\.([a-zA-Z0-9]+?)$/,a=e.match(s);if(!a)return;let i=t[a[1]];return i&&i.startsWith("text")&&(i+="; charset=utf-8"),i},ts={aac:"audio/aac",avi:"video/x-msvideo",avif:"image/avif",av1:"video/av1",bin:"application/octet-stream",bmp:"image/bmp",css:"text/css",csv:"text/csv",eot:"application/vnd.ms-fontobject",epub:"application/epub+zip",gif:"image/gif",gz:"application/gzip",htm:"text/html",html:"text/html",ico:"image/x-icon",ics:"text/calendar",jpeg:"image/jpeg",jpg:"image/jpeg",js:"text/javascript",json:"application/json",jsonld:"application/ld+json",map:"application/json",mid:"audio/x-midi",midi:"audio/x-midi",mjs:"text/javascript",mp3:"audio/mpeg",mp4:"video/mp4",mpeg:"video/mpeg",oga:"audio/ogg",ogv:"video/ogg",ogx:"application/ogg",opus:"audio/opus",otf:"font/otf",pdf:"application/pdf",png:"image/png",rtf:"application/rtf",svg:"image/svg+xml",tif:"image/tiff",tiff:"image/tiff",ts:"video/mp2t",ttf:"font/ttf",txt:"text/plain",wasm:"application/wasm",webm:"video/webm",weba:"audio/webm",webmanifest:"application/manifest+json",webp:"image/webp",woff:"font/woff",woff2:"font/woff2",xhtml:"application/xhtml+xml",xml:"application/xml",zip:"application/zip","3gp":"video/3gpp","3g2":"video/3gpp2",gltf:"model/gltf+json",glb:"model/gltf-binary"},ss=ts,as=(...e)=>{let t=e.filter(i=>i!=="").join("/");t=t.replace(new RegExp("(?<=\\/)\\/+","g"),"");const s=t.split("/"),a=[];for(const i of s)i===".."&&a.length>0&&a.at(-1)!==".."?a.pop():i!=="."&&a.push(i);return a.join("/")||"."},ft={br:".br",zstd:".zst",gzip:".gz"},is=Object.keys(ft),rs="index.html",ns=e=>{const t=e.root??"./",s=e.path,a=e.join??as;return async(i,r)=>{var p,u,h,w;if(i.finalized)return r();let n;if(e.path)n=e.path;else try{if(n=decodeURIComponent(i.req.path),/(?:^|[\/\\])\.\.(?:$|[\/\\])/.test(n))throw new Error}catch{return await((p=e.onNotFound)==null?void 0:p.call(e,i.req.path,i)),r()}let c=a(t,!s&&e.rewriteRequestPath?e.rewriteRequestPath(n):n);e.isDir&&await e.isDir(c)&&(c=a(c,rs));const l=e.getContent;let d=await l(c,i);if(d instanceof Response)return i.newResponse(d.body,d);if(d){const R=e.mimes&&He(c,e.mimes)||He(c);if(i.header("Content-Type",R||"application/octet-stream"),e.precompressed&&(!R||es.test(R))){const v=new Set((u=i.req.header("Accept-Encoding"))==null?void 0:u.split(",").map(y=>y.trim()));for(const y of is){if(!v.has(y))continue;const S=await l(c+ft[y],i);if(S){d=S,i.header("Content-Encoding",y),i.header("Vary","Accept-Encoding",{append:!0});break}}}return await((h=e.onFound)==null?void 0:h.call(e,c,i)),i.body(d)}await((w=e.onNotFound)==null?void 0:w.call(e,c,i)),await r()}},os=async(e,t)=>{let s;t&&t.manifest?typeof t.manifest=="string"?s=JSON.parse(t.manifest):s=t.manifest:typeof __STATIC_CONTENT_MANIFEST=="string"?s=JSON.parse(__STATIC_CONTENT_MANIFEST):s=__STATIC_CONTENT_MANIFEST;let a;t&&t.namespace?a=t.namespace:a=__STATIC_CONTENT;const i=s[e]||e;if(!i)return null;const r=await a.get(i,{type:"stream"});return r||null},ls=e=>async function(s,a){return ns({...e,getContent:async r=>os(r,{manifest:e.manifest,namespace:e.namespace?e.namespace:s.env?s.env.__STATIC_CONTENT:void 0})})(s,a)},cs=e=>ls(e);const b=new xt;b.use("/api/*",Zt());b.use("/static/*",cs({root:"./public"}));b.post("/api/auth/register",async e=>{try{const{email:t,password:s,firstName:a,lastName:i,company:r}=await e.req.json();if(!t||!s||!a||!i)return e.json({error:"Tous les champs sont requis"},400);if(await e.env.DB.prepare("SELECT id FROM users WHERE email = ?").bind(t).first())return e.json({error:"Cet email est déjà utilisé"},400);const c=await e.env.DB.prepare("INSERT INTO users (email, password, first_name, last_name, company) VALUES (?, ?, ?, ?, ?)").bind(t,s,a,i,r||"").run();return e.json({success:!0,userId:c.meta.last_row_id,message:"Compte créé avec succès"})}catch{return e.json({error:"Erreur lors de la création du compte"},500)}});b.post("/api/auth/login",async e=>{try{const{email:t,password:s}=await e.req.json(),a=await e.env.DB.prepare("SELECT id, email, first_name, last_name, company FROM users WHERE email = ? AND password = ?").bind(t,s).first();return a?e.json({success:!0,user:{id:a.id,email:a.email,firstName:a.first_name,lastName:a.last_name,company:a.company}}):e.json({error:"Email ou mot de passe incorrect"},401)}catch{return e.json({error:"Erreur lors de la connexion"},500)}});b.post("/api/assessments",async e=>{try{const{userId:t,assessmentType:s}=await e.req.json(),a=await e.env.DB.prepare("INSERT INTO assessments (user_id, assessment_type, status) VALUES (?, ?, ?)").bind(t,s,"in_progress").run();return e.json({success:!0,assessmentId:a.meta.last_row_id})}catch{return e.json({error:"Erreur lors de la création de l'évaluation"},500)}});b.post("/api/assessments/:id/answers",async e=>{try{const t=e.req.param("id"),{answers:s}=await e.req.json();for(const r of s)await e.env.DB.prepare("INSERT INTO assessment_answers (assessment_id, category, question_key, answer_value) VALUES (?, ?, ?, ?)").bind(t,r.category,r.questionKey,r.value).run();const a=s.reduce((r,n)=>r+n.value,0),i=Math.round(a/s.length*20);return await e.env.DB.prepare("UPDATE assessments SET status = ?, overall_score = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind("completed",i,t).run(),e.json({success:!0,score:i})}catch{return e.json({error:"Erreur lors de la sauvegarde des réponses"},500)}});b.get("/api/users/:userId/assessments",async e=>{try{const t=e.req.param("userId"),{results:s}=await e.env.DB.prepare("SELECT id, assessment_type, status, overall_score, created_at FROM assessments WHERE user_id = ? ORDER BY created_at DESC").bind(t).all();return e.json({assessments:s})}catch{return e.json({error:"Erreur lors de la récupération des évaluations"},500)}});b.get("/api/assessments/:id",async e=>{try{const t=e.req.param("id"),s=await e.env.DB.prepare("SELECT * FROM assessments WHERE id = ?").bind(t).first(),{results:a}=await e.env.DB.prepare("SELECT * FROM assessment_answers WHERE assessment_id = ?").bind(t).all();return e.json({assessment:s,answers:a})}catch{return e.json({error:"Erreur lors de la récupération de l'évaluation"},500)}});b.get("/",e=>e.html(`
+var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in e?yt(e,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):e[t]=s;var u=(e,t,s)=>wt(e,typeof t!="symbol"?t+"":t,s),Re=(e,t,s)=>t.has(e)||Me("Cannot "+s);var o=(e,t,s)=>(Re(e,t,"read from private field"),s?s.call(e):t.get(e)),h=(e,t,s)=>t.has(e)?Me("Cannot add the same private member more than once"):t instanceof WeakSet?t.add(e):t.set(e,s),p=(e,t,s,i)=>(Re(e,t,"write to private field"),i?i.call(e,s):t.set(e,s),s),f=(e,t,s)=>(Re(e,t,"access private method"),s);var Le=(e,t,s,i)=>({set _(a){p(e,t,a,s)},get _(){return o(e,t,i)}});var _e=(e,t,s)=>(i,a)=>{let r=-1;return n(0);async function n(c){if(c<=r)throw new Error("next() called multiple times");r=c;let l,d=!1,m;if(e[c]?(m=e[c][0][0],i.req.routeIndex=c):m=c===e.length&&a||void 0,m)try{l=await m(i,()=>n(c+1))}catch(g){if(g instanceof Error&&t)i.error=g,l=await t(g,i),d=!0;else throw g}else i.finalized===!1&&s&&(l=await s(i));return l&&(i.finalized===!1||d)&&(i.res=l),i}},jt=Symbol(),Et=async(e,t=Object.create(null))=>{const{all:s=!1,dot:i=!1}=t,r=(e instanceof at?e.raw.headers:e.headers).get("Content-Type");return r!=null&&r.startsWith("multipart/form-data")||r!=null&&r.startsWith("application/x-www-form-urlencoded")?Ct(e,{all:s,dot:i}):{}};async function Ct(e,t){const s=await e.formData();return s?St(s,t):{}}function St(e,t){const s=Object.create(null);return e.forEach((i,a)=>{t.all||a.endsWith("[]")?At(s,a,i):s[a]=i}),t.dot&&Object.entries(s).forEach(([i,a])=>{i.includes(".")&&($t(s,i,a),delete s[i])}),s}var At=(e,t,s)=>{e[t]!==void 0?Array.isArray(e[t])?e[t].push(s):e[t]=[e[t],s]:t.endsWith("[]")?e[t]=[s]:e[t]=s},$t=(e,t,s)=>{let i=e;const a=t.split(".");a.forEach((r,n)=>{n===a.length-1?i[r]=s:((!i[r]||typeof i[r]!="object"||Array.isArray(i[r])||i[r]instanceof File)&&(i[r]=Object.create(null)),i=i[r])})},Ze=e=>{const t=e.split("/");return t[0]===""&&t.shift(),t},It=e=>{const{groups:t,path:s}=Tt(e),i=Ze(s);return Rt(i,t)},Tt=e=>{const t=[];return e=e.replace(/\{[^}]+\}/g,(s,i)=>{const a=`@${i}`;return t.push([a,s]),a}),{groups:t,path:e}},Rt=(e,t)=>{for(let s=t.length-1;s>=0;s--){const[i]=t[s];for(let a=e.length-1;a>=0;a--)if(e[a].includes(i)){e[a]=e[a].replace(i,t[s][1]);break}}return e},we={},kt=(e,t)=>{if(e==="*")return"*";const s=e.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);if(s){const i=`${e}#${t}`;return we[i]||(s[2]?we[i]=t&&t[0]!==":"&&t[0]!=="*"?[i,s[1],new RegExp(`^${s[2]}(?=/${t})`)]:[e,s[1],new RegExp(`^${s[2]}$`)]:we[i]=[e,s[1],!0]),we[i]}return null},Ne=(e,t)=>{try{return t(e)}catch{return e.replace(/(?:%[0-9A-Fa-f]{2})+/g,s=>{try{return t(s)}catch{return s}})}},Ot=e=>Ne(e,decodeURI),et=e=>{const t=e.url,s=t.indexOf("/",t.indexOf(":")+4);let i=s;for(;i<t.length;i++){const a=t.charCodeAt(i);if(a===37){const r=t.indexOf("?",i),n=t.slice(s,r===-1?void 0:r);return Ot(n.includes("%25")?n.replace(/%25/g,"%2525"):n)}else if(a===63)break}return t.slice(s,i)},Dt=e=>{const t=et(e);return t.length>1&&t.at(-1)==="/"?t.slice(0,-1):t},se=(e,t,...s)=>(s.length&&(t=se(t,...s)),`${(e==null?void 0:e[0])==="/"?"":"/"}${e}${t==="/"?"":`${(e==null?void 0:e.at(-1))==="/"?"":"/"}${(t==null?void 0:t[0])==="/"?t.slice(1):t}`}`),tt=e=>{if(e.charCodeAt(e.length-1)!==63||!e.includes(":"))return null;const t=e.split("/"),s=[];let i="";return t.forEach(a=>{if(a!==""&&!/\:/.test(a))i+="/"+a;else if(/\:/.test(a))if(/\?/.test(a)){s.length===0&&i===""?s.push("/"):s.push(i);const r=a.replace("?","");i+="/"+r,s.push(i)}else i+="/"+a}),s.filter((a,r,n)=>n.indexOf(a)===r)},ke=e=>/[%+]/.test(e)?(e.indexOf("+")!==-1&&(e=e.replace(/\+/g," ")),e.indexOf("%")!==-1?Ne(e,it):e):e,st=(e,t,s)=>{let i;if(!s&&t&&!/[%+]/.test(t)){let n=e.indexOf(`?${t}`,8);for(n===-1&&(n=e.indexOf(`&${t}`,8));n!==-1;){const c=e.charCodeAt(n+t.length+1);if(c===61){const l=n+t.length+2,d=e.indexOf("&",l);return ke(e.slice(l,d===-1?void 0:d))}else if(c==38||isNaN(c))return"";n=e.indexOf(`&${t}`,n+1)}if(i=/[%+]/.test(e),!i)return}const a={};i??(i=/[%+]/.test(e));let r=e.indexOf("?",8);for(;r!==-1;){const n=e.indexOf("&",r+1);let c=e.indexOf("=",r);c>n&&n!==-1&&(c=-1);let l=e.slice(r+1,c===-1?n===-1?void 0:n:c);if(i&&(l=ke(l)),r=n,l==="")continue;let d;c===-1?d="":(d=e.slice(c+1,n===-1?void 0:n),i&&(d=ke(d))),s?(a[l]&&Array.isArray(a[l])||(a[l]=[]),a[l].push(d)):a[l]??(a[l]=d)}return t?a[t]:a},Pt=st,Nt=(e,t)=>st(e,t,!0),it=decodeURIComponent,qe=e=>Ne(e,it),re,T,_,rt,nt,De,B,ze,at=(ze=class{constructor(e,t="/",s=[[]]){h(this,_);u(this,"raw");h(this,re);h(this,T);u(this,"routeIndex",0);u(this,"path");u(this,"bodyCache",{});h(this,B,e=>{const{bodyCache:t,raw:s}=this,i=t[e];if(i)return i;const a=Object.keys(t)[0];return a?t[a].then(r=>(a==="json"&&(r=JSON.stringify(r)),new Response(r)[e]())):t[e]=s[e]()});this.raw=e,this.path=t,p(this,T,s),p(this,re,{})}param(e){return e?f(this,_,rt).call(this,e):f(this,_,nt).call(this)}query(e){return Pt(this.url,e)}queries(e){return Nt(this.url,e)}header(e){if(e)return this.raw.headers.get(e)??void 0;const t={};return this.raw.headers.forEach((s,i)=>{t[i]=s}),t}async parseBody(e){var t;return(t=this.bodyCache).parsedBody??(t.parsedBody=await Et(this,e))}json(){return o(this,B).call(this,"text").then(e=>JSON.parse(e))}text(){return o(this,B).call(this,"text")}arrayBuffer(){return o(this,B).call(this,"arrayBuffer")}blob(){return o(this,B).call(this,"blob")}formData(){return o(this,B).call(this,"formData")}addValidatedData(e,t){o(this,re)[e]=t}valid(e){return o(this,re)[e]}get url(){return this.raw.url}get method(){return this.raw.method}get[jt](){return o(this,T)}get matchedRoutes(){return o(this,T)[0].map(([[,e]])=>e)}get routePath(){return o(this,T)[0].map(([[,e]])=>e)[this.routeIndex].path}},re=new WeakMap,T=new WeakMap,_=new WeakSet,rt=function(e){const t=o(this,T)[0][this.routeIndex][1][e],s=f(this,_,De).call(this,t);return s&&/\%/.test(s)?qe(s):s},nt=function(){const e={},t=Object.keys(o(this,T)[0][this.routeIndex][1]);for(const s of t){const i=f(this,_,De).call(this,o(this,T)[0][this.routeIndex][1][s]);i!==void 0&&(e[s]=/\%/.test(i)?qe(i):i)}return e},De=function(e){return o(this,T)[1]?o(this,T)[1][e]:e},B=new WeakMap,ze),Ft={Stringify:1},ot=async(e,t,s,i,a)=>{typeof e=="object"&&!(e instanceof String)&&(e instanceof Promise||(e=e.toString()),e instanceof Promise&&(e=await e));const r=e.callbacks;return r!=null&&r.length?(a?a[0]+=e:a=[e],Promise.all(r.map(c=>c({phase:t,buffer:a,context:i}))).then(c=>Promise.all(c.filter(Boolean).map(l=>ot(l,t,!1,i,a))).then(()=>a[0]))):Promise.resolve(e)},Mt="text/plain; charset=UTF-8",Oe=(e,t)=>({"Content-Type":e,...t}),xe,he,N,ne,F,$,fe,oe,le,K,ve,be,H,ie,Ve,Lt=(Ve=class{constructor(e,t){h(this,H);h(this,xe);h(this,he);u(this,"env",{});h(this,N);u(this,"finalized",!1);u(this,"error");h(this,ne);h(this,F);h(this,$);h(this,fe);h(this,oe);h(this,le);h(this,K);h(this,ve);h(this,be);u(this,"render",(...e)=>(o(this,oe)??p(this,oe,t=>this.html(t)),o(this,oe).call(this,...e)));u(this,"setLayout",e=>p(this,fe,e));u(this,"getLayout",()=>o(this,fe));u(this,"setRenderer",e=>{p(this,oe,e)});u(this,"header",(e,t,s)=>{this.finalized&&p(this,$,new Response(o(this,$).body,o(this,$)));const i=o(this,$)?o(this,$).headers:o(this,K)??p(this,K,new Headers);t===void 0?i.delete(e):s!=null&&s.append?i.append(e,t):i.set(e,t)});u(this,"status",e=>{p(this,ne,e)});u(this,"set",(e,t)=>{o(this,N)??p(this,N,new Map),o(this,N).set(e,t)});u(this,"get",e=>o(this,N)?o(this,N).get(e):void 0);u(this,"newResponse",(...e)=>f(this,H,ie).call(this,...e));u(this,"body",(e,t,s)=>f(this,H,ie).call(this,e,t,s));u(this,"text",(e,t,s)=>!o(this,K)&&!o(this,ne)&&!t&&!s&&!this.finalized?new Response(e):f(this,H,ie).call(this,e,t,Oe(Mt,s)));u(this,"json",(e,t,s)=>f(this,H,ie).call(this,JSON.stringify(e),t,Oe("application/json",s)));u(this,"html",(e,t,s)=>{const i=a=>f(this,H,ie).call(this,a,t,Oe("text/html; charset=UTF-8",s));return typeof e=="object"?ot(e,Ft.Stringify,!1,{}).then(i):i(e)});u(this,"redirect",(e,t)=>{const s=String(e);return this.header("Location",/[^\x00-\xFF]/.test(s)?encodeURI(s):s),this.newResponse(null,t??302)});u(this,"notFound",()=>(o(this,le)??p(this,le,()=>new Response),o(this,le).call(this,this)));p(this,xe,e),t&&(p(this,F,t.executionCtx),this.env=t.env,p(this,le,t.notFoundHandler),p(this,be,t.path),p(this,ve,t.matchResult))}get req(){return o(this,he)??p(this,he,new at(o(this,xe),o(this,be),o(this,ve))),o(this,he)}get event(){if(o(this,F)&&"respondWith"in o(this,F))return o(this,F);throw Error("This context has no FetchEvent")}get executionCtx(){if(o(this,F))return o(this,F);throw Error("This context has no ExecutionContext")}get res(){return o(this,$)||p(this,$,new Response(null,{headers:o(this,K)??p(this,K,new Headers)}))}set res(e){if(o(this,$)&&e){e=new Response(e.body,e);for(const[t,s]of o(this,$).headers.entries())if(t!=="content-type")if(t==="set-cookie"){const i=o(this,$).headers.getSetCookie();e.headers.delete("set-cookie");for(const a of i)e.headers.append("set-cookie",a)}else e.headers.set(t,s)}p(this,$,e),this.finalized=!0}get var(){return o(this,N)?Object.fromEntries(o(this,N)):{}}},xe=new WeakMap,he=new WeakMap,N=new WeakMap,ne=new WeakMap,F=new WeakMap,$=new WeakMap,fe=new WeakMap,oe=new WeakMap,le=new WeakMap,K=new WeakMap,ve=new WeakMap,be=new WeakMap,H=new WeakSet,ie=function(e,t,s){const i=o(this,$)?new Headers(o(this,$).headers):o(this,K)??new Headers;if(typeof t=="object"&&"headers"in t){const r=t.headers instanceof Headers?t.headers:new Headers(t.headers);for(const[n,c]of r)n.toLowerCase()==="set-cookie"?i.append(n,c):i.set(n,c)}if(s)for(const[r,n]of Object.entries(s))if(typeof n=="string")i.set(r,n);else{i.delete(r);for(const c of n)i.append(r,c)}const a=typeof t=="number"?t:(t==null?void 0:t.status)??o(this,ne);return new Response(e,{status:a,headers:i})},Ve),j="ALL",_t="all",qt=["get","post","put","delete","options","patch"],lt="Can not add a route since the matcher is already built.",ct=class extends Error{},Bt="__COMPOSED_HANDLER",Ht=e=>e.text("404 Not Found",404),Be=(e,t)=>{if("getResponse"in e){const s=e.getResponse();return t.newResponse(s.body,s)}return console.error(e),t.text("Internal Server Error",500)},R,E,mt,k,W,je,Ee,Ge,dt=(Ge=class{constructor(t={}){h(this,E);u(this,"get");u(this,"post");u(this,"put");u(this,"delete");u(this,"options");u(this,"patch");u(this,"all");u(this,"on");u(this,"use");u(this,"router");u(this,"getPath");u(this,"_basePath","/");h(this,R,"/");u(this,"routes",[]);h(this,k,Ht);u(this,"errorHandler",Be);u(this,"onError",t=>(this.errorHandler=t,this));u(this,"notFound",t=>(p(this,k,t),this));u(this,"fetch",(t,...s)=>f(this,E,Ee).call(this,t,s[1],s[0],t.method));u(this,"request",(t,s,i,a)=>t instanceof Request?this.fetch(s?new Request(t,s):t,i,a):(t=t.toString(),this.fetch(new Request(/^https?:\/\//.test(t)?t:`http://localhost${se("/",t)}`,s),i,a)));u(this,"fire",()=>{addEventListener("fetch",t=>{t.respondWith(f(this,E,Ee).call(this,t.request,t,void 0,t.request.method))})});[...qt,_t].forEach(r=>{this[r]=(n,...c)=>(typeof n=="string"?p(this,R,n):f(this,E,W).call(this,r,o(this,R),n),c.forEach(l=>{f(this,E,W).call(this,r,o(this,R),l)}),this)}),this.on=(r,n,...c)=>{for(const l of[n].flat()){p(this,R,l);for(const d of[r].flat())c.map(m=>{f(this,E,W).call(this,d.toUpperCase(),o(this,R),m)})}return this},this.use=(r,...n)=>(typeof r=="string"?p(this,R,r):(p(this,R,"*"),n.unshift(r)),n.forEach(c=>{f(this,E,W).call(this,j,o(this,R),c)}),this);const{strict:i,...a}=t;Object.assign(this,a),this.getPath=i??!0?t.getPath??et:Dt}route(t,s){const i=this.basePath(t);return s.routes.map(a=>{var n;let r;s.errorHandler===Be?r=a.handler:(r=async(c,l)=>(await _e([],s.errorHandler)(c,()=>a.handler(c,l))).res,r[Bt]=a.handler),f(n=i,E,W).call(n,a.method,a.path,r)}),this}basePath(t){const s=f(this,E,mt).call(this);return s._basePath=se(this._basePath,t),s}mount(t,s,i){let a,r;i&&(typeof i=="function"?r=i:(r=i.optionHandler,i.replaceRequest===!1?a=l=>l:a=i.replaceRequest));const n=r?l=>{const d=r(l);return Array.isArray(d)?d:[d]}:l=>{let d;try{d=l.executionCtx}catch{}return[l.env,d]};a||(a=(()=>{const l=se(this._basePath,t),d=l==="/"?0:l.length;return m=>{const g=new URL(m.url);return g.pathname=g.pathname.slice(d)||"/",new Request(g,m)}})());const c=async(l,d)=>{const m=await s(a(l.req.raw),...n(l));if(m)return m;await d()};return f(this,E,W).call(this,j,se(t,"*"),c),this}},R=new WeakMap,E=new WeakSet,mt=function(){const t=new dt({router:this.router,getPath:this.getPath});return t.errorHandler=this.errorHandler,p(t,k,o(this,k)),t.routes=this.routes,t},k=new WeakMap,W=function(t,s,i){t=t.toUpperCase(),s=se(this._basePath,s);const a={basePath:this._basePath,path:s,method:t,handler:i};this.router.add(t,s,[i,a]),this.routes.push(a)},je=function(t,s){if(t instanceof Error)return this.errorHandler(t,s);throw t},Ee=function(t,s,i,a){if(a==="HEAD")return(async()=>new Response(null,await f(this,E,Ee).call(this,t,s,i,"GET")))();const r=this.getPath(t,{env:i}),n=this.router.match(a,r),c=new Lt(t,{path:r,matchResult:n,env:i,executionCtx:s,notFoundHandler:o(this,k)});if(n[0].length===1){let d;try{d=n[0][0][0][0](c,async()=>{c.res=await o(this,k).call(this,c)})}catch(m){return f(this,E,je).call(this,m,c)}return d instanceof Promise?d.then(m=>m||(c.finalized?c.res:o(this,k).call(this,c))).catch(m=>f(this,E,je).call(this,m,c)):d??o(this,k).call(this,c)}const l=_e(n[0],this.errorHandler,o(this,k));return(async()=>{try{const d=await l(c);if(!d.finalized)throw new Error("Context is not finalized. Did you forget to return a Response object or `await next()`?");return d.res}catch(d){return f(this,E,je).call(this,d,c)}})()},Ge),pt=[];function Ut(e,t){const s=this.buildAllMatchers(),i=(a,r)=>{const n=s[a]||s[j],c=n[2][r];if(c)return c;const l=r.match(n[0]);if(!l)return[[],pt];const d=l.indexOf("",1);return[n[1][d],l]};return this.match=i,i(e,t)}var Se="[^/]+",ge=".*",ue="(?:|/.*)",ae=Symbol(),zt=new Set(".\\+*[^]$()");function Vt(e,t){return e.length===1?t.length===1?e<t?-1:1:-1:t.length===1||e===ge||e===ue?1:t===ge||t===ue?-1:e===Se?1:t===Se?-1:e.length===t.length?e<t?-1:1:t.length-e.length}var Q,J,O,We,Pe=(We=class{constructor(){h(this,Q);h(this,J);h(this,O,Object.create(null))}insert(t,s,i,a,r){if(t.length===0){if(o(this,Q)!==void 0)throw ae;if(r)return;p(this,Q,s);return}const[n,...c]=t,l=n==="*"?c.length===0?["","",ge]:["","",Se]:n==="/*"?["","",ue]:n.match(/^\:([^\{\}]+)(?:\{(.+)\})?$/);let d;if(l){const m=l[1];let g=l[2]||Se;if(m&&l[2]&&(g===".*"||(g=g.replace(/^\((?!\?:)(?=[^)]+\)$)/,"(?:"),/\((?!\?:)/.test(g))))throw ae;if(d=o(this,O)[g],!d){if(Object.keys(o(this,O)).some(x=>x!==ge&&x!==ue))throw ae;if(r)return;d=o(this,O)[g]=new Pe,m!==""&&p(d,J,a.varIndex++)}!r&&m!==""&&i.push([m,o(d,J)])}else if(d=o(this,O)[n],!d){if(Object.keys(o(this,O)).some(m=>m.length>1&&m!==ge&&m!==ue))throw ae;if(r)return;d=o(this,O)[n]=new Pe}d.insert(c,s,i,a,r)}buildRegExpStr(){const s=Object.keys(o(this,O)).sort(Vt).map(i=>{const a=o(this,O)[i];return(typeof o(a,J)=="number"?`(${i})@${o(a,J)}`:zt.has(i)?`\\${i}`:i)+a.buildRegExpStr()});return typeof o(this,Q)=="number"&&s.unshift(`#${o(this,Q)}`),s.length===0?"":s.length===1?s[0]:"(?:"+s.join("|")+")"}},Q=new WeakMap,J=new WeakMap,O=new WeakMap,We),Ae,ye,Ye,Gt=(Ye=class{constructor(){h(this,Ae,{varIndex:0});h(this,ye,new Pe)}insert(e,t,s){const i=[],a=[];for(let n=0;;){let c=!1;if(e=e.replace(/\{[^}]+\}/g,l=>{const d=`@\\${n}`;return a[n]=[d,l],n++,c=!0,d}),!c)break}const r=e.match(/(?::[^\/]+)|(?:\/\*$)|./g)||[];for(let n=a.length-1;n>=0;n--){const[c]=a[n];for(let l=r.length-1;l>=0;l--)if(r[l].indexOf(c)!==-1){r[l]=r[l].replace(c,a[n][1]);break}}return o(this,ye).insert(r,t,i,o(this,Ae),s),i}buildRegExp(){let e=o(this,ye).buildRegExpStr();if(e==="")return[/^$/,[],[]];let t=0;const s=[],i=[];return e=e.replace(/#(\d+)|@(\d+)|\.\*\$/g,(a,r,n)=>r!==void 0?(s[++t]=Number(r),"$()"):(n!==void 0&&(i[Number(n)]=++t),"")),[new RegExp(`^${e}`),s,i]}},Ae=new WeakMap,ye=new WeakMap,Ye),Wt=[/^$/,[],Object.create(null)],Ce=Object.create(null);function gt(e){return Ce[e]??(Ce[e]=new RegExp(e==="*"?"":`^${e.replace(/\/\*$|([.\\+*[^\]$()])/g,(t,s)=>s?`\\${s}`:"(?:|/.*)")}$`))}function Yt(){Ce=Object.create(null)}function Kt(e){var d;const t=new Gt,s=[];if(e.length===0)return Wt;const i=e.map(m=>[!/\*|\/:/.test(m[0]),...m]).sort(([m,g],[x,w])=>m?1:x?-1:g.length-w.length),a=Object.create(null);for(let m=0,g=-1,x=i.length;m<x;m++){const[w,I,b]=i[m];w?a[I]=[b.map(([A])=>[A,Object.create(null)]),pt]:g++;let y;try{y=t.insert(I,g,w)}catch(A){throw A===ae?new ct(I):A}w||(s[g]=b.map(([A,ee])=>{const de=Object.create(null);for(ee-=1;ee>=0;ee--){const[D,Ie]=y[ee];de[D]=Ie}return[A,de]}))}const[r,n,c]=t.buildRegExp();for(let m=0,g=s.length;m<g;m++)for(let x=0,w=s[m].length;x<w;x++){const I=(d=s[m][x])==null?void 0:d[1];if(!I)continue;const b=Object.keys(I);for(let y=0,A=b.length;y<A;y++)I[b[y]]=c[I[b[y]]]}const l=[];for(const m in n)l[m]=s[n[m]];return[r,l,a]}function te(e,t){if(e){for(const s of Object.keys(e).sort((i,a)=>a.length-i.length))if(gt(s).test(t))return[...e[s]]}}var U,z,$e,ut,Ke,Qt=(Ke=class{constructor(){h(this,$e);u(this,"name","RegExpRouter");h(this,U);h(this,z);u(this,"match",Ut);p(this,U,{[j]:Object.create(null)}),p(this,z,{[j]:Object.create(null)})}add(e,t,s){var c;const i=o(this,U),a=o(this,z);if(!i||!a)throw new Error(lt);i[e]||[i,a].forEach(l=>{l[e]=Object.create(null),Object.keys(l[j]).forEach(d=>{l[e][d]=[...l[j][d]]})}),t==="/*"&&(t="*");const r=(t.match(/\/:/g)||[]).length;if(/\*$/.test(t)){const l=gt(t);e===j?Object.keys(i).forEach(d=>{var m;(m=i[d])[t]||(m[t]=te(i[d],t)||te(i[j],t)||[])}):(c=i[e])[t]||(c[t]=te(i[e],t)||te(i[j],t)||[]),Object.keys(i).forEach(d=>{(e===j||e===d)&&Object.keys(i[d]).forEach(m=>{l.test(m)&&i[d][m].push([s,r])})}),Object.keys(a).forEach(d=>{(e===j||e===d)&&Object.keys(a[d]).forEach(m=>l.test(m)&&a[d][m].push([s,r]))});return}const n=tt(t)||[t];for(let l=0,d=n.length;l<d;l++){const m=n[l];Object.keys(a).forEach(g=>{var x;(e===j||e===g)&&((x=a[g])[m]||(x[m]=[...te(i[g],m)||te(i[j],m)||[]]),a[g][m].push([s,r-d+l+1]))})}}buildAllMatchers(){const e=Object.create(null);return Object.keys(o(this,z)).concat(Object.keys(o(this,U))).forEach(t=>{e[t]||(e[t]=f(this,$e,ut).call(this,t))}),p(this,U,p(this,z,void 0)),Yt(),e}},U=new WeakMap,z=new WeakMap,$e=new WeakSet,ut=function(e){const t=[];let s=e===j;return[o(this,U),o(this,z)].forEach(i=>{const a=i[e]?Object.keys(i[e]).map(r=>[r,i[e][r]]):[];a.length!==0?(s||(s=!0),t.push(...a)):e!==j&&t.push(...Object.keys(i[j]).map(r=>[r,i[j][r]]))}),s?Kt(t):null},Ke),V,M,Qe,Jt=(Qe=class{constructor(e){u(this,"name","SmartRouter");h(this,V,[]);h(this,M,[]);p(this,V,e.routers)}add(e,t,s){if(!o(this,M))throw new Error(lt);o(this,M).push([e,t,s])}match(e,t){if(!o(this,M))throw new Error("Fatal error");const s=o(this,V),i=o(this,M),a=s.length;let r=0,n;for(;r<a;r++){const c=s[r];try{for(let l=0,d=i.length;l<d;l++)c.add(...i[l]);n=c.match(e,t)}catch(l){if(l instanceof ct)continue;throw l}this.match=c.match.bind(c),p(this,V,[c]),p(this,M,void 0);break}if(r===a)throw new Error("Fatal error");return this.name=`SmartRouter + ${this.activeRouter.name}`,n}get activeRouter(){if(o(this,M)||o(this,V).length!==1)throw new Error("No active router has been determined yet.");return o(this,V)[0]}},V=new WeakMap,M=new WeakMap,Qe),pe=Object.create(null),G,S,X,ce,C,L,Y,Je,xt=(Je=class{constructor(e,t,s){h(this,L);h(this,G);h(this,S);h(this,X);h(this,ce,0);h(this,C,pe);if(p(this,S,s||Object.create(null)),p(this,G,[]),e&&t){const i=Object.create(null);i[e]={handler:t,possibleKeys:[],score:0},p(this,G,[i])}p(this,X,[])}insert(e,t,s){p(this,ce,++Le(this,ce)._);let i=this;const a=It(t),r=[];for(let n=0,c=a.length;n<c;n++){const l=a[n],d=a[n+1],m=kt(l,d),g=Array.isArray(m)?m[0]:l;if(g in o(i,S)){i=o(i,S)[g],m&&r.push(m[1]);continue}o(i,S)[g]=new xt,m&&(o(i,X).push(m),r.push(m[1])),i=o(i,S)[g]}return o(i,G).push({[e]:{handler:s,possibleKeys:r.filter((n,c,l)=>l.indexOf(n)===c),score:o(this,ce)}}),i}search(e,t){var c;const s=[];p(this,C,pe);let a=[this];const r=Ze(t),n=[];for(let l=0,d=r.length;l<d;l++){const m=r[l],g=l===d-1,x=[];for(let w=0,I=a.length;w<I;w++){const b=a[w],y=o(b,S)[m];y&&(p(y,C,o(b,C)),g?(o(y,S)["*"]&&s.push(...f(this,L,Y).call(this,o(y,S)["*"],e,o(b,C))),s.push(...f(this,L,Y).call(this,y,e,o(b,C)))):x.push(y));for(let A=0,ee=o(b,X).length;A<ee;A++){const de=o(b,X)[A],D=o(b,C)===pe?{}:{...o(b,C)};if(de==="*"){const q=o(b,S)["*"];q&&(s.push(...f(this,L,Y).call(this,q,e,o(b,C))),p(q,C,D),x.push(q));continue}const[Ie,Fe,me]=de;if(!m&&!(me instanceof RegExp))continue;const P=o(b,S)[Ie],bt=r.slice(l).join("/");if(me instanceof RegExp){const q=me.exec(bt);if(q){if(D[Fe]=q[0],s.push(...f(this,L,Y).call(this,P,e,o(b,C),D)),Object.keys(o(P,S)).length){p(P,C,D);const Te=((c=q[0].match(/\//))==null?void 0:c.length)??0;(n[Te]||(n[Te]=[])).push(P)}continue}}(me===!0||me.test(m))&&(D[Fe]=m,g?(s.push(...f(this,L,Y).call(this,P,e,D,o(b,C))),o(P,S)["*"]&&s.push(...f(this,L,Y).call(this,o(P,S)["*"],e,D,o(b,C)))):(p(P,C,D),x.push(P)))}}a=x.concat(n.shift()??[])}return s.length>1&&s.sort((l,d)=>l.score-d.score),[s.map(({handler:l,params:d})=>[l,d])]}},G=new WeakMap,S=new WeakMap,X=new WeakMap,ce=new WeakMap,C=new WeakMap,L=new WeakSet,Y=function(e,t,s,i){const a=[];for(let r=0,n=o(e,G).length;r<n;r++){const c=o(e,G)[r],l=c[t]||c[j],d={};if(l!==void 0&&(l.params=Object.create(null),a.push(l),s!==pe||i&&i!==pe))for(let m=0,g=l.possibleKeys.length;m<g;m++){const x=l.possibleKeys[m],w=d[l.score];l.params[x]=i!=null&&i[x]&&!w?i[x]:s[x]??(i==null?void 0:i[x]),d[l.score]=!0}}return a},Je),Z,Xe,Xt=(Xe=class{constructor(){u(this,"name","TrieRouter");h(this,Z);p(this,Z,new xt)}add(e,t,s){const i=tt(t);if(i){for(let a=0,r=i.length;a<r;a++)o(this,Z).insert(e,i[a],s);return}o(this,Z).insert(e,t,s)}match(e,t){return o(this,Z).search(e,t)}},Z=new WeakMap,Xe),ht=class extends dt{constructor(e={}){super(e),this.router=e.router??new Jt({routers:[new Qt,new Xt]})}},Zt=e=>{const s={...{origin:"*",allowMethods:["GET","HEAD","PUT","POST","DELETE","PATCH"],allowHeaders:[],exposeHeaders:[]},...e},i=(r=>typeof r=="string"?r==="*"?()=>r:n=>r===n?n:null:typeof r=="function"?r:n=>r.includes(n)?n:null)(s.origin),a=(r=>typeof r=="function"?r:Array.isArray(r)?()=>r:()=>[])(s.allowMethods);return async function(n,c){var m;function l(g,x){n.res.headers.set(g,x)}const d=await i(n.req.header("origin")||"",n);if(d&&l("Access-Control-Allow-Origin",d),s.credentials&&l("Access-Control-Allow-Credentials","true"),(m=s.exposeHeaders)!=null&&m.length&&l("Access-Control-Expose-Headers",s.exposeHeaders.join(",")),n.req.method==="OPTIONS"){s.origin!=="*"&&l("Vary","Origin"),s.maxAge!=null&&l("Access-Control-Max-Age",s.maxAge.toString());const g=await a(n.req.header("origin")||"",n);g.length&&l("Access-Control-Allow-Methods",g.join(","));let x=s.allowHeaders;if(!(x!=null&&x.length)){const w=n.req.header("Access-Control-Request-Headers");w&&(x=w.split(/\s*,\s*/))}return x!=null&&x.length&&(l("Access-Control-Allow-Headers",x.join(",")),n.res.headers.append("Vary","Access-Control-Request-Headers")),n.res.headers.delete("Content-Length"),n.res.headers.delete("Content-Type"),new Response(null,{headers:n.res.headers,status:204,statusText:"No Content"})}await c(),s.origin!=="*"&&n.header("Vary","Origin",{append:!0})}},es=/^\s*(?:text\/(?!event-stream(?:[;\s]|$))[^;\s]+|application\/(?:javascript|json|xml|xml-dtd|ecmascript|dart|postscript|rtf|tar|toml|vnd\.dart|vnd\.ms-fontobject|vnd\.ms-opentype|wasm|x-httpd-php|x-javascript|x-ns-proxy-autoconfig|x-sh|x-tar|x-virtualbox-hdd|x-virtualbox-ova|x-virtualbox-ovf|x-virtualbox-vbox|x-virtualbox-vdi|x-virtualbox-vhd|x-virtualbox-vmdk|x-www-form-urlencoded)|font\/(?:otf|ttf)|image\/(?:bmp|vnd\.adobe\.photoshop|vnd\.microsoft\.icon|vnd\.ms-dds|x-icon|x-ms-bmp)|message\/rfc822|model\/gltf-binary|x-shader\/x-fragment|x-shader\/x-vertex|[^;\s]+?\+(?:json|text|xml|yaml))(?:[;\s]|$)/i,He=(e,t=ss)=>{const s=/\.([a-zA-Z0-9]+?)$/,i=e.match(s);if(!i)return;let a=t[i[1]];return a&&a.startsWith("text")&&(a+="; charset=utf-8"),a},ts={aac:"audio/aac",avi:"video/x-msvideo",avif:"image/avif",av1:"video/av1",bin:"application/octet-stream",bmp:"image/bmp",css:"text/css",csv:"text/csv",eot:"application/vnd.ms-fontobject",epub:"application/epub+zip",gif:"image/gif",gz:"application/gzip",htm:"text/html",html:"text/html",ico:"image/x-icon",ics:"text/calendar",jpeg:"image/jpeg",jpg:"image/jpeg",js:"text/javascript",json:"application/json",jsonld:"application/ld+json",map:"application/json",mid:"audio/x-midi",midi:"audio/x-midi",mjs:"text/javascript",mp3:"audio/mpeg",mp4:"video/mp4",mpeg:"video/mpeg",oga:"audio/ogg",ogv:"video/ogg",ogx:"application/ogg",opus:"audio/opus",otf:"font/otf",pdf:"application/pdf",png:"image/png",rtf:"application/rtf",svg:"image/svg+xml",tif:"image/tiff",tiff:"image/tiff",ts:"video/mp2t",ttf:"font/ttf",txt:"text/plain",wasm:"application/wasm",webm:"video/webm",weba:"audio/webm",webmanifest:"application/manifest+json",webp:"image/webp",woff:"font/woff",woff2:"font/woff2",xhtml:"application/xhtml+xml",xml:"application/xml",zip:"application/zip","3gp":"video/3gpp","3g2":"video/3gpp2",gltf:"model/gltf+json",glb:"model/gltf-binary"},ss=ts,is=(...e)=>{let t=e.filter(a=>a!=="").join("/");t=t.replace(new RegExp("(?<=\\/)\\/+","g"),"");const s=t.split("/"),i=[];for(const a of s)a===".."&&i.length>0&&i.at(-1)!==".."?i.pop():a!=="."&&i.push(a);return i.join("/")||"."},ft={br:".br",zstd:".zst",gzip:".gz"},as=Object.keys(ft),rs="index.html",ns=e=>{const t=e.root??"./",s=e.path,i=e.join??is;return async(a,r)=>{var m,g,x,w;if(a.finalized)return r();let n;if(e.path)n=e.path;else try{if(n=decodeURIComponent(a.req.path),/(?:^|[\/\\])\.\.(?:$|[\/\\])/.test(n))throw new Error}catch{return await((m=e.onNotFound)==null?void 0:m.call(e,a.req.path,a)),r()}let c=i(t,!s&&e.rewriteRequestPath?e.rewriteRequestPath(n):n);e.isDir&&await e.isDir(c)&&(c=i(c,rs));const l=e.getContent;let d=await l(c,a);if(d instanceof Response)return a.newResponse(d.body,d);if(d){const I=e.mimes&&He(c,e.mimes)||He(c);if(a.header("Content-Type",I||"application/octet-stream"),e.precompressed&&(!I||es.test(I))){const b=new Set((g=a.req.header("Accept-Encoding"))==null?void 0:g.split(",").map(y=>y.trim()));for(const y of as){if(!b.has(y))continue;const A=await l(c+ft[y],a);if(A){d=A,a.header("Content-Encoding",y),a.header("Vary","Accept-Encoding",{append:!0});break}}}return await((x=e.onFound)==null?void 0:x.call(e,c,a)),a.body(d)}await((w=e.onNotFound)==null?void 0:w.call(e,c,a)),await r()}},os=async(e,t)=>{let s;t&&t.manifest?typeof t.manifest=="string"?s=JSON.parse(t.manifest):s=t.manifest:typeof __STATIC_CONTENT_MANIFEST=="string"?s=JSON.parse(__STATIC_CONTENT_MANIFEST):s=__STATIC_CONTENT_MANIFEST;let i;t&&t.namespace?i=t.namespace:i=__STATIC_CONTENT;const a=s[e]||e;if(!a)return null;const r=await i.get(a,{type:"stream"});return r||null},ls=e=>async function(s,i){return ns({...e,getContent:async r=>os(r,{manifest:e.manifest,namespace:e.namespace?e.namespace:s.env?s.env.__STATIC_CONTENT:void 0})})(s,i)},cs=e=>ls(e);const v=new ht;v.use("/api/*",Zt());v.use("/static/*",cs({root:"./public"}));v.post("/api/auth/register",async e=>{try{const{email:t,password:s,firstName:i,lastName:a,company:r}=await e.req.json();if(!t||!s||!i||!a)return e.json({error:"Tous les champs sont requis"},400);if(await e.env.DB.prepare("SELECT id FROM users WHERE email = ?").bind(t).first())return e.json({error:"Cet email est déjà utilisé"},400);const c=await e.env.DB.prepare("INSERT INTO users (email, password, first_name, last_name, company) VALUES (?, ?, ?, ?, ?)").bind(t,s,i,a,r||"").run();return e.json({success:!0,userId:c.meta.last_row_id,message:"Compte créé avec succès"})}catch{return e.json({error:"Erreur lors de la création du compte"},500)}});v.post("/api/auth/login",async e=>{try{const{email:t,password:s}=await e.req.json(),i=await e.env.DB.prepare("SELECT id, email, first_name, last_name, company FROM users WHERE email = ? AND password = ?").bind(t,s).first();return i?e.json({success:!0,user:{id:i.id,email:i.email,firstName:i.first_name,lastName:i.last_name,company:i.company}}):e.json({error:"Email ou mot de passe incorrect"},401)}catch{return e.json({error:"Erreur lors de la connexion"},500)}});v.post("/api/assessments",async e=>{try{const{userId:t,assessmentType:s}=await e.req.json(),i=await e.env.DB.prepare("INSERT INTO assessments (user_id, assessment_type, status) VALUES (?, ?, ?)").bind(t,s,"in_progress").run();return e.json({success:!0,assessmentId:i.meta.last_row_id})}catch{return e.json({error:"Erreur lors de la création de l'évaluation"},500)}});v.post("/api/assessments/:id/answers",async e=>{try{const t=e.req.param("id"),{answers:s}=await e.req.json();for(const r of s)await e.env.DB.prepare("INSERT INTO assessment_answers (assessment_id, category, question_key, answer_value) VALUES (?, ?, ?, ?)").bind(t,r.category,r.questionKey,r.value).run();const i=s.reduce((r,n)=>r+n.value,0),a=Math.round(i/s.length*20);return await e.env.DB.prepare("UPDATE assessments SET status = ?, overall_score = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind("completed",a,t).run(),e.json({success:!0,score:a})}catch{return e.json({error:"Erreur lors de la sauvegarde des réponses"},500)}});v.get("/api/users/:userId/assessments",async e=>{try{const t=e.req.param("userId"),{results:s}=await e.env.DB.prepare("SELECT id, assessment_type, status, overall_score, created_at FROM assessments WHERE user_id = ? ORDER BY created_at DESC").bind(t).all();return e.json({assessments:s})}catch{return e.json({error:"Erreur lors de la récupération des évaluations"},500)}});v.get("/api/assessments/:id",async e=>{try{const t=e.req.param("id"),s=await e.env.DB.prepare("SELECT * FROM assessments WHERE id = ?").bind(t).first(),{results:i}=await e.env.DB.prepare("SELECT * FROM assessment_answers WHERE assessment_id = ?").bind(t).all();return e.json({assessment:s,answers:i})}catch{return e.json({error:"Erreur lors de la récupération de l'évaluation"},500)}});v.get("/",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -489,7 +489,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         </footer>
     </body>
     </html>
-  `));b.get("/login",e=>e.html(`
+  `));v.get("/login",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -564,7 +564,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/register",e=>e.html(`
+  `));v.get("/register",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -660,7 +660,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/dashboard",e=>e.html(`
+  `));v.get("/dashboard",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -799,7 +799,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/assessment",e=>e.html(`
+  `));v.get("/assessment",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -870,7 +870,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"><\/script>
     </body>
     </html>
-  `));b.get("/results",e=>e.html(`
+  `));v.get("/results",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -1134,7 +1134,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/resources",e=>e.html(`
+  `));v.get("/resources",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -1244,7 +1244,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.post("/api/contact",async e=>{try{const{name:t,email:s,phone:a,company:i,role:r,message:n,preferredDate:c,budget:l}=await e.req.json();return console.log("Contact form submission:",{name:t,email:s,company:i}),e.json({success:!0,message:"Votre demande a été envoyée avec succès. Nous vous recontacterons sous 24h."})}catch{return e.json({error:"Erreur lors de l'envoi du formulaire"},500)}});b.get("/services",e=>e.html(`
+  `));v.post("/api/contact",async e=>{try{const{name:t,email:s,phone:i,company:a,role:r,message:n,preferredDate:c,budget:l}=await e.req.json();return console.log("Contact form submission:",{name:t,email:s,company:a}),e.json({success:!0,message:"Votre demande a été envoyée avec succès. Nous vous recontacterons sous 24h."})}catch{return e.json({error:"Erreur lors de l'envoi du formulaire"},500)}});v.get("/services",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -1366,7 +1366,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/about",e=>e.html(`
+  `));v.get("/about",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -1466,7 +1466,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/contact",e=>e.html(`
+  `));v.get("/contact",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -1583,7 +1583,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/faq",e=>e.html(`
+  `));v.get("/faq",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -1677,7 +1677,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/testimonials",e=>e.html(`
+  `));v.get("/testimonials",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -1872,7 +1872,7 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));b.get("/use-cases",e=>e.html(`
+  `));v.get("/use-cases",e=>e.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -2016,4 +2016,315 @@ var yt=Object.defineProperty;var Me=e=>{throw TypeError(e)};var wt=(e,t,s)=>t in
         <\/script>
     </body>
     </html>
-  `));const Ue=new xt,ds=Object.assign({"/src/index.tsx":b});let vt=!1;for(const[,e]of Object.entries(ds))e&&(Ue.all("*",t=>{let s;try{s=t.executionCtx}catch{}return e.fetch(t.req.raw,t.env,s)}),Ue.notFound(t=>{let s;try{s=t.executionCtx}catch{}return e.fetch(t.req.raw,t.env,s)}),vt=!0);if(!vt)throw new Error("Can't import modules from ['/src/index.ts','/src/index.tsx','/app/server.ts']");export{Ue as default};
+  `));v.get("/case-studies",e=>e.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Études de Cas - Factor AI</title>
+        <script src="https://cdn.tailwindcss.com"><\/script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"><\/script>
+        <script src="/static/case-studies-data.js"><\/script>
+        <script src="/static/nav-component.js"><\/script>
+        <script src="/static/i18n-page.js"><\/script>
+    </head>
+    <body class="bg-gray-50">
+        <div id="app"></div>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const lang = getCurrentLang();
+            const data = getCaseStudiesData(lang);
+            
+            document.getElementById('app').innerHTML = renderNavigation('case-studies') + \`
+              <!-- Hero Section -->
+              <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                  <h1 class="text-5xl font-bold mb-6">\${data.hero.title}</h1>
+                  <p class="text-2xl mb-4 opacity-90">\${data.hero.subtitle}</p>
+                  <p class="text-lg opacity-80 max-w-3xl mx-auto">\${data.hero.description}</p>
+                </div>
+              </div>
+
+              <!-- Filters -->
+              <div class="bg-white shadow-md sticky top-16 z-40">
+                <div class="max-w-7xl mx-auto px-4 py-4">
+                  <div class="flex items-center justify-center gap-4 flex-wrap">
+                    \${data.filters.map(filter => \`
+                      <button 
+                        onclick="filterCaseStudies('\${filter.id}')"
+                        class="filter-btn px-4 py-2 rounded-lg transition-all hover:shadow-md \${filter.id === 'all' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}"
+                        data-filter="\${filter.id}">
+                        <i class="fas \${filter.icon} mr-2"></i>
+                        \${filter.label}
+                      </button>
+                    \`).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <div class="max-w-7xl mx-auto px-4 py-16">
+                <!-- Case Studies -->
+                <div id="caseStudiesGrid" class="space-y-20">
+                  \${data.caseStudies.map((cs, idx) => \`
+                    <div class="case-study-card" data-category="\${cs.category}">
+                      <!-- Case Study Header -->
+                      <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                        <!-- Hero Banner -->
+                        <div class="bg-gradient-to-r from-indigo-500 to-purple-500 p-8 text-white">
+                          <div class="flex items-start justify-between mb-6">
+                            <div>
+                              <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-4">
+                                <i class="fas fa-star mr-2"></i>\${cs.featured ? 'Featured Case' : 'Success Story'}
+                              </div>
+                              <h2 class="text-4xl font-bold mb-3">\${cs.title}</h2>
+                              <p class="text-xl text-indigo-100 mb-4">\${cs.tagline}</p>
+                              <div class="flex items-center gap-6 text-sm">
+                                <div><i class="fas fa-building mr-2"></i>\${cs.client}</div>
+                                <div><i class="fas fa-industry mr-2"></i>\${cs.industry}</div>
+                                <div><i class="fas fa-users mr-2"></i>\${cs.companySize}</div>
+                                <div><i class="fas fa-map-marker-alt mr-2"></i>\${cs.location}</div>
+                                <div><i class="fas fa-calendar mr-2"></i>\${cs.duration}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="p-12">
+                          <!-- Challenge Section -->
+                          <div class="mb-16">
+                            <div class="flex items-center mb-6">
+                              <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-exclamation-triangle text-red-600 text-2xl"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-3xl font-bold text-gray-800">\${cs.challenge.title}</h3>
+                                <p class="text-gray-600">La situation avant notre intervention</p>
+                              </div>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed mb-6">\${cs.challenge.description}</p>
+                            
+                            <div class="bg-red-50 rounded-2xl p-6 mb-6">
+                              <h4 class="font-bold text-lg mb-4 text-red-800">Points de Douleur Critiques:</h4>
+                              <div class="grid md:grid-cols-2 gap-4">
+                                \${cs.challenge.painPoints.map(point =>
+                                  '<div class="flex items-start">' +
+                                    '<i class="fas fa-times-circle text-red-500 mr-3 mt-1"></i>' +
+                                    '<span class="text-gray-700">' + point + '</span>' +
+                                  '</div>'
+                                ).join('')}
+                              </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl p-6 border-l-4 border-red-500">
+                              <i class="fas fa-quote-left text-red-300 text-3xl mb-3"></i>
+                              <p class="text-xl italic text-gray-700 mb-4">\${cs.challenge.quote}</p>
+                              <div class="flex items-center">
+                                <div class="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
+                                  \${cs.challenge.quoteAuthor.substring(0,2).toUpperCase()}
+                                </div>
+                                <div>
+                                  <div class="font-bold">\${cs.challenge.quoteAuthor}</div>
+                                  <div class="text-sm text-gray-600">\${cs.challenge.quoteRole}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Solution Section -->
+                          <div class="mb-16">
+                            <div class="flex items-center mb-6">
+                              <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-lightbulb text-blue-600 text-2xl"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-3xl font-bold text-gray-800">\${cs.solution.title}</h3>
+                                <p class="text-gray-600">Comment nous avons résolu le problème</p>
+                              </div>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed mb-6">\${cs.solution.description}</p>
+
+                            <div class="grid md:grid-cols-2 gap-8 mb-6">
+                              <!-- Approach -->
+                              <div class="bg-blue-50 rounded-2xl p-6">
+                                <h4 class="font-bold text-lg mb-4 text-blue-800 flex items-center">
+                                  <i class="fas fa-route mr-2"></i>Notre Approche
+                                </h4>
+                                <div class="space-y-3">
+                                  \${cs.solution.approach.map((step, i) =>
+                                    '<div class="flex items-start">' +
+                                      '<div class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0 mt-1">' + (i+1) + '</div>' +
+                                      '<span class="text-gray-700 text-sm">' + step + '</span>' +
+                                    '</div>'
+                                  ).join('')}
+                                </div>
+                              </div>
+
+                              <!-- Features -->
+                              <div class="bg-blue-50 rounded-2xl p-6">
+                                <h4 class="font-bold text-lg mb-4 text-blue-800 flex items-center">
+                                  <i class="fas fa-magic mr-2"></i>Fonctionnalités Clés
+                                </h4>
+                                <div class="space-y-3">
+                                  \${cs.solution.features.map(feature =>
+                                    '<div class="flex items-start">' +
+                                      '<i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>' +
+                                      '<span class="text-gray-700 text-sm">' + feature + '</span>' +
+                                    '</div>'
+                                  ).join('')}
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Technologies -->
+                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6">
+                              <h4 class="font-bold text-lg mb-4 text-blue-800 flex items-center">
+                                <i class="fas fa-code mr-2"></i>Stack Technologique
+                              </h4>
+                              <div class="flex flex-wrap gap-3">
+                                \${cs.solution.technologies.map(tech =>
+                                  '<span class="bg-white text-blue-700 px-4 py-2 rounded-lg text-sm font-medium shadow-sm border border-blue-200">' +
+                                    tech +
+                                  '</span>'
+                                ).join('')}
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Results Section -->
+                          <div class="mb-16">
+                            <div class="flex items-center mb-6">
+                              <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-3xl font-bold text-gray-800">\${cs.results.title}</h3>
+                                <p class="text-gray-600">\${cs.results.timeline} - \${cs.results.description}</p>
+                              </div>
+                            </div>
+
+                            <!-- Metrics Grid -->
+                            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                              \${cs.results.metrics.map(metric =>
+                                '<div class="bg-gradient-to-br from-white to-' + metric.color + '-50 rounded-2xl p-6 shadow-lg border border-' + metric.color + '-200">' +
+                                  '<div class="w-12 h-12 bg-' + metric.color + '-100 rounded-xl flex items-center justify-center mb-4">' +
+                                    '<i class="fas ' + metric.icon + ' text-' + metric.color + '-600 text-xl"></i>' +
+                                  '</div>' +
+                                  '<div class="text-sm text-gray-600 mb-2">' + metric.label + '</div>' +
+                                  '<div class="grid grid-cols-2 gap-2 mb-3">' +
+                                    '<div class="bg-white rounded-lg p-2">' +
+                                      '<div class="text-xs text-gray-500">Avant</div>' +
+                                      '<div class="font-bold text-gray-800">' + metric.before + '</div>' +
+                                    '</div>' +
+                                    '<div class="bg-white rounded-lg p-2">' +
+                                      '<div class="text-xs text-gray-500">Après</div>' +
+                                      '<div class="font-bold text-' + metric.color + '-600">' + metric.after + '</div>' +
+                                    '</div>' +
+                                  '</div>' +
+                                  '<div class="text-2xl font-bold text-' + metric.color + '-600">' + metric.improvement + '</div>' +
+                                '</div>'
+                              ).join('')}
+                            </div>
+
+                            <!-- Business Impact -->
+                            <div class="bg-green-50 rounded-2xl p-6">
+                              <h4 class="font-bold text-lg mb-4 text-green-800 flex items-center">
+                                <i class="fas fa-trophy mr-2"></i>Impact Business
+                              </h4>
+                              <div class="grid md:grid-cols-2 gap-3">
+                                \${cs.results.businessImpact.map(impact =>
+                                  '<div class="flex items-start bg-white rounded-lg p-3">' +
+                                    '<i class="fas fa-arrow-up text-green-500 mr-3 mt-1"></i>' +
+                                    '<span class="text-gray-700 font-medium">' + impact + '</span>' +
+                                  '</div>'
+                                ).join('')}
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Testimonial -->
+                          <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
+                            <div class="flex items-start mb-6">
+                              <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-indigo-600 font-bold text-2xl mr-6 flex-shrink-0">
+                                \${cs.testimonial.avatar}
+                              </div>
+                              <div>
+                                <i class="fas fa-quote-left text-3xl text-white/30 mb-4"></i>
+                                <p class="text-2xl font-medium mb-4">\${cs.testimonial.quote}</p>
+                                <div class="mb-4">
+                                  <div class="font-bold text-xl">\${cs.testimonial.author}</div>
+                                  <div class="text-indigo-200">\${cs.testimonial.role}</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                              <p class="text-white/90 leading-relaxed">\${cs.testimonial.fullStory}</p>
+                            </div>
+                          </div>
+
+                          <!-- Next Steps -->
+                          \${cs.nextSteps && cs.nextSteps.length > 0 ? 
+                            '<div class="mt-8 bg-gray-50 rounded-2xl p-6">' +
+                              '<h4 class="font-bold text-lg mb-4 flex items-center">' +
+                                '<i class="fas fa-road text-indigo-600 mr-2"></i>Prochaines Étapes' +
+                              '</h4>' +
+                              '<div class="grid md:grid-cols-2 gap-3">' +
+                                cs.nextSteps.map(step =>
+                                  '<div class="flex items-start">' +
+                                    '<i class="fas fa-chevron-right text-indigo-500 mr-3 mt-1"></i>' +
+                                    '<span class="text-gray-700">' + step + '</span>' +
+                                  '</div>'
+                                ).join('') +
+                              '</div>' +
+                            '</div>'
+                          : ''}
+                        </div>
+                      </div>
+                    </div>
+                  \`).join('')}
+                </div>
+
+                <!-- CTA Final -->
+                <div class="mt-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-3xl p-12 text-center shadow-2xl">
+                  <h2 class="text-4xl font-bold mb-4">\${data.cta.title}</h2>
+                  <p class="text-xl mb-8 opacity-90">\${data.cta.subtitle}</p>
+                  <div class="flex justify-center gap-4">
+                    <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors text-lg">
+                      \${data.cta.primaryButton}
+                    </a>
+                    <a href="/services" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-indigo-600 transition-colors text-lg">
+                      \${data.cta.secondaryButton}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                function filterCaseStudies(category) {
+                  const cards = document.querySelectorAll('.case-study-card');
+                  const buttons = document.querySelectorAll('.filter-btn');
+                  
+                  buttons.forEach(btn => {
+                    if(btn.dataset.filter === category) {
+                      btn.className = 'filter-btn px-4 py-2 rounded-lg transition-all hover:shadow-md bg-indigo-600 text-white';
+                    } else {
+                      btn.className = 'filter-btn px-4 py-2 rounded-lg transition-all hover:shadow-md bg-gray-100 text-gray-700 hover:bg-gray-200';
+                    }
+                  });
+                  
+                  cards.forEach(card => {
+                    if(category === 'all' || card.dataset.category === category) {
+                      card.style.display = 'block';
+                    } else {
+                      card.style.display = 'none';
+                    }
+                  });
+                }
+              <\/script>
+            \` + renderFooter();
+          });
+        <\/script>
+    </body>
+    </html>
+  `));const Ue=new ht,ds=Object.assign({"/src/index.tsx":v});let vt=!1;for(const[,e]of Object.entries(ds))e&&(Ue.all("*",t=>{let s;try{s=t.executionCtx}catch{}return e.fetch(t.req.raw,t.env,s)}),Ue.notFound(t=>{let s;try{s=t.executionCtx}catch{}return e.fetch(t.req.raw,t.env,s)}),vt=!0);if(!vt)throw new Error("Can't import modules from ['/src/index.ts','/src/index.tsx','/app/server.ts']");export{Ue as default};

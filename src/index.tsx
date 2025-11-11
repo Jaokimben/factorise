@@ -2267,4 +2267,320 @@ app.get('/use-cases', (c) => {
   `)
 })
 
+// Page Case Studies (Detailed)
+app.get('/case-studies', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Études de Cas - Factor AI</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/case-studies-data.js"></script>
+        <script src="/static/nav-component.js"></script>
+        <script src="/static/i18n-page.js"></script>
+    </head>
+    <body class="bg-gray-50">
+        <div id="app"></div>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const lang = getCurrentLang();
+            const data = getCaseStudiesData(lang);
+            
+            document.getElementById('app').innerHTML = renderNavigation('case-studies') + \`
+              <!-- Hero Section -->
+              <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                  <h1 class="text-5xl font-bold mb-6">\${data.hero.title}</h1>
+                  <p class="text-2xl mb-4 opacity-90">\${data.hero.subtitle}</p>
+                  <p class="text-lg opacity-80 max-w-3xl mx-auto">\${data.hero.description}</p>
+                </div>
+              </div>
+
+              <!-- Filters -->
+              <div class="bg-white shadow-md sticky top-16 z-40">
+                <div class="max-w-7xl mx-auto px-4 py-4">
+                  <div class="flex items-center justify-center gap-4 flex-wrap">
+                    \${data.filters.map(filter => \`
+                      <button 
+                        onclick="filterCaseStudies('\${filter.id}')"
+                        class="filter-btn px-4 py-2 rounded-lg transition-all hover:shadow-md \${filter.id === 'all' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}"
+                        data-filter="\${filter.id}">
+                        <i class="fas \${filter.icon} mr-2"></i>
+                        \${filter.label}
+                      </button>
+                    \`).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <div class="max-w-7xl mx-auto px-4 py-16">
+                <!-- Case Studies -->
+                <div id="caseStudiesGrid" class="space-y-20">
+                  \${data.caseStudies.map((cs, idx) => \`
+                    <div class="case-study-card" data-category="\${cs.category}">
+                      <!-- Case Study Header -->
+                      <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                        <!-- Hero Banner -->
+                        <div class="bg-gradient-to-r from-indigo-500 to-purple-500 p-8 text-white">
+                          <div class="flex items-start justify-between mb-6">
+                            <div>
+                              <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-4">
+                                <i class="fas fa-star mr-2"></i>\${cs.featured ? 'Featured Case' : 'Success Story'}
+                              </div>
+                              <h2 class="text-4xl font-bold mb-3">\${cs.title}</h2>
+                              <p class="text-xl text-indigo-100 mb-4">\${cs.tagline}</p>
+                              <div class="flex items-center gap-6 text-sm">
+                                <div><i class="fas fa-building mr-2"></i>\${cs.client}</div>
+                                <div><i class="fas fa-industry mr-2"></i>\${cs.industry}</div>
+                                <div><i class="fas fa-users mr-2"></i>\${cs.companySize}</div>
+                                <div><i class="fas fa-map-marker-alt mr-2"></i>\${cs.location}</div>
+                                <div><i class="fas fa-calendar mr-2"></i>\${cs.duration}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="p-12">
+                          <!-- Challenge Section -->
+                          <div class="mb-16">
+                            <div class="flex items-center mb-6">
+                              <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-exclamation-triangle text-red-600 text-2xl"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-3xl font-bold text-gray-800">\${cs.challenge.title}</h3>
+                                <p class="text-gray-600">La situation avant notre intervention</p>
+                              </div>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed mb-6">\${cs.challenge.description}</p>
+                            
+                            <div class="bg-red-50 rounded-2xl p-6 mb-6">
+                              <h4 class="font-bold text-lg mb-4 text-red-800">Points de Douleur Critiques:</h4>
+                              <div class="grid md:grid-cols-2 gap-4">
+                                \${cs.challenge.painPoints.map(point =>
+                                  '<div class="flex items-start">' +
+                                    '<i class="fas fa-times-circle text-red-500 mr-3 mt-1"></i>' +
+                                    '<span class="text-gray-700">' + point + '</span>' +
+                                  '</div>'
+                                ).join('')}
+                              </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl p-6 border-l-4 border-red-500">
+                              <i class="fas fa-quote-left text-red-300 text-3xl mb-3"></i>
+                              <p class="text-xl italic text-gray-700 mb-4">\${cs.challenge.quote}</p>
+                              <div class="flex items-center">
+                                <div class="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
+                                  \${cs.challenge.quoteAuthor.substring(0,2).toUpperCase()}
+                                </div>
+                                <div>
+                                  <div class="font-bold">\${cs.challenge.quoteAuthor}</div>
+                                  <div class="text-sm text-gray-600">\${cs.challenge.quoteRole}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Solution Section -->
+                          <div class="mb-16">
+                            <div class="flex items-center mb-6">
+                              <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-lightbulb text-blue-600 text-2xl"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-3xl font-bold text-gray-800">\${cs.solution.title}</h3>
+                                <p class="text-gray-600">Comment nous avons résolu le problème</p>
+                              </div>
+                            </div>
+                            <p class="text-xl text-gray-700 leading-relaxed mb-6">\${cs.solution.description}</p>
+
+                            <div class="grid md:grid-cols-2 gap-8 mb-6">
+                              <!-- Approach -->
+                              <div class="bg-blue-50 rounded-2xl p-6">
+                                <h4 class="font-bold text-lg mb-4 text-blue-800 flex items-center">
+                                  <i class="fas fa-route mr-2"></i>Notre Approche
+                                </h4>
+                                <div class="space-y-3">
+                                  \${cs.solution.approach.map((step, i) =>
+                                    '<div class="flex items-start">' +
+                                      '<div class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 flex-shrink-0 mt-1">' + (i+1) + '</div>' +
+                                      '<span class="text-gray-700 text-sm">' + step + '</span>' +
+                                    '</div>'
+                                  ).join('')}
+                                </div>
+                              </div>
+
+                              <!-- Features -->
+                              <div class="bg-blue-50 rounded-2xl p-6">
+                                <h4 class="font-bold text-lg mb-4 text-blue-800 flex items-center">
+                                  <i class="fas fa-magic mr-2"></i>Fonctionnalités Clés
+                                </h4>
+                                <div class="space-y-3">
+                                  \${cs.solution.features.map(feature =>
+                                    '<div class="flex items-start">' +
+                                      '<i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>' +
+                                      '<span class="text-gray-700 text-sm">' + feature + '</span>' +
+                                    '</div>'
+                                  ).join('')}
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Technologies -->
+                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6">
+                              <h4 class="font-bold text-lg mb-4 text-blue-800 flex items-center">
+                                <i class="fas fa-code mr-2"></i>Stack Technologique
+                              </h4>
+                              <div class="flex flex-wrap gap-3">
+                                \${cs.solution.technologies.map(tech =>
+                                  '<span class="bg-white text-blue-700 px-4 py-2 rounded-lg text-sm font-medium shadow-sm border border-blue-200">' +
+                                    tech +
+                                  '</span>'
+                                ).join('')}
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Results Section -->
+                          <div class="mb-16">
+                            <div class="flex items-center mb-6">
+                              <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+                              </div>
+                              <div>
+                                <h3 class="text-3xl font-bold text-gray-800">\${cs.results.title}</h3>
+                                <p class="text-gray-600">\${cs.results.timeline} - \${cs.results.description}</p>
+                              </div>
+                            </div>
+
+                            <!-- Metrics Grid -->
+                            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                              \${cs.results.metrics.map(metric =>
+                                '<div class="bg-gradient-to-br from-white to-' + metric.color + '-50 rounded-2xl p-6 shadow-lg border border-' + metric.color + '-200">' +
+                                  '<div class="w-12 h-12 bg-' + metric.color + '-100 rounded-xl flex items-center justify-center mb-4">' +
+                                    '<i class="fas ' + metric.icon + ' text-' + metric.color + '-600 text-xl"></i>' +
+                                  '</div>' +
+                                  '<div class="text-sm text-gray-600 mb-2">' + metric.label + '</div>' +
+                                  '<div class="grid grid-cols-2 gap-2 mb-3">' +
+                                    '<div class="bg-white rounded-lg p-2">' +
+                                      '<div class="text-xs text-gray-500">Avant</div>' +
+                                      '<div class="font-bold text-gray-800">' + metric.before + '</div>' +
+                                    '</div>' +
+                                    '<div class="bg-white rounded-lg p-2">' +
+                                      '<div class="text-xs text-gray-500">Après</div>' +
+                                      '<div class="font-bold text-' + metric.color + '-600">' + metric.after + '</div>' +
+                                    '</div>' +
+                                  '</div>' +
+                                  '<div class="text-2xl font-bold text-' + metric.color + '-600">' + metric.improvement + '</div>' +
+                                '</div>'
+                              ).join('')}
+                            </div>
+
+                            <!-- Business Impact -->
+                            <div class="bg-green-50 rounded-2xl p-6">
+                              <h4 class="font-bold text-lg mb-4 text-green-800 flex items-center">
+                                <i class="fas fa-trophy mr-2"></i>Impact Business
+                              </h4>
+                              <div class="grid md:grid-cols-2 gap-3">
+                                \${cs.results.businessImpact.map(impact =>
+                                  '<div class="flex items-start bg-white rounded-lg p-3">' +
+                                    '<i class="fas fa-arrow-up text-green-500 mr-3 mt-1"></i>' +
+                                    '<span class="text-gray-700 font-medium">' + impact + '</span>' +
+                                  '</div>'
+                                ).join('')}
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Testimonial -->
+                          <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
+                            <div class="flex items-start mb-6">
+                              <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-indigo-600 font-bold text-2xl mr-6 flex-shrink-0">
+                                \${cs.testimonial.avatar}
+                              </div>
+                              <div>
+                                <i class="fas fa-quote-left text-3xl text-white/30 mb-4"></i>
+                                <p class="text-2xl font-medium mb-4">\${cs.testimonial.quote}</p>
+                                <div class="mb-4">
+                                  <div class="font-bold text-xl">\${cs.testimonial.author}</div>
+                                  <div class="text-indigo-200">\${cs.testimonial.role}</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                              <p class="text-white/90 leading-relaxed">\${cs.testimonial.fullStory}</p>
+                            </div>
+                          </div>
+
+                          <!-- Next Steps -->
+                          \${cs.nextSteps && cs.nextSteps.length > 0 ? 
+                            '<div class="mt-8 bg-gray-50 rounded-2xl p-6">' +
+                              '<h4 class="font-bold text-lg mb-4 flex items-center">' +
+                                '<i class="fas fa-road text-indigo-600 mr-2"></i>Prochaines Étapes' +
+                              '</h4>' +
+                              '<div class="grid md:grid-cols-2 gap-3">' +
+                                cs.nextSteps.map(step =>
+                                  '<div class="flex items-start">' +
+                                    '<i class="fas fa-chevron-right text-indigo-500 mr-3 mt-1"></i>' +
+                                    '<span class="text-gray-700">' + step + '</span>' +
+                                  '</div>'
+                                ).join('') +
+                              '</div>' +
+                            '</div>'
+                          : ''}
+                        </div>
+                      </div>
+                    </div>
+                  \`).join('')}
+                </div>
+
+                <!-- CTA Final -->
+                <div class="mt-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-3xl p-12 text-center shadow-2xl">
+                  <h2 class="text-4xl font-bold mb-4">\${data.cta.title}</h2>
+                  <p class="text-xl mb-8 opacity-90">\${data.cta.subtitle}</p>
+                  <div class="flex justify-center gap-4">
+                    <a href="/contact" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors text-lg">
+                      \${data.cta.primaryButton}
+                    </a>
+                    <a href="/services" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-indigo-600 transition-colors text-lg">
+                      \${data.cta.secondaryButton}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                function filterCaseStudies(category) {
+                  const cards = document.querySelectorAll('.case-study-card');
+                  const buttons = document.querySelectorAll('.filter-btn');
+                  
+                  buttons.forEach(btn => {
+                    if(btn.dataset.filter === category) {
+                      btn.className = 'filter-btn px-4 py-2 rounded-lg transition-all hover:shadow-md bg-indigo-600 text-white';
+                    } else {
+                      btn.className = 'filter-btn px-4 py-2 rounded-lg transition-all hover:shadow-md bg-gray-100 text-gray-700 hover:bg-gray-200';
+                    }
+                  });
+                  
+                  cards.forEach(card => {
+                    if(category === 'all' || card.dataset.category === category) {
+                      card.style.display = 'block';
+                    } else {
+                      card.style.display = 'none';
+                    }
+                  });
+                }
+              </script>
+            \` + renderFooter();
+          });
+        </script>
+    </body>
+    </html>
+  `)
+})
+
 export default app
