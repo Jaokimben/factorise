@@ -15,6 +15,14 @@
 
 ### ✅ Fonctionnalités actuellement implémentées
 
+#### 0. Support Multi-langue (FR/EN)
+- **Changement de langue dynamique** : Toggle FR/EN dans la navigation
+- **Traductions complètes** : Toutes les pages, menus, formulaires
+- **Questions d'évaluation** : 20 questions traduites en français et anglais
+- **Persistance** : Préférence de langue sauvegardée dans localStorage
+- **Sans rechargement** : Traduction instantanée via JavaScript
+- **Seamless UX** : Pas de duplication de code, même structure HTML
+
 #### 1. Site Vitrine Public
 - **Page d'accueil** avec sections :
   - Hero section avec CTA (Call-to-Action)
@@ -73,6 +81,7 @@
 
 ### 🔧 Fonctionnalités techniques
 
+- **Multi-langue** : Système i18n avec FR/EN, extensible à d'autres langues
 - **Architecture** : Hono + Cloudflare Pages + D1 Database
 - **Frontend** : HTML/CSS avec Tailwind CSS, Axios pour les appels API
 - **Backend** : API RESTful avec Hono
@@ -382,6 +391,13 @@ app.get('/api/nouveau-endpoint', async (c) => {
 ```
 
 ## Améliorations futures recommandées
+
+### Multi-langue
+
+- [x] **Support bilingue FR/EN** : Implémenté avec toggle dynamique
+- [ ] **Autres langues** : ES, DE, IT (structure prête, ajouter traductions)
+- [ ] **Détection automatique** : Langue du navigateur par défaut
+- [ ] **URLs localisées** : /fr/, /en/ (optionnel)
 
 ### Sécurité
 

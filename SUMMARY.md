@@ -112,6 +112,16 @@ recommendations (recommandations)
 
 ## 🚀 Fonctionnalités implémentées
 
+### Support Multi-langue 🌍
+
+**Système bilingue FR/EN complet**
+- Toggle langue dans la navigation (boutons FR/EN)
+- Toutes les pages traduites automatiquement
+- 20 questions d'évaluation en français et anglais
+- Préférence sauvegardée dans localStorage
+- Traduction instantanée sans rechargement
+- Interface unifiée (pas de duplication de code)
+
 ### Pages publiques
 
 1. **Page d'accueil** (/)
