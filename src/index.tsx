@@ -188,10 +188,12 @@ app.get('/', (c) => {
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
-                        <span class="text-2xl font-bold text-indigo-600"><i class="fas fa-brain mr-2"></i>Factor AI</span>
+                        <a href="/" class="text-2xl font-bold text-indigo-600"><i class="fas fa-brain mr-2"></i>Factor AI</a>
                     </div>
                     <div class="flex items-center space-x-6">
                         <a href="/services" class="text-gray-700 hover:text-indigo-600">Services</a>
+                        <a href="/use-cases" class="text-gray-700 hover:text-indigo-600">Cas d'Usage</a>
+                        <a href="/case-studies" class="text-gray-700 hover:text-indigo-600">Études de Cas</a>
                         <a href="/about" class="text-gray-700 hover:text-indigo-600">À propos</a>
                         <a href="/testimonials" class="text-gray-700 hover:text-indigo-600">Témoignages</a>
                         <a href="/faq" class="text-gray-700 hover:text-indigo-600">FAQ</a>
