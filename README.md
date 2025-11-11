@@ -1,17 +1,21 @@
 # Factor AI - Plateforme Complète de Transformation IA
 
-> **Version 4.3.0** - Complete Case Studies Edition | Production URL: https://51e61d69.factorise-ai.pages.dev
+> **Version 4.4.0** - Unified Use Cases Edition | Production URL: https://38439c1c.factorise-ai.pages.dev
 
 ## 🎯 Vue d'ensemble du projet
 
 **Factor AI** (anciennement Factorise.io) est une plateforme web professionnelle complète pour la transformation digitale et l'intelligence artificielle. Elle combine un site vitrine multi-pages avec un système d'évaluation de maturité IA avancé.
 
-### ✨ Nouveautés V4.3 (2025-11-11) - PAGE ÉTUDES DE CAS COMPLÈTE
+### ✨ Nouveautés V4.4 (2025-11-11) - PAGE CAS D'USAGE UNIFIÉE
 
-**Nouvelles pages ajoutées** :
+**Fusion "Cas d'Usage" et "Études de Cas" en une seule page** (inspirée de Evidently AI) :
 
-1. **Page Cas d'Usage (`/use-cases`)** - 12 exemples concrets organisés en 6 industries
+1. **Page Cas d'Usage Unifiée (`/use-cases`)** - 18 cas d'usage complets (12 quick wins + 6 études de cas détaillées)
    - **6 catégories** : Service Client, Ventes & Marketing, Finance & Comptabilité, RH & Recrutement, Opérations, Produit & Tech
+   - **18 cas d'usage détaillés** :
+     - **12 Quick Wins** : Cas d'usage rapides avec métriques clés
+     - **6 Études de Cas Complètes** : Projets clients détaillés (FashionHub, FinanceConnect, DataFlow, etc.)
+   
    - **Format structuré** pour chaque cas :
      - 🎯 **Défi** : Problème business concret
      - 💡 **Solution** : Comment l'IA résout le problème
@@ -19,32 +23,14 @@
      - 🔧 **Technologies** : Stack technique (GPT-4, Dialogflow, etc.)
      - 📊 **Métriques** : KPIs mesurables (réduction coûts, gain temps)
      - 🏢 **Industrie** : Secteurs applicables
-   - **Design gradient** : Couleurs par catégorie (bleu, vert, violet, orange, rose, cyan)
-   - **24 KB de données structurées**
+   
+   - **Design simplifié** : Une seule page pour tous les cas d'usage
+   - **Navigation améliorée** : Plus de confusion entre "Cas d'Usage" et "Études de Cas"
+   - **40 KB de données structurées** bilingues FR/EN dans unified-use-cases-data.js
+   - **Redirection 301** : /case-studies → /use-cases (SEO preservé)
+   - **Inspiré de Evidently AI** : Structure claire et efficace pour 650+ exemples
 
-2. **Page Études de Cas (`/case-studies`)** - 6 projets clients détaillés (format factorise.io)
-   - **Filtres par industrie** : E-commerce, Finance, SaaS, Assurance, Santé, Retail
-   - **6 études de cas approfondies** :
-     - 🛍️ FashionHub (E-commerce) : -70% temps réponse, +28% conversions
-     - 💰 FinanceConnect (Banque) : -900K€/an, 98% satisfaction
-     - 📊 DataFlow (SaaS) : -90% temps recherche, +25% productivité
-     - 🛡️ SecureLife (Assurance) : -50% temps traitement, +15% ventes
-     - 🏥 HealthCare+ (Santé) : 87% autonomie patients, -35% appels
-     - 🏬 RetailMax (Retail) : -60% ruptures stock, +18% ventes
-
-   - **Structure détaillée par étude** (style factorise.io) :
-     - 📋 **Header** : Client, industrie, durée projet, featured badge
-     - 🔴 **Le Défi** : Contexte, problèmes business, pain points, citation client
-     - 💡 **Notre Solution** : Approche, technologies, fonctionnalités implémentées
-     - 📈 **Résultats Mesurables** : 6 métriques avant/après avec % amélioration
-     - 💬 **Témoignage** : Citation complète, auteur, rôle, histoire détaillée
-     - 🚀 **Prochaines Étapes** : Évolutions prévues
-
-   - **Cartes métriques avant/après** : Comparaison visuelle avec badges de pourcentage
-   - **37 KB de données structurées** bilingues FR/EN
-   - **Filtrage dynamique** : JavaScript sans rechargement de page
-
-3. **Section Processus Agentic (Homepage)** - Architecture multi-agents
+2. **Section Processus Agentic (Homepage)** - Architecture multi-agents
    - **Workflow en 5 étapes** : Requête → Orchestration → Agents → Synthèse → Réponse
    - **4 types d'agents IA** :
      - 🎯 **Orchestrator** : Coordination et planification
@@ -54,7 +40,11 @@
    - **Bénéfices** : Autonomie, scalabilité, fiabilité, personnalisation
    - **Design moderne** avec cartes gradient et diagramme de workflow
 
-**Données structurées totales ajoutées** : 61 KB (24 KB use-cases + 37 KB case-studies)
+**Amélioration UX V4.4** :
+- ✅ Fusion de 2 pages similaires en 1 page unifiée
+- ✅ Simplification de la navigation (8 liens au lieu de 9)
+- ✅ Expérience utilisateur améliorée (un seul endroit pour tous les cas d'usage)
+- ✅ Redirection 301 pour préserver le SEO
 
 ### ✨ Historique V4.1 (2025-11-11) - LAYOUTS PROFESSIONNELS
 
@@ -94,33 +84,32 @@
    - **Testimonials grid** : 6 cartes avec stars 5★
    - CTA final avec 2 boutons
 
-**Bundle size V4.3** : 161.42 KB (optimisé)  
-**Tests V4.3** : Toutes les pages retournent 200 OK  
-**GitHub** : https://github.com/Jaokimben/factorise (3 commits V4.2-V4.3 pushés)
-**Production V4.3** : https://51e61d69.factorise-ai.pages.dev (déployé)
+**Bundle size V4.4** : 163.11 KB (optimisé)  
+**Tests V4.4** : Toutes les pages retournent 200 OK, redirection 301 fonctionne  
+**GitHub** : https://github.com/Jaokimben/factorise (commit V4.4 pushé)
+**Production V4.4** : https://38439c1c.factorise-ai.pages.dev (déployé)
 
-**URLs principales V4.3** :
-- Homepage avec Agentic Process : https://51e61d69.factorise-ai.pages.dev
-- Cas d'Usage (12 exemples) : https://51e61d69.factorise-ai.pages.dev/use-cases
-- Études de Cas (6 projets) : https://51e61d69.factorise-ai.pages.dev/case-studies
-- Services (layout premium) : https://51e61d69.factorise-ai.pages.dev/services
+**URLs principales V4.4** :
+- Homepage avec Agentic Process : https://38439c1c.factorise-ai.pages.dev
+- **Cas d'Usage Unifiés (18 cas)** : https://38439c1c.factorise-ai.pages.dev/use-cases ✨ NOUVEAU
+- Redirection Études de Cas : https://38439c1c.factorise-ai.pages.dev/case-studies → /use-cases (301)
+- Services (layout premium) : https://38439c1c.factorise-ai.pages.dev/services
 
 ### Historique V4 (2025-11-11)
 
-**9 pages professionnelles** au total (5 de base + 2 nouvelles V4.3) :
-- `/` - Homepage avec section Agentic Process (NEW V4.3)
+**8 pages professionnelles** au total (V4.4 simplifié) :
+- `/` - Homepage avec section Agentic Process
 - `/services` - 7 services IA avec layout premium V4.1
-- `/use-cases` - 12 cas d'usage en 6 industries (NEW V4.3)
-- `/case-studies` - 6 études de cas détaillées style factorise.io (NEW V4.3)
+- `/use-cases` - **18 cas d'usage unifiés** (12 quick wins + 6 études de cas complètes) ✨ V4.4
 - `/about` - Vision, mission, équipe de 6 experts
 - `/testimonials` - 6 témoignages + études de cas expandables V4.1
 - `/contact` - Formulaire fonctionnel + API endpoint
 - `/faq` - 15+ questions avec recherche temps réel
 - `/dashboard` - Espace personnel + évaluation maturité IA
 
-**157 KB de données structurées** bilingues FR/EN (96 KB V4 + 61 KB V4.3)  
+**40 KB de données unifiées** dans unified-use-cases-data.js (V4.4)  
 **150+ clés de traduction** complètes  
-**Navigation unifiée** avec nouveaux liens Use Cases et Case Studies
+**Navigation simplifiée** avec 8 liens (au lieu de 9)
 
 ### Objectifs
 
@@ -661,8 +650,7 @@ app.get('/api/nouveau-endpoint', async (c) => {
 **Pages publiques** :
 - `/` - Page d'accueil avec Agentic Process
 - `/services` - 7 services IA détaillés (layout premium)
-- `/use-cases` - 12 cas d'usage concrets (NEW V4.3)
-- `/case-studies` - 6 études de cas clients détaillées (NEW V4.3)
+- `/use-cases` - **18 cas d'usage unifiés** (12 quick wins + 6 études de cas) ✨ V4.4
 - `/about` - Vision, mission, équipe
 - `/testimonials` - Témoignages et études de cas
 - `/contact` - Formulaire de contact
@@ -670,35 +658,39 @@ app.get('/api/nouveau-endpoint', async (c) => {
 - `/login` - Connexion
 - `/register` - Inscription
 
+**Redirections** :
+- `/case-studies` → `/use-cases` (301 permanent redirect)
+
 **Pages authentifiées** :
 - `/dashboard` - Espace personnel avec statistiques
 - `/assessment` - Évaluation de maturité IA (40 questions)
 - `/results?id=X&score=Y` - Résultats détaillés avec recommandations
 
-## État actuel du projet - V4.3
+## État actuel du projet - V4.4
 
-- ✅ Architecture complète fonctionnelle avec 9 pages
-- ✅ **V4.3** : Page Use Cases avec 12 exemples concrets (24 KB data)
-- ✅ **V4.3** : Page Case Studies avec 6 projets détaillés (37 KB data)
-- ✅ **V4.3** : Section Agentic Process sur homepage
-- ✅ **V4.3** : Navigation mise à jour avec nouveaux liens
+- ✅ Architecture complète fonctionnelle avec 8 pages (simplifié)
+- ✅ **V4.4** : Page Cas d'Usage Unifiée avec 18 cas (12 quick + 6 detailed) - 40 KB data
+- ✅ **V4.4** : Redirection 301 /case-studies → /use-cases (SEO preservé)
+- ✅ **V4.4** : Navigation simplifiée (8 liens au lieu de 9)
+- ✅ **V4.4** : Structure inspirée d'Evidently AI pour meilleure discoverabilité
+- ✅ Section Agentic Process sur homepage
 - ✅ Authentification de base implémentée
 - ✅ Évaluation de maturité IA complète (40 questions)
 - ✅ Dashboard avec statistiques personnalisées
 - ✅ Résultats avec graphiques et recommandations
 - ✅ Base de données D1 configurée
 - ✅ Design responsive et moderne (gradients, cards)
-- ✅ **Déployé sur Cloudflare Pages** : https://51e61d69.factorise-ai.pages.dev
+- ✅ **Déployé sur Cloudflare Pages** : https://38439c1c.factorise-ai.pages.dev
 - ✅ **Repository GitHub à jour** : https://github.com/Jaokimben/factorise
 - ⚠️ Sécurité à renforcer (hashing passwords)
 - ⚠️ Tests unitaires à ajouter
 
 ## Déploiement et configuration
 
-**Dernière mise à jour** : 11 novembre 2025 - V4.3.0  
-**Dernier déploiement** : 11 novembre 2025 - https://51e61d69.factorise-ai.pages.dev  
-**GitHub commits** : 3 commits V4.2-V4.3 (16f8d6d, 0584dbc, ec1b9f5)  
-**Bundle size** : 161.42 KB (optimisé avec Vite)
+**Dernière mise à jour** : 11 novembre 2025 - V4.4.0  
+**Dernier déploiement** : 11 novembre 2025 - https://38439c1c.factorise-ai.pages.dev  
+**GitHub commits** : Commit V4.4 (43ec23c) - Unified Use Cases
+**Bundle size** : 163.11 KB (optimisé avec Vite)
 
 ## Contribution
 
