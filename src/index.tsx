@@ -193,7 +193,6 @@ app.get('/', (c) => {
                     <div class="flex items-center space-x-6">
                         <a href="/services" class="text-gray-700 hover:text-indigo-600">Services</a>
                         <a href="/use-cases" class="text-gray-700 hover:text-indigo-600">Cas d'Usage</a>
-                        <a href="/case-studies" class="text-gray-700 hover:text-indigo-600">Études de Cas</a>
                         <a href="/about" class="text-gray-700 hover:text-indigo-600">À propos</a>
                         <a href="/testimonials" class="text-gray-700 hover:text-indigo-600">Témoignages</a>
                         <a href="/faq" class="text-gray-700 hover:text-indigo-600">FAQ</a>
@@ -2132,16 +2131,45 @@ app.get('/use-cases', (c) => {
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
         <script src="/static/translations.js"></script>
-        <script src="/static/use-cases-data.js"></script>
+        <script src="/static/unified-use-cases-data.js"></script>
         <script src="/static/nav-component.js"></script>
         <script src="/static/i18n-page.js"></script>
+        <style>
+          .use-case-card { cursor: pointer; transition: all 0.3s; }
+          .use-case-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+          .filter-chip { cursor: pointer; transition: all 0.2s; }
+          .filter-chip:hover { transform: translateY(-2px); }
+          .filter-chip.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+          .badge-quick-win { background: #10b981; color: white; }
+          .badge-case-study { background: #3b82f6; color: white; }
+          .badge-llm { background: #8b5cf6; color: white; }
+          .badge-ml { background: #f97316; color: white; }
+          .badge-automation { background: #06b6d4; color: white; }
+        </style>
     </head>
     <body class="bg-gray-50">
         <div id="app"></div>
+        
+        <!-- Modal for detailed case study -->
+        <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 overflow-y-auto">
+          <div class="min-h-screen px-4 py-8 flex items-center justify-center">
+            <div class="bg-white rounded-2xl max-w-5xl w-full shadow-2xl relative">
+              <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+              </button>
+              <div id="modalContent"></div>
+            </div>
+          </div>
+        </div>
+        
         <script>
+          let currentFilter = 'all';
+          let allUseCases = [];
+          
           document.addEventListener('DOMContentLoaded', () => {
             const lang = getCurrentLang();
-            const data = getUseCasesData(lang);
+            const data = getUnifiedUseCasesData(lang);
+            allUseCases = data.useCases;
             
             document.getElementById('app').innerHTML = renderNavigation('use-cases') + \`
               <!-- Hero Section -->
@@ -2269,15 +2297,20 @@ app.get('/use-cases', (c) => {
   `)
 })
 
-// Page Case Studies (Detailed)
+// Redirect Case Studies to Use Cases (merged)
 app.get('/case-studies', (c) => {
+  return c.redirect('/use-cases', 301)
+})
+
+// Legacy compatibility - old case studies now merged into use cases
+app.get('/case-studies-old', (c) => {
   return c.html(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Études de Cas - Factor AI</title>
+        <title>Études de Cas - Factor AI (OLD)</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
         <script src="/static/translations.js"></script>
