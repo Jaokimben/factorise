@@ -1,6 +1,6 @@
-// Use the questions from assessment-questions.js based on current language
+// Use the enhanced V2 questions from assessment-questions-v2.js based on current language
 const currentLang = getCurrentLang();
-const assessmentQuestions = getAssessmentQuestions(currentLang);
+const assessmentQuestions = getAssessmentQuestionsV2(currentLang);
 
 // Fallback for old structure (will be overridden by i18n version above)
 const assessmentQuestionsOld = {

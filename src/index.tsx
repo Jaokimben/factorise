@@ -665,7 +665,7 @@ app.get('/assessment', (c) => {
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
         <script src="/static/translations.js"></script>
-        <script src="/static/assessment-questions.js"></script>
+        <script src="/static/assessment-questions-v2.js"></script>
         <script src="/static/i18n-page.js"></script>
         <script src="/static/assessment.js"></script>
     </head>
@@ -992,6 +992,121 @@ app.get('/results', (c) => {
                     ).join('');
                 }
             }
+        </script>
+    </body>
+    </html>
+  `)
+})
+
+// Page Ressources
+app.get('/resources', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ressources - Factorise.io</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="/static/translations.js"></script>
+        <script src="/static/resources-data.js"></script>
+        <script src="/static/i18n-page.js"></script>
+    </head>
+    <body class="bg-gray-50">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="/" class="text-2xl font-bold text-indigo-600">Factorise.io</a>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <a href="/" class="text-gray-700 hover:text-indigo-600">Accueil</a>
+                        <a href="/resources" class="text-indigo-600 font-semibold">Ressources</a>
+                        <a href="/dashboard" class="text-gray-700 hover:text-indigo-600">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold mb-4">Ressources IA</h1>
+                <p class="text-xl text-gray-600">Guides, templates et cas clients pour accélérer votre transformation IA</p>
+            </div>
+
+            <!-- Guides -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold mb-6">
+                    <i class="fas fa-book text-indigo-600 mr-3"></i>Guides & Documentation
+                </h2>
+                <div id="guidesContainer" class="grid md:grid-cols-3 gap-6"></div>
+            </section>
+
+            <!-- Templates -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold mb-6">
+                    <i class="fas fa-file-alt text-indigo-600 mr-3"></i>Templates & Outils
+                </h2>
+                <div id="templatesContainer" class="grid md:grid-cols-3 gap-6"></div>
+            </section>
+
+            <!-- Case Studies -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold mb-6">
+                    <i class="fas fa-briefcase text-indigo-600 mr-3"></i>Cas Clients
+                </h2>
+                <div id="casestudiesContainer" class="grid md:grid-cols-3 gap-6"></div>
+            </section>
+
+            <!-- CTA -->
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-12 text-center">
+                <h2 class="text-3xl font-bold mb-4">Besoin d'accompagnement personnalisé ?</h2>
+                <p class="text-xl mb-6">Nos experts sont à votre disposition pour vous guider</p>
+                <a href="/register" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 inline-block">
+                    Démarrer votre évaluation
+                </a>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+        <script>
+            const lang = getCurrentLang();
+            const resources = getResources(lang);
+            
+            // Render resource card
+            function renderResourceCard(resource) {
+                return \`
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer"
+                         onclick="downloadResource('\${resource.downloadUrl}', '\${resource.title}')">
+                        <div class="flex items-center mb-4">
+                            <i class="fas \${resource.icon} text-3xl text-indigo-600 mr-4"></i>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold">\${resource.title}</h3>
+                                <div class="flex items-center space-x-2 text-sm text-gray-500 mt-1">
+                                    <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded">\${resource.type}</span>
+                                    <span>\${resource.size}</span>
+                                    \${resource.pages ? '<span>' + resource.pages + '</span>' : ''}
+                                    \${resource.industry ? '<span class="bg-green-100 text-green-600 px-2 py-1 rounded">' + resource.industry + '</span>' : ''}
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">\${resource.description}</p>
+                        <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                            <i class="fas fa-download mr-2"></i>Télécharger
+                        </button>
+                    </div>
+                \`;
+            }
+            
+            // Render all resources
+            document.getElementById('guidesContainer').innerHTML = 
+                resources.guides.map(renderResourceCard).join('');
+            document.getElementById('templatesContainer').innerHTML = 
+                resources.templates.map(renderResourceCard).join('');
+            document.getElementById('casestudiesContainer').innerHTML = 
+                resources.casestudies.map(renderResourceCard).join('');
         </script>
     </body>
     </html>
