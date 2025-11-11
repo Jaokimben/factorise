@@ -1,12 +1,62 @@
 # Factor AI - Plateforme Complète de Transformation IA
 
-> **Version 4.1.0** - Professional Layouts Edition | Sandbox URL: https://3000-iq3bbj8ibym15nrja4r5h-18e660f9.sandbox.novita.ai
+> **Version 4.3.0** - Complete Case Studies Edition | Production URL: https://51e61d69.factorise-ai.pages.dev
 
 ## 🎯 Vue d'ensemble du projet
 
 **Factor AI** (anciennement Factorise.io) est une plateforme web professionnelle complète pour la transformation digitale et l'intelligence artificielle. Elle combine un site vitrine multi-pages avec un système d'évaluation de maturité IA avancé.
 
-### ✨ Nouveautés V4.1 (2025-11-11) - LAYOUTS PROFESSIONNELS
+### ✨ Nouveautés V4.3 (2025-11-11) - PAGE ÉTUDES DE CAS COMPLÈTE
+
+**Nouvelles pages ajoutées** :
+
+1. **Page Cas d'Usage (`/use-cases`)** - 12 exemples concrets organisés en 6 industries
+   - **6 catégories** : Service Client, Ventes & Marketing, Finance & Comptabilité, RH & Recrutement, Opérations, Produit & Tech
+   - **Format structuré** pour chaque cas :
+     - 🎯 **Défi** : Problème business concret
+     - 💡 **Solution** : Comment l'IA résout le problème
+     - ✅ **Bénéfices** : 3-4 gains quantifiés
+     - 🔧 **Technologies** : Stack technique (GPT-4, Dialogflow, etc.)
+     - 📊 **Métriques** : KPIs mesurables (réduction coûts, gain temps)
+     - 🏢 **Industrie** : Secteurs applicables
+   - **Design gradient** : Couleurs par catégorie (bleu, vert, violet, orange, rose, cyan)
+   - **24 KB de données structurées**
+
+2. **Page Études de Cas (`/case-studies`)** - 6 projets clients détaillés (format factorise.io)
+   - **Filtres par industrie** : E-commerce, Finance, SaaS, Assurance, Santé, Retail
+   - **6 études de cas approfondies** :
+     - 🛍️ FashionHub (E-commerce) : -70% temps réponse, +28% conversions
+     - 💰 FinanceConnect (Banque) : -900K€/an, 98% satisfaction
+     - 📊 DataFlow (SaaS) : -90% temps recherche, +25% productivité
+     - 🛡️ SecureLife (Assurance) : -50% temps traitement, +15% ventes
+     - 🏥 HealthCare+ (Santé) : 87% autonomie patients, -35% appels
+     - 🏬 RetailMax (Retail) : -60% ruptures stock, +18% ventes
+
+   - **Structure détaillée par étude** (style factorise.io) :
+     - 📋 **Header** : Client, industrie, durée projet, featured badge
+     - 🔴 **Le Défi** : Contexte, problèmes business, pain points, citation client
+     - 💡 **Notre Solution** : Approche, technologies, fonctionnalités implémentées
+     - 📈 **Résultats Mesurables** : 6 métriques avant/après avec % amélioration
+     - 💬 **Témoignage** : Citation complète, auteur, rôle, histoire détaillée
+     - 🚀 **Prochaines Étapes** : Évolutions prévues
+
+   - **Cartes métriques avant/après** : Comparaison visuelle avec badges de pourcentage
+   - **37 KB de données structurées** bilingues FR/EN
+   - **Filtrage dynamique** : JavaScript sans rechargement de page
+
+3. **Section Processus Agentic (Homepage)** - Architecture multi-agents
+   - **Workflow en 5 étapes** : Requête → Orchestration → Agents → Synthèse → Réponse
+   - **4 types d'agents IA** :
+     - 🎯 **Orchestrator** : Coordination et planification
+     - 💬 **Communication** : Interfaces conversationnelles
+     - 🔍 **Analyst** : Analyse de données
+     - 🛠️ **Executor** : Actions et intégrations
+   - **Bénéfices** : Autonomie, scalabilité, fiabilité, personnalisation
+   - **Design moderne** avec cartes gradient et diagramme de workflow
+
+**Données structurées totales ajoutées** : 61 KB (24 KB use-cases + 37 KB case-studies)
+
+### ✨ Historique V4.1 (2025-11-11) - LAYOUTS PROFESSIONNELS
 
 **3 sections améliorées pour correspondre à factorise.io** :
 
@@ -44,22 +94,33 @@
    - **Testimonials grid** : 6 cartes avec stars 5★
    - CTA final avec 2 boutons
 
-**Bundle size** : 125 KB (optimisé)  
-**Tests** : Toutes les pages retournent 200 OK  
-**Backup V4.1** : https://page.gensparksite.com/project_backups/v4.1_professional_layouts.tar.gz
+**Bundle size V4.3** : 161.42 KB (optimisé)  
+**Tests V4.3** : Toutes les pages retournent 200 OK  
+**GitHub** : https://github.com/Jaokimben/factorise (3 commits V4.2-V4.3 pushés)
+**Production V4.3** : https://51e61d69.factorise-ai.pages.dev (déployé)
 
-### Historique V4 (2025-01-11)
+**URLs principales V4.3** :
+- Homepage avec Agentic Process : https://51e61d69.factorise-ai.pages.dev
+- Cas d'Usage (12 exemples) : https://51e61d69.factorise-ai.pages.dev/use-cases
+- Études de Cas (6 projets) : https://51e61d69.factorise-ai.pages.dev/case-studies
+- Services (layout premium) : https://51e61d69.factorise-ai.pages.dev/services
 
-**5 nouvelles pages professionnelles** ajoutées :
-- `/services` - 7 services IA détaillés avec métriques ROI (maintenant avec layout premium V4.1)
-- `/about` - Vision, mission, équipe de 6 experts, technologies
+### Historique V4 (2025-11-11)
+
+**9 pages professionnelles** au total (5 de base + 2 nouvelles V4.3) :
+- `/` - Homepage avec section Agentic Process (NEW V4.3)
+- `/services` - 7 services IA avec layout premium V4.1
+- `/use-cases` - 12 cas d'usage en 6 industries (NEW V4.3)
+- `/case-studies` - 6 études de cas détaillées style factorise.io (NEW V4.3)
+- `/about` - Vision, mission, équipe de 6 experts
+- `/testimonials` - 6 témoignages + études de cas expandables V4.1
 - `/contact` - Formulaire fonctionnel + API endpoint
-- `/faq` - 15+ questions avec recherche en temps réel
-- `/testimonials` - 6 témoignages + 3 études de cas détaillées (maintenant avec format expandable V4.1)
+- `/faq` - 15+ questions avec recherche temps réel
+- `/dashboard` - Espace personnel + évaluation maturité IA
 
-**96 KB de données structurées** bilingues FR/EN ajoutées  
-**100+ nouvelles clés** de traduction  
-**Navigation unifiée** sur toutes les pages
+**157 KB de données structurées** bilingues FR/EN (96 KB V4 + 61 KB V4.3)  
+**150+ clés de traduction** complètes  
+**Navigation unifiée** avec nouveaux liens Use Cases et Case Studies
 
 ### Objectifs
 
@@ -591,34 +652,53 @@ app.get('/api/nouveau-endpoint', async (c) => {
 
 ## URLs actuelles
 
-- **Local** : http://localhost:3000
-- **Production** : À configurer après déploiement
+- **Production V4.3** : https://51e61d69.factorise-ai.pages.dev
+- **GitHub Repository** : https://github.com/Jaokimben/factorise
+- **Local (Sandbox)** : http://localhost:3000
 
-### Pages disponibles
+### Pages disponibles (9 pages)
 
-- `/` - Page d'accueil
+**Pages publiques** :
+- `/` - Page d'accueil avec Agentic Process
+- `/services` - 7 services IA détaillés (layout premium)
+- `/use-cases` - 12 cas d'usage concrets (NEW V4.3)
+- `/case-studies` - 6 études de cas clients détaillées (NEW V4.3)
+- `/about` - Vision, mission, équipe
+- `/testimonials` - Témoignages et études de cas
+- `/contact` - Formulaire de contact
+- `/faq` - Questions fréquentes
 - `/login` - Connexion
 - `/register` - Inscription
-- `/dashboard` - Espace personnel (authentification requise)
-- `/assessment` - Évaluation de maturité IA (authentification requise)
-- `/results?id=X&score=Y` - Résultats d'évaluation (authentification requise)
 
-## État actuel du projet
+**Pages authentifiées** :
+- `/dashboard` - Espace personnel avec statistiques
+- `/assessment` - Évaluation de maturité IA (40 questions)
+- `/results?id=X&score=Y` - Résultats détaillés avec recommandations
 
-- ✅ Architecture complète fonctionnelle
+## État actuel du projet - V4.3
+
+- ✅ Architecture complète fonctionnelle avec 9 pages
+- ✅ **V4.3** : Page Use Cases avec 12 exemples concrets (24 KB data)
+- ✅ **V4.3** : Page Case Studies avec 6 projets détaillés (37 KB data)
+- ✅ **V4.3** : Section Agentic Process sur homepage
+- ✅ **V4.3** : Navigation mise à jour avec nouveaux liens
 - ✅ Authentification de base implémentée
-- ✅ Évaluation de maturité IA complète
-- ✅ Dashboard avec statistiques
+- ✅ Évaluation de maturité IA complète (40 questions)
+- ✅ Dashboard avec statistiques personnalisées
 - ✅ Résultats avec graphiques et recommandations
 - ✅ Base de données D1 configurée
-- ✅ Design responsive et moderne
+- ✅ Design responsive et moderne (gradients, cards)
+- ✅ **Déployé sur Cloudflare Pages** : https://51e61d69.factorise-ai.pages.dev
+- ✅ **Repository GitHub à jour** : https://github.com/Jaokimben/factorise
 - ⚠️ Sécurité à renforcer (hashing passwords)
 - ⚠️ Tests unitaires à ajouter
-- 📦 Prêt pour le déploiement sur Cloudflare Pages
 
 ## Déploiement et configuration
 
-**Dernière mise à jour** : 11 novembre 2025
+**Dernière mise à jour** : 11 novembre 2025 - V4.3.0  
+**Dernier déploiement** : 11 novembre 2025 - https://51e61d69.factorise-ai.pages.dev  
+**GitHub commits** : 3 commits V4.2-V4.3 (16f8d6d, 0584dbc, ec1b9f5)  
+**Bundle size** : 161.42 KB (optimisé avec Vite)
 
 ## Contribution
 
